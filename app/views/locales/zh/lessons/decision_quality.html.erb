@@ -1,0 +1,76 @@
+<% content_for :title, "决策质量与结果：如何不带事后诸葛地复盘 — Holdem Lab" %>
+<% content_for :description, "学习用做决定当时掌握的信息、假设、推理与信心来复盘扑克决定，而不是让结果反过来改写你的判断。" %>
+<% content_for :og_type, "article" %>
+<% content_for :structured_data do %>
+  <%= structured_data_script(breadcrumb_structured_data([["学习", absolute_url_for(learn_path)], ["Decision Quality", canonical_url]])) %>
+  <%= structured_data_script(learning_resource_structured_data(name: "决策质量与结果", description: "学习用做决定当时掌握的信息、假设、推理与信心来复盘扑克决定。", url: canonical_url, time_required: "PT12M", reviewed_at: @content_record.dig("domain_review", "reviewed_at"))) %>
+  <%= structured_data_script(faq_structured_data([
+        ["决策质量和结果有什么区别？", "决策质量是指在当时能掌握的信息下，你选得好不好；结果是牌发出来之后发生了什么。因为扑克有运气成分，好的决定可能输、差的决定可能赢，所以光看结果说明不了你做的是哪一种。"],
+        ["输了一手牌是不是说明我打错了？", "不是。单次结果的噪声太大，判断不了一个决定的好坏。要复盘的是牌亮开之前你掌握的信息、假设和推理，把结果当作一条新证据，而不是最终判决。"],
+        ["为什么要在看反馈前记录信心？", "因为在看反馈之前记下的信心，可以和你实际答对与否作对照。次数足够多之后，这个对照能看出你的把握程度准不准。信心很高却答错，恰恰是最有价值的信号。"]
+      ])) %>
+<% end %>
+
+<% evidence_coverage = "这套复盘方法参考了关于主动回忆与信心校准的公开研究。" %>
+<article class="mx-auto max-w-5xl px-5 py-12 sm:py-20 lg:px-8" data-controller="lesson-session" data-lesson-slug="decision-quality" data-content-asset-id="<%= @content_record.fetch("id") %>" data-content-curriculum-id="<%= @curriculum_lesson.fetch("id") %>" data-content-concept-ids="<%= @curriculum_lesson.fetch("concept_ids").join(" ") %>" data-content-exercise-ids="<%= @curriculum_lesson.fetch("exercise_ids").join(" ") %>" data-content-version="<%= @content_record.fetch("content_version") %>" data-content-publication-status="<%= @content_record.fetch("publication_status") %>" data-evidence-coverage="<%= evidence_coverage %>">
+  <nav aria-label="面包屑" class="text-sm text-ink/55"><%= link_to "学习", learn_path, class: "font-semibold hover:text-moss" %><span aria-hidden="true"> / </span><span>决策质量</span></nav>
+
+  <header class="mt-8 border-b border-ink/10 pb-10">
+    <div class="flex flex-wrap items-center gap-3"><span class="rounded-full bg-moss/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-moss">基础 03</span></div>
+    <h1 class="mt-6 max-w-4xl font-display text-5xl leading-[0.98] tracking-tight sm:text-7xl">好结果不能修复一个薄弱的决定。</h1>
+    <p class="mt-7 max-w-3xl text-lg leading-8 text-ink/70">扑克的结果带着运气成分。复盘时要用你做决定当下掌握的信息，把结果当成一条新的证据，而不是拿它反过来改写当时的推理。</p>
+    <div class="mt-7 flex flex-wrap gap-3 text-xs"><span class="rounded-full border border-ink/10 bg-white/55 px-3 py-2">10–12 分钟</span><span class="rounded-full border border-ink/10 bg-white/55 px-3 py-2">3 道判断题</span><span class="rounded-full border border-ink/10 bg-white/55 px-3 py-2">免费 · 无需注册</span></div>
+  </header>
+
+  <section class="mt-10 rounded-3xl border border-moss/25 bg-moss/5 p-6 sm:p-8" aria-labelledby="decision-quality-answer-title">
+    <h2 class="font-display text-3xl" id="decision-quality-answer-title">决策质量和结果有什么区别？</h2>
+    <p class="mt-4 max-w-3xl text-base leading-7 text-ink/80">决策质量是指在当时能掌握的信息下你选得好不好，结果则是牌发出来之后发生了什么。扑克带着运气成分，好的决定可能输、差的决定可能赢，所以只看结果永远说明不了你做的是哪一种。</p>
+  </section>
+
+  <section class="grid gap-6 py-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)]" aria-labelledby="decision-quality-model-title">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">复盘方法</p>
+      <h2 class="mt-4 font-display text-4xl" id="decision-quality-model-title">怎样在没有事后之明的情况下复盘一手牌？</h2>
+      <ol class="mt-7 space-y-5 text-base leading-7 text-ink/75"><li><strong class="text-ink">1. 还原：</strong>位置、筹码量、底池、牌面、行动过程，以及当时可选的动作。</li><li><strong class="text-ink">2. 记录：</strong>你对对手范围的假设、原本的打算、实际选择的动作，以及看到反馈前的信心。</li><li><strong class="text-ink">3. 评估：</strong>把你的推理和标注清楚的规则、算术、基准线或 solver 结果对照。</li><li><strong class="text-ink">4. 观察：</strong>记下结果，但不要让单次结果代替期望值或决策质量。</li></ol>
+    </div>
+    <aside class="rounded-3xl bg-ink p-6 text-paper" aria-label="Decision 与 outcome 对比"><p class="text-xs font-semibold uppercase tracking-[0.16em] text-moss-light">保持分开</p><div class="mt-6 space-y-5"><div class="rounded-2xl border border-paper/15 p-4"><p class="font-semibold">决策当时的记录</p><p class="mt-2 text-sm leading-6 text-paper/65">信息、假设、当时可选的动作、理由、信心，以及对应版本的反馈。</p></div><div class="rounded-2xl border border-paper/15 p-4"><p class="font-semibold">结果记录</p><p class="mt-2 text-sm leading-6 text-paper/65">亮出的牌、最终底池，以及在动作锁定之后结果能告诉你的东西。</p></div></div></aside>
+  </section>
+
+  <section class="rounded-3xl border border-sand/40 bg-sand/10 p-6 sm:p-8" aria-labelledby="decision-quality-boundary-title"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-sand">证据边界</p><h2 class="mt-3 font-display text-3xl" id="decision-quality-boundary-title">信心是一个校准信号，不是分数。</h2><p class="mt-4 max-w-3xl text-sm leading-7 text-ink/70">主动回忆的研究支持「先作答、再看反馈」，信心校准的研究则说明为什么值得记录信心。但这两者都不能证明这节扑克课会提高你的水平。很高的信心可能校准良好，也可能被低估，还可能是危险的错误；只有在足够多次尝试中和正确率对照，才能看出来。</p></section>
+
+  <section class="py-12" aria-labelledby="decision-quality-practice-title">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">主动回忆</p><h2 class="mt-4 font-display text-4xl" id="decision-quality-practice-title">保护当时的决定，别让事后之明改写它。</h2><p class="mt-4 max-w-2xl text-sm leading-6 text-ink/65">每题第一次核对的答案会计入本节小结。答案和你写的思考都不会被保存。</p>
+    <div class="mt-6 grid gap-4 rounded-2xl border border-ink/10 bg-paper-deep p-5 sm:grid-cols-[minmax(0,1fr)_12rem]"><label class="text-sm font-semibold text-ink" for="decision-quality-reason">反馈前，定义一次公平的复盘。<textarea class="mt-2 min-h-20 w-full rounded-xl border border-ink/15 bg-paper p-3 text-sm font-normal outline-none focus:border-moss" data-lesson-session-target="reason" id="decision-quality-reason" placeholder="在结果出现前，哪些 evidence 应该被冻结？"></textarea></label><label class="text-sm font-semibold text-ink" for="decision-quality-confidence">反馈前的信心<select class="mt-2 w-full rounded-xl border border-ink/15 bg-paper p-3 text-sm font-normal outline-none focus:border-moss" data-lesson-session-target="confidence" id="decision-quality-confidence"><option value="1">1 · 猜测</option><option value="2">2 · 不确定</option><option value="3" selected>3 · 基本确定</option><option value="4">4 · 有信心</option><option value="5">5 · 清楚</option></select></label></div>
+
+    <div class="mt-8 space-y-6">
+      <fieldset class="rounded-3xl border border-ink/10 bg-white/55 p-6" data-answer="unresolved" data-concept="Result 与 decision quality" data-correct-feedback="正确。Loss 描述这次 outcome；decision quality 仍需通过 decision-time model 与 reasoning 复核。" data-review-feedback="不要从一个结果推断 decision quality。重建 cards 出现前可获得的信息与假设。" data-lesson-session-target="question" id="decision-quality-q1"><legend class="px-2 font-display text-2xl">1. 一个推理充分的打法输掉了这手牌，能得出什么结论？</legend><div class="mt-5 grid gap-3"><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="decision-quality-q1" type="radio" value="bad"> <span>这个打法一定是错的</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="decision-quality-q1" type="radio" value="unresolved"> <span>结果是负的，但决策质量仍要回到做决定的当下来评估</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="decision-quality-q1" type="radio" value="good"> <span>因为解释得很充分，这个打法一定是好的</span></label></div><button class="mt-5 min-h-11 rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-paper hover:bg-moss disabled:cursor-not-allowed disabled:opacity-45" data-action="lesson-session#check" type="button">检查答案</button><p class="mt-4 rounded-xl border border-ink/10 bg-paper p-4 text-sm leading-6 focus:outline-none" data-lesson-session-target="feedback" hidden role="status" tabindex="-1"></p><noscript><p class="mt-4 text-sm text-ink/65">答案：结果是负的，而决策质量仍然要回到当时来评估。</p></noscript></fieldset>
+
+      <fieldset class="rounded-3xl border border-ink/10 bg-white/55 p-6" data-answer="calibration" data-concept="Confidence calibration" data-correct-feedback="正确。一个 confident error 是 calibration observation。它不是单个案例证明 skill 低，但值得在多次尝试中复盘。" data-review-feedback="Confidence 只有与多次、可比较尝试中的 correctness 对照时才有用。" data-lesson-session-target="question" id="decision-quality-q2"><legend class="px-2 font-display text-2xl">2. 信心打到 5/5 却答错了，这说明什么？</legend><div class="mt-5 grid gap-3"><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="decision-quality-q2" type="radio" value="skill"> <span>说明你水平很高</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="decision-quality-q2" type="radio" value="calibration"> <span>一个可以在多次尝试中对照的校准信号</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="decision-quality-q2" type="radio" value="ignore"> <span>说明信心这个指标可以完全不看</span></label></div><button class="mt-5 min-h-11 rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-paper hover:bg-moss disabled:cursor-not-allowed disabled:opacity-45" data-action="lesson-session#check" type="button">检查答案</button><p class="mt-4 rounded-xl border border-ink/10 bg-paper p-4 text-sm leading-6 focus:outline-none" data-lesson-session-target="feedback" hidden role="status" tabindex="-1"></p><noscript><p class="mt-4 text-sm text-ink/65">答案：一个可以在多次尝试中对照的校准信号。</p></noscript></fieldset>
+
+      <fieldset class="rounded-3xl border border-ink/10 bg-white/55 p-6" data-answer="reconstruct" data-concept="抗 hindsight 的复盘顺序" data-correct-feedback="正确。先重建 decision-time state、reason 与 versions，再把 outcome 作为额外 evidence。" data-review-feedback="从选择 action 时可知道的内容开始；只有当记录稳定后再揭示 result。" data-lesson-session-target="question" id="decision-quality-q3"><legend class="px-2 font-display text-2xl">3. 一次严谨的复盘应该先看什么？</legend><div class="mt-5 grid gap-3"><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="decision-quality-q3" type="radio" value="result"> <span>只看谁赢了、底池多大</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="decision-quality-q3" type="radio" value="reconstruct"> <span>做决定当下的局面、假设、可选动作、理由、信心和对应版本</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="decision-quality-q3" type="radio" value="emotion"> <span>结果出来之后的感受</span></label></div><button class="mt-5 min-h-11 rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-paper hover:bg-moss disabled:cursor-not-allowed disabled:opacity-45" data-action="lesson-session#check" type="button">检查答案</button><p class="mt-4 rounded-xl border border-ink/10 bg-paper p-4 text-sm leading-6 focus:outline-none" data-lesson-session-target="feedback" hidden role="status" tabindex="-1"></p><noscript><p class="mt-4 text-sm text-ink/65">答案：先还原做决定当下的记录，再去评价结果。</p></noscript></fieldset>
+    </div>
+
+    <section class="mt-8 rounded-3xl border border-moss/30 bg-moss/10 p-6 focus:outline-none sm:p-8" data-lesson-session-target="summary" hidden id="decision-quality-session-summary" tabindex="-1"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">本节小结</p><h2 class="mt-3 font-display text-4xl">决定保持原样，结果单独看待。</h2><p class="mt-5 text-lg">得分：<strong data-lesson-session-target="score"></strong></p><p class="mt-3 text-sm leading-6 text-ink/70" data-lesson-session-target="missed"></p><dl class="mt-6 grid gap-3 text-sm sm:grid-cols-3"><div class="rounded-xl bg-paper/70 p-4"><dt class="font-semibold text-ink">你的反思</dt><dd class="mt-2 leading-6 text-ink/65" data-lesson-session-target="reasonSummary"></dd></div><div class="rounded-xl bg-paper/70 p-4"><dt class="font-semibold text-ink">信心</dt><dd class="mt-2 leading-6 text-ink/65" data-lesson-session-target="confidenceSummary"></dd></div><div class="rounded-xl bg-paper/70 p-4"><dt class="font-semibold text-ink">证据覆盖</dt><dd class="mt-2 leading-6 text-ink/65" data-lesson-session-target="evidence"></dd></div></dl><div class="mt-6 flex flex-col gap-3 sm:flex-row"><button class="min-h-11 rounded-full border border-ink/20 px-5 py-3 text-sm font-semibold hover:border-moss hover:text-moss" data-action="lesson-session#retry" type="button">重新练习本课程</button><%= link_to "打开复盘队列 →", practice_path(anchor: "review"), class: "inline-flex min-h-11 items-center justify-center rounded-full bg-moss px-5 py-3 text-sm font-semibold text-paper hover:bg-ink" %></div></section>
+  </section>
+
+  <section class="border-t border-ink/10 py-12" aria-labelledby="decision-quality-faq-title">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">常见问题</p>
+    <h2 class="mt-4 font-display text-4xl" id="decision-quality-faq-title">关于复盘的常见问题</h2>
+    <div class="mt-8 grid gap-4 md:grid-cols-2">
+      <details class="rounded-2xl border border-ink/10 bg-paper-deep p-5">
+        <summary class="cursor-pointer font-semibold">决策质量和结果有什么区别？</summary>
+        <p class="mt-3 text-sm leading-6 text-ink/70">决策质量是指在当时能掌握的信息下，你选得好不好；结果是牌发出来之后发生了什么。因为扑克有运气成分，好的决定可能输、差的决定可能赢，所以光看结果说明不了你做的是哪一种。</p>
+      </details>
+      <details class="rounded-2xl border border-ink/10 bg-paper-deep p-5">
+        <summary class="cursor-pointer font-semibold">输了一手牌是不是说明我打错了？</summary>
+        <p class="mt-3 text-sm leading-6 text-ink/70">不是。单次结果的噪声太大，判断不了一个决定的好坏。要复盘的是牌亮开之前你掌握的信息、假设和推理，把结果当作一条新证据，而不是最终判决。</p>
+      </details>
+      <details class="rounded-2xl border border-ink/10 bg-paper-deep p-5 md:col-span-2">
+        <summary class="cursor-pointer font-semibold">为什么要在看反馈前记录信心？</summary>
+        <p class="mt-3 text-sm leading-6 text-ink/70">因为在看反馈之前记下的信心，可以和你实际答对与否作对照。次数足够多之后，这个对照能看出你的把握程度准不准。信心很高却答错，恰恰是最有价值的信号。</p>
+      </details>
+    </div>
+  </section>
+
+  <footer class="border-t border-ink/10 pt-8 text-sm leading-6 text-ink/60"><div class="grid gap-4 sm:grid-cols-2"><div><p class="font-semibold text-ink">内容依据</p><p class="mt-2">本课教的复盘习惯——先回忆、再核对、然后比较信心——来自公开的学习研究。</p></div><div class="sm:text-right"><p><a class="font-semibold text-moss underline" href="https://eric.ed.gov/?id=EJ1319572" rel="noreferrer">Retrieval-practice systematic review</a></p><p class="mt-2"><a class="font-semibold text-moss underline" href="https://doi.org/10.1007/s10459-023-10252-9" rel="noreferrer">Confidence-calibration study</a></p></div></div><p class="mt-5 rounded-xl bg-paper-deep p-4">这些研究讨论的是人如何学习，而不是扑克策略。它支持这套复盘习惯，但不能证明任何一个具体的扑克决定是对的。</p></footer>
+</article>

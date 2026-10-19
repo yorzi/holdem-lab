@@ -1,0 +1,111 @@
+<% content_for :title, "Content registry — Holdem Lab" %>
+<% content_for :robots, "noindex, nofollow" %>
+
+<section class="mx-auto max-w-7xl px-5 py-16 sm:py-20 lg:px-8" data-content-registry>
+  <header class="max-w-4xl">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">Development / test only</p>
+    <h1 class="mt-5 font-display text-5xl tracking-tight sm:text-6xl">Candidate content registry</h1>
+    <p class="mt-6 text-lg leading-8 text-ink/70">A read-only view of the SQLite mirrors. It is useful for checking stable ids, locale assets, review states, and graph coverage; it does not publish content or grant management access.</p>
+  </header>
+
+  <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5" aria-label="Registry record counts">
+    <% [
+      ["Lesson assets", @snapshot.fetch(:asset_counts)],
+      ["Lessons", @snapshot.fetch(:lesson_counts)],
+      ["Concepts", @snapshot.fetch(:concept_counts)],
+      ["Exercises", @snapshot.fetch(:exercise_counts)],
+      ["Source references", @snapshot.fetch(:source_reference_counts)]
+    ].each do |label, counts| %>
+      <article class="rounded-2xl border border-ink/10 bg-paper-deep p-5">
+        <h2 class="text-sm font-semibold text-ink/65"><%= label %></h2>
+        <p class="mt-3 font-display text-3xl"><%= counts.values.sum %></p>
+        <p class="mt-2 text-xs text-ink/55"><%= counts.map { |status, count| "#{status}: #{count}" }.join(" · ") %></p>
+      </article>
+    <% end %>
+  </div>
+
+  <div class="mt-12 overflow-x-auto rounded-3xl border border-ink/10 bg-white/60">
+    <table class="min-w-full text-left text-sm">
+      <caption class="sr-only">Curriculum lesson registry status</caption>
+      <thead class="border-b border-ink/10 text-xs uppercase tracking-[0.12em] text-ink/55">
+        <tr>
+          <th class="px-5 py-4 font-semibold" scope="col">Sequence</th>
+          <th class="px-5 py-4 font-semibold" scope="col">Lesson</th>
+          <th class="px-5 py-4 font-semibold" scope="col">Curriculum status</th>
+          <th class="px-5 py-4 font-semibold" scope="col">Locale assets</th>
+          <th class="px-5 py-4 font-semibold" scope="col">Graph</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-ink/10">
+        <% @snapshot.fetch(:lessons).each do |lesson| %>
+          <tr>
+            <td class="whitespace-nowrap px-5 py-4 font-semibold"><%= lesson.fetch(:sequence) %></td>
+            <th class="px-5 py-4 font-semibold text-ink" scope="row">
+              <%= lesson.fetch(:slug) %>
+              <code class="mt-1 block text-xs font-normal text-ink/50"><%= lesson.fetch(:id) %></code>
+            </th>
+            <td class="whitespace-nowrap px-5 py-4"><%= lesson.fetch(:publication_status) %></td>
+            <td class="px-5 py-4">
+              <ul class="space-y-1">
+                <% lesson.fetch(:assets).each do |asset| %>
+                  <li><span class="font-medium"><%= asset.fetch(:locale) %></span> · <%= asset.fetch(:publication_status) %></li>
+                <% end %>
+              </ul>
+            </td>
+            <td class="whitespace-nowrap px-5 py-4 text-ink/65">
+              <%= lesson.fetch(:concept_count) %> concepts ·
+              <%= lesson.fetch(:exercise_count) %> exercises ·
+              <%= lesson.fetch(:source_reference_count) %> refs
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <section class="mt-12" data-publication-readiness aria-labelledby="publication-readiness-heading">
+    <header class="max-w-3xl">
+      <h2 id="publication-readiness-heading" class="font-display text-3xl tracking-tight">Publication readiness</h2>
+      <p class="mt-3 text-sm leading-6 text-ink/65">This report is a read-only checklist for the English candidate assets. A lesson is ready only when its complete graph passes rights, technical review, domain review, and review metadata gates.</p>
+    </header>
+
+    <div class="mt-6 overflow-x-auto rounded-3xl border border-ink/10 bg-white/60">
+      <table class="min-w-full text-left text-sm">
+        <caption class="sr-only">English lesson publication readiness</caption>
+        <thead class="border-b border-ink/10 text-xs uppercase tracking-[0.12em] text-ink/55">
+          <tr>
+            <th class="px-5 py-4 font-semibold" scope="col">Lesson</th>
+            <th class="px-5 py-4 font-semibold" scope="col">Locale</th>
+            <th class="px-5 py-4 font-semibold" scope="col">Status</th>
+            <th class="px-5 py-4 font-semibold" scope="col">Blocker codes</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-ink/10">
+          <% @readiness_report.each do |readiness| %>
+            <tr>
+              <th class="px-5 py-4 font-semibold text-ink" scope="row"><%= readiness.fetch(:slug) %></th>
+              <td class="px-5 py-4"><%= readiness.fetch(:locale) %></td>
+              <td class="px-5 py-4 font-semibold"><%= readiness.fetch(:ready) ? "ready" : "blocked" %></td>
+              <td class="px-5 py-4">
+                <% if readiness.fetch(:blocker_codes).empty? %>
+                  <span class="text-ink/55">—</span>
+                <% else %>
+                  <ul class="space-y-1">
+                    <% readiness.fetch(:blocker_codes).each do |code| %>
+                      <li><code><%= code %></code></li>
+                    <% end %>
+                  </ul>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <aside class="mt-8 rounded-2xl border border-sand/30 bg-sand/10 p-5 text-sm leading-6 text-ink/75">
+    <p><strong>Published English lessons available to the read-only query:</strong> <%= @published_lessons.length %></p>
+    <p class="mt-2">Current review-preview records stay outside the published runtime scope until rights, technical review, and independent domain review all pass.</p>
+  </aside>
+</section>

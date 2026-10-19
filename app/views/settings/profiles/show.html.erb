@@ -1,0 +1,63 @@
+<% content_for :title, "#{t('profile.title')} — Holdem Lab" %>
+<% content_for :robots, "noindex, nofollow" %>
+
+<section class="mx-auto max-w-4xl px-5 py-16 sm:py-24 lg:px-8" data-account-page="profile">
+  <header class="max-w-3xl">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss"><%= t("profile.eyebrow") %></p>
+    <h1 class="mt-5 font-display text-5xl tracking-tight sm:text-6xl"><%= t("profile.heading") %></h1>
+    <p class="mt-6 text-lg leading-8 text-ink/70"><%= t("profile.description") %></p>
+  </header>
+
+  <div class="mt-10 grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+    <section class="rounded-3xl border border-ink/10 bg-white/70 p-6 shadow-sm sm:p-8" aria-labelledby="profile-form-title">
+      <h2 id="profile-form-title" class="font-display text-3xl"><%= t("profile.title") %></h2>
+      <% if flash[:alert] %>
+        <div class="mt-6 rounded-2xl border border-sand/40 bg-sand/10 p-4 text-sm leading-6" role="alert"><%= flash[:alert] %></div>
+      <% end %>
+      <% if flash[:notice] %>
+        <div class="mt-6 rounded-2xl border border-moss/30 bg-moss/10 p-4 text-sm leading-6" role="status"><%= flash[:notice] %></div>
+      <% end %>
+
+      <dl class="mt-6 rounded-2xl bg-paper-deep p-4 text-sm">
+        <div class="flex flex-col gap-1 sm:flex-row sm:justify-between">
+          <dt class="font-semibold"><%= t("auth.email_address") %></dt>
+          <dd class="text-ink/70"><%= @user.email_address %></dd>
+        </div>
+      </dl>
+
+      <%= form_with model: @user, url: profile_settings_path, method: :patch, class: "mt-6 space-y-6" do |form| %>
+        <div>
+          <%= form.label :display_name, t("profile.display_name"), class: "block text-sm font-semibold" %>
+          <%= form.text_field :display_name, maxlength: 120, autocomplete: "name", class: "mt-2 block w-full rounded-xl border border-ink/20 bg-paper px-4 py-3" %>
+          <p class="mt-2 text-sm leading-6 text-ink/60"><%= t("profile.display_name_hint") %></p>
+        </div>
+        <%= form.submit t("profile.save_button"), class: "min-h-11 rounded-full bg-moss px-5 py-3 text-sm font-semibold text-paper transition-colors hover:bg-ink" %>
+      <% end %>
+    </section>
+
+    <section class="rounded-3xl border border-ink/10 bg-ink p-6 text-paper shadow-sm sm:p-8" aria-labelledby="profile-export-title">
+      <h2 id="profile-export-title" class="font-display text-3xl"><%= t("profile.export_title") %></h2>
+      <p class="mt-5 text-sm leading-7 text-paper/75"><%= t("profile.export_description") %></p>
+      <%= link_to t("profile.export_button"), profile_export_path, class: "mt-8 inline-flex min-h-11 items-center justify-center rounded-full bg-paper px-5 py-3 text-sm font-semibold text-ink transition-colors hover:bg-moss hover:text-paper" %>
+      <p class="mt-6 text-xs leading-6 text-paper/55"><%= t("profile.export_note") %></p>
+    </section>
+  </div>
+
+  <section class="mt-6 rounded-3xl border border-coral/40 bg-coral/5 p-6 shadow-sm sm:p-8" aria-labelledby="profile-delete-title">
+    <h2 id="profile-delete-title" class="font-display text-3xl"><%= t("profile.delete_title") %></h2>
+    <p class="mt-5 max-w-3xl text-sm leading-7 text-ink/70"><%= t("profile.delete_description") %></p>
+
+    <%= form_with url: profile_settings_path, method: :delete, class: "mt-6 grid gap-5 sm:max-w-xl" do |form| %>
+      <div>
+        <%= form.label :current_password, t("profile.delete_password"), class: "block text-sm font-semibold" %>
+        <%= form.password_field :current_password, required: true, autocomplete: "current-password", class: "mt-2 block w-full rounded-xl border border-ink/20 bg-paper px-4 py-3" %>
+      </div>
+      <div>
+        <%= form.label :confirmation, t("profile.delete_confirmation"), class: "block text-sm font-semibold" %>
+        <%= form.text_field :confirmation, required: true, autocomplete: "off", class: "mt-2 block w-full rounded-xl border border-ink/20 bg-paper px-4 py-3" %>
+        <p class="mt-2 text-sm leading-6 text-ink/60"><%= t("profile.delete_confirmation_hint") %></p>
+      </div>
+      <%= form.submit t("profile.delete_button"), class: "min-h-11 justify-self-start rounded-full bg-coral px-5 py-3 text-sm font-semibold text-paper transition-colors hover:bg-ink" %>
+    <% end %>
+  </section>
+</section>

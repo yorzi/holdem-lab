@@ -1,0 +1,20 @@
+# Holdem Lab
+
+> Open-source educational software for No-Limit Texas Hold'em. Run it locally
+> with virtual chips. No real-money play, live-table assistance, or profit claims.
+> The source repository is the durable entry point; a hosted trainer is not promised.
+
+## Documentation
+
+- [Source and setup](https://github.com/yorzi/holdem-lab): README, local prerequisites, and MIT license.
+- [Product guide](https://github.com/yorzi/holdem-lab/blob/main/docs/product.md): Learning loop, current features, feedback and storage limits.
+- [Local setup](https://github.com/yorzi/holdem-lab/blob/main/docs/getting-started.md): Rails, SQLite, Vite and React installation without cloud accounts.
+- [Development](https://github.com/yorzi/holdem-lab/blob/main/docs/development.md): Code boundaries and verification commands.
+- [Contributing](https://github.com/yorzi/holdem-lab/blob/main/CONTRIBUTING.md): Scope, changes, source rights and tests.
+
+## Limits
+
+- Strategy feedback is approximate, not verified solver output or guaranteed optimal play.
+- Browser-local reviews do not imply automatic cloud sync.
+- Automated checks do not establish independent domain review or learning effectiveness.
+- Original material is MIT licensed; external references and dependencies retain their own rights.

@@ -1,0 +1,66 @@
+# See https://docs.docker.com/engine/reference/builder/#dockerignore-file for more about ignoring files.
+
+# Ignore git directory.
+/.git/
+/.gitignore
+
+# Ignore bundler config.
+/.bundle
+
+# Ignore all environment files.
+/.env*
+
+# Ignore all default key files.
+/config/master.key
+/config/credentials/*.key
+/config/credentials.yml.enc
+/config/secrets
+/.sops.yaml
+/.private
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/.keep
+
+# Ignore storage (uploaded files in development and any SQLite databases).
+/storage/*
+!/storage/.keep
+/tmp/storage/*
+!/tmp/storage/.keep
+
+# Ignore assets.
+/node_modules/
+/app/assets/builds/*
+!/app/assets/builds/.keep
+/public/assets
+
+# Ignore CI service files.
+/.github
+
+# Ignore Kamal files.
+/config/deploy*.yml
+/.kamal
+
+# Ignore development files
+/.devcontainer
+
+# Ignore planning-stage research and competitive data the running app never
+# reads. Everything else under data/ ships: Content::Manifest and
+# Content::Catalog read data/content/ and data/quality/source_packets/, and
+# Content::CanonicalRegistry verifies the digest of every asset_path and
+# runtime_path in the registry files — which includes
+# data/quality/holdem-golden-v2.json. Excluding a referenced asset crash-loops
+# the container on boot; test/deployment_image_contract_test.rb guards this.
+/data/research
+/docs
+/test
+
+# Ignore Docker-related files
+/.dockerignore
+/Dockerfile*

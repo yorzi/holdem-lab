@@ -1,0 +1,51 @@
+<% content_for :title, "Privacy at Holdem Lab — What Is Measured and What Never Leaves Your Browser" %>
+<% content_for :description, "Exactly what Holdem Lab measures, what it never collects, and how to turn analytics off. Your hole cards, your written reasoning, and your practice records are not sent anywhere." %>
+
+<section class="mx-auto max-w-3xl px-5 py-20 sm:py-28 lg:px-8">
+  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">Privacy</p>
+  <h1 class="mt-5 font-display text-5xl tracking-tight sm:text-6xl">What we measure, and what we never touch.</h1>
+  <% unless analytics_enabled? %>
+    <p class="mt-7 rounded-xl border border-moss/30 p-4 text-base leading-7">Analytics is disabled on this instance. No Google Analytics tag or collector is loaded. The optional analytics behavior described below applies only when an operator enables it.</p>
+  <% end %>
+  <p class="mt-7 text-lg leading-8 text-ink/70">Holdem Lab is a learning tool, so it is worth knowing which parts of your practice are counted and which parts stay yours. This page is the whole answer, not a summary of a longer one.</p>
+
+  <div class="mt-14 rounded-3xl border border-ink/10 bg-ink p-6 text-paper sm:p-8">
+    <h2 class="font-display text-3xl">Never collected</h2>
+    <p class="mt-4 text-sm leading-6 text-paper/70">None of the following is sent to Google Analytics or to any other third party, in any country, whether or not you accept analytics:</p>
+    <ul class="mt-5 space-y-3 text-sm leading-6 text-paper/75">
+      <li>• Your hole cards, the board, chip amounts, or any hand you play.</li>
+      <li>• The reasoning you write before a decision, or the confidence you rate it at.</li>
+      <li>• Your decision records and review notes, whether they live in your browser or in an account.</li>
+      <li>• Your email address, display name, password, or account identifier.</li>
+      <li>• Password reset links. The token is stripped out of the page address before analytics ever sees it.</li>
+    </ul>
+  </div>
+
+  <h2 class="mt-14 font-display text-3xl">What is measured when you accept analytics</h2>
+  <p class="mt-5 text-base leading-7 text-ink/70">Google Analytics 4 is the only analytics tool on this site. There is no tag manager, no advertising tag, no session recorder, and no heatmap. When you accept, it records:</p>
+  <ul class="mt-5 space-y-3 text-base leading-7 text-ink/70">
+    <li>• <strong class="font-semibold text-ink">Page views</strong> — which page, its title, the language edition you are reading, where you arrived from, the approximate location Google derives from your IP address, and your device and browser.</li>
+    <li>• <strong class="font-semibold text-ink">Five product events</strong>, and only these five: opening a lesson (which lesson), starting a practice session (which mode), locking in a decision (which mode and which street), finishing a lesson session (which lesson, and whether you got none, some, or all of it), and opening a review.</li>
+  </ul>
+  <p class="mt-5 text-base leading-7 text-ink/70">Those events carry a lesson slug, a practice mode, a street name, and a coarse score band. That is the complete list of values. They tell us whether people finish what they start; they cannot reconstruct a hand or a person.</p>
+  <p class="mt-5 text-base leading-7 text-ink/70">Accepting also lets Google store a first-party cookie holding a randomly generated identifier so repeat visits can be counted once rather than twice. Google processes this data on our behalf; event data is kept for 14 months and then deleted.</p>
+
+  <h2 class="mt-14 font-display text-3xl">Your choice, and how to change it</h2>
+  <p class="mt-5 text-base leading-7 text-ink/70">In the EEA, the UK, and Switzerland nothing loads until you choose — no analytics cookie is set and no request is made to Google before you accept. Elsewhere analytics loads by default and you can turn it off here at any time; declining clears the analytics cookies immediately. If your browser sends Global Privacy Control, that is treated as a decision to decline everywhere, without asking.</p>
+  <p class="mt-5 text-base leading-7 text-ink/70">Your choice is stored in your browser, so it is per-browser and per-device.</p>
+  <p class="mt-8">
+    <button
+      type="button"
+      class="inline-flex min-h-11 items-center justify-center rounded-full bg-moss px-5 py-2.5 text-sm font-semibold text-paper shadow-sm transition-colors hover:bg-ink"
+      data-analytics-consent-manage
+    >Manage analytics</button>
+  </p>
+
+  <h2 class="mt-14 font-display text-3xl">What the site itself keeps</h2>
+  <p class="mt-5 text-base leading-7 text-ink/70">Practice you do without an account stays in your browser's local storage and is never uploaded. If you create an account, we hold your email address, a hashed password, an optional display name, your sign-in history, and any practice records you chose to save. A session cookie keeps you signed in; it is required for the site to work and is not an analytics cookie. Server logs record request metadata for operating the service.</p>
+  <p class="mt-5 text-base leading-7 text-ink/70">You can download everything held against your account, or delete the account and its records, from <%= link_to "your account settings", profile_settings_path, class: "font-semibold text-moss underline" %>. Deletion is immediate and cannot be undone.</p>
+
+  <h2 class="mt-14 font-display text-3xl">Contact</h2>
+  <p class="mt-5 text-base leading-7 text-ink/70">You control data on your local instance. For a hosted instance, contact its operator. Report source issues in <a href="https://github.com/yorzi/holdem-lab/issues" class="font-semibold text-moss underline">the project repository</a>; send security reports through <a href="https://github.com/yorzi/holdem-lab/security/advisories/new" class="font-semibold text-moss underline">private vulnerability reporting</a>. Do not post personal data publicly.</p>
+  <p class="mt-10 text-sm text-ink/50">Holdem Lab uses virtual chips only. It is not a gambling service, and it does not handle real money.</p>
+</section>

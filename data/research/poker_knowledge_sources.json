@@ -1,0 +1,596 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-08-19",
+  "purpose": "Planning-stage registry for poker rules, education research, reusable data candidates, correctness references, and product-safety boundaries.",
+  "records": [
+    {
+      "id": "poker_tda_rules_2024",
+      "title": "2024 Poker TDA Rules, Recommended Procedures, and Illustration Addendum",
+      "publisher": "Poker Tournament Directors Association",
+      "url": "https://www.pokertda.com/view-poker-tda-rules/",
+      "source_type": "rules",
+      "authority_tier": "A_primary",
+      "rights_status": "all_rights_reserved",
+      "usage_status": "link_and_cite",
+      "scope": "Tournament procedures; version 1.0 dated 2024-10-09.",
+      "supports": [
+        "Terminology and edge cases used in organized tournament poker",
+        "A review checklist for misdeals, all-ins, action order, and procedural fairness"
+      ],
+      "does_not_support": [
+        "A universal cash-game rules specification",
+        "Heads-up strategy recommendations",
+        "Permission to reproduce the rulebook verbatim"
+      ],
+      "product_uses": [
+        "Rules research",
+        "Edge-case checklist",
+        "Source citations on methodology pages"
+      ],
+      "version": "2024.1.0",
+      "last_verified": "2026-08-19",
+      "fingerprint": {
+        "status": "not_captured",
+        "sha256": null
+      },
+      "notes": "Tournament-specific. Project rules remain a versioned local specification backed by tests."
+    },
+    {
+      "id": "wsop_rules_2026",
+      "title": "2026 WSOP Tournament Rules and Live Action Rules",
+      "publisher": "World Series of Poker",
+      "url": "https://www.wsop.com/tournaments/2026-57th-annual-world-series-of-poker/",
+      "source_type": "rules",
+      "authority_tier": "A_primary",
+      "rights_status": "all_rights_reserved",
+      "usage_status": "link_and_cite",
+      "scope": "WSOP 2026 event and live-action house rules linked from the official event page.",
+      "supports": [
+        "A current example of a major operator's tournament and live-action rules",
+        "Terminology and operational edge-case comparison"
+      ],
+      "does_not_support": [
+        "A universal No-Limit Hold'em cash-game standard",
+        "Permission to republish WSOP documents",
+        "Any strategy baseline"
+      ],
+      "product_uses": [
+        "Rules comparison",
+        "Editorial fact checking"
+      ],
+      "version": "2026",
+      "last_verified": "2026-08-19",
+      "fingerprint": {
+        "status": "not_captured",
+        "sha256": null
+      },
+      "notes": "Use only as a named house-rules reference and keep it distinct from the app's heads-up engine contract."
+    },
+    {
+      "id": "uci_poker_hand_dataset",
+      "title": "Poker Hand Dataset",
+      "publisher": "UCI Machine Learning Repository",
+      "url": "https://archive.ics.uci.edu/dataset/158/poker+hand",
+      "source_type": "dataset",
+      "authority_tier": "A_primary",
+      "rights_status": "cc_by_4_0",
+      "usage_status": "candidate_import",
+      "scope": "1,025,010 labeled five-card hands; DOI 10.24432/C5KW38.",
+      "supports": [
+        "Independent five-card hand-category test vectors",
+        "Educational examples about hand classes and class imbalance"
+      ],
+      "does_not_support": [
+        "Seven-card Hold'em evaluator correctness by itself",
+        "Betting rules, ranges, equity, EV, or strategy",
+        "Real-world player behavior"
+      ],
+      "product_uses": [
+        "Candidate evaluator cross-check fixtures",
+        "Dataset literacy examples"
+      ],
+      "version": "DOI:10.24432/C5KW38",
+      "last_verified": "2026-08-19",
+      "fingerprint": {
+        "status": "not_captured",
+        "sha256": null
+      },
+      "notes": "Download and hash the exact files before use; preserve attribution required by CC BY 4.0."
+    },
+    {
+      "id": "phh_standard",
+      "title": "Poker Hand History File Format Specification",
+      "publisher": "University of Toronto Computer Poker Research Group",
+      "url": "https://github.com/uoftcprg/phh-std",
+      "source_type": "specification",
+      "authority_tier": "A_primary",
+      "rights_status": "mit",
+      "usage_status": "candidate_import",
+      "scope": "Human-readable, machine-friendly hand-history format covering multiple poker variants.",
+      "supports": [
+        "A future interchange format for manual hand-history import and export",
+        "A vocabulary for durable, replayable hand records"
+      ],
+      "does_not_support": [
+        "Automatic permission to ingest histories from poker operators",
+        "A strategy or solver baseline",
+        "Replacement of the TypeScript engine's state-transition rules"
+      ],
+      "product_uses": [
+        "Schema comparison",
+        "Future import/export spike",
+        "Replay fixture design"
+      ],
+      "version": "repository main; pin before implementation",
+      "last_verified": "2026-08-19",
+      "fingerprint": {
+        "status": "not_captured",
+        "sha256": null
+      },
+      "notes": "MIT covers the specification. Operator-specific imported histories still require separate policy and privacy review."
+    },
+    {
+      "id": "phh_dataset",
+      "title": "Poker Hand Histories Dataset",
+      "publisher": "University of Toronto Computer Poker Research Group",
+      "url": "https://github.com/uoftcprg/phh-dataset",
+      "source_type": "dataset",
+      "authority_tier": "A_primary",
+      "rights_status": "mixed_requires_review",
+      "usage_status": "research_only",
+      "scope": "Collection in PHH format spanning multiple sources and 11 poker variants; repository points to a larger Zenodo release.",
+      "supports": [
+        "Testing PHH parser coverage against varied hand shapes",
+        "Researching historical hand-history interoperability"
+      ],
+      "does_not_support": [
+        "Assuming every collected hand has the same commercial reuse rights as repository code",
+        "Treating observed player actions as correct strategy",
+        "Training user-specific opponent models"
+      ],
+      "product_uses": [
+        "Provenance study only",
+        "Potential parser fixtures after record-level review"
+      ],
+      "version": "DOI:10.5281/zenodo.10796885",
+      "last_verified": "2026-08-19",
+      "fingerprint": {
+        "status": "not_captured",
+        "sha256": null
+      },
+      "notes": "The repository is MIT, but it aggregates hands from different upstream sources. Rights and privacy must be checked per layer before any ingestion."
+    },
+    {
+      "id": "pokerkit",
+      "title": "PokerKit",
+      "publisher": "University of Toronto Computer Poker Research Group",
+      "url": "https://github.com/uoftcprg/pokerkit",
+      "source_type": "software",
+      "authority_tier": "A_primary",
+      "rights_status": "mit",
+      "usage_status": "cross_check_only",
+      "scope": "Python library for multi-variant poker simulation, hand evaluation, and statistical analysis.",
+      "supports": [
+        "Independent differential tests for selected rules and hand-evaluation fixtures",
+        "Research into multi-variant state and hand-history modeling"
+      ],
+      "does_not_support": [
+        "Replacing the pure TypeScript runtime engine without a separate architecture decision",
+        "A GTO strategy baseline",
+        "Correctness of Holdem Lab merely because both implementations agree"
+      ],
+      "product_uses": [
+        "Development-only oracle experiments",
+        "Fixture generation after version pinning"
+      ],
+      "version": "v0.7.4 observed 2026-08-19",
+      "last_verified": "2026-08-19",
+      "fingerprint": {
+        "status": "not_captured",
+        "sha256": null
+      },
+      "notes": "Pin an exact release and keep any Python tooling outside the browser runtime. Agreement is evidence, not proof."
+    },
+    {
+      "id": "open_spiel",
+      "title": "OpenSpiel",
+      "publisher": "Google DeepMind",
+      "url": "https://github.com/google-deepmind/open_spiel",
+      "source_type": "software",
+      "authority_tier": "A_primary",
+      "rights_status": "apache_2_0",
+      "usage_status": "cross_check_only",
+      "scope": "Research framework for games and learning algorithms; includes poker environments such as Kuhn, Leduc, and Hold'em via ACPC/PokerKit integrations.",
+      "supports": [
+        "Reference experiments for imperfect-information games",
+        "Small-game CFR and legal-action oracle comparisons"
+      ],
+      "does_not_support": [
+        "Drop-in browser production architecture",
+        "A ready-made 100BB heads-up strategy dataset",
+        "Any claim that Hold'em is fully solved"
+      ],
+      "product_uses": [
+        "Research oracle",
+        "Algorithm education",
+        "Small-game test comparisons"
+      ],
+      "version": "semantic releases; pin before use",
+      "last_verified": "2026-08-19",
+      "fingerprint": {
+        "status": "not_captured",
+        "sha256": null
+      },
+      "notes": "Useful for R&D and small-game verification; not evidence for production solver accuracy."
+    },
+    {
+      "id": "goldfire_pokersolver",
+      "title": "pokersolver",
+      "publisher": "GoldFire Studios",
+      "url": "https://github.com/goldfire/pokersolver",
+      "source_type": "software",
+      "authority_tier": "A_primary",
+      "rights_status": "mit",
+      "usage_status": "cross_check_only",
+      "scope": "JavaScript evaluator for up to seven cards with winner and tie comparison.",
+      "supports": [
+        "A lightweight differential reference for hand-category and winner fixtures",
+        "Browser/Node interoperability comparison"
+      ],
+      "does_not_support": [
+        "Betting rules or pot settlement",
+        "Equity or strategy conclusions",
+        "Replacing existing tested evaluator behavior without parity review"
+      ],
+      "product_uses": [
+        "Development-only differential tests"
+      ],
+      "version": "repository master; pin commit before use",
+      "last_verified": "2026-08-19",
+      "fingerprint": {
+        "status": "not_captured",
+        "sha256": null
+      },
+      "notes": "Its broader game variants are outside v1 scope. Prefer curated fixtures over adding a runtime dependency."
+    },
+    {
+      "id": "amaster97_poker_solver",
+      "title": "poker_solver",
+      "publisher": "amaster97",
+      "url": "https://github.com/amaster97/poker_solver",
+      "source_type": "software",
+      "authority_tier": "A_primary",
+      "rights_status": "mit",
+      "usage_status": "research_only",
+      "scope": "Open-source heads-up no-limit solver project with Python reference and Rust core.",
+      "supports": [
+        "A candidate local R&D path for reproducible solver experiments",
+        "Examples of differential testing and explicit solver limitations"
+      ],
+      "does_not_support": [
+        "Publishing its output as Holdem Lab solver data without independent convergence and configuration review",
+        "Production-scale flop accuracy based only on repository claims",
+        "A multiway strategy baseline"
+      ],
+      "product_uses": [
+        "Solver feasibility research",
+        "Validation-process comparison"
+      ],
+      "version": "v1.11 documentation observed 2026-08-19",
+      "last_verified": "2026-08-19",
+      "fingerprint": {
+        "status": "not_captured",
+        "sha256": null
+      },
+      "notes": "The project itself documents unvalidated production-scale flop/turn limits. Any result must retain seed, tree, ranges, iterations, exploitability metric, hardware, and exact version."
+    },
+    {
+      "id": "binary_postflop_solver",
+      "title": "postflop-solver",
+      "publisher": "Wataru Inariba",
+      "url": "https://github.com/b-inary/postflop-solver",
+      "source_type": "software",
+      "authority_tier": "A_primary",
+      "rights_status": "agpl_3_0_or_later",
+      "usage_status": "do_not_copy",
+      "scope": "Rust postflop solver for Texas Hold'em.",
+      "supports": [
+        "High-level feasibility research",
+        "Identification of relevant public algorithms and solver UX patterns"
+      ],
+      "does_not_support": [
+        "Copying code into an intended non-AGPL product",
+        "Treating generated solutions as licensed training content",
+        "A preflop or multiway product baseline"
+      ],
+      "product_uses": [
+        "Read-only research"
+      ],
+      "version": "Cargo package 0.1.0 observed 2026-08-19",
+      "last_verified": "2026-08-19",
+      "fingerprint": {
+        "status": "not_captured",
+        "sha256": null
+      },
+      "notes": "AGPL is a material product-license decision. Do not port implementation details into the planned application."
+    },
+    {
+      "id": "deepstack_paper",
+      "title": "DeepStack: Expert-level artificial intelligence in heads-up no-limit poker",
+      "publisher": "Science / PubMed index",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28254783/",
+      "source_type": "research",
+      "authority_tier": "B_peer_reviewed",
+      "rights_status": "all_rights_reserved",
+      "usage_status": "link_and_cite",
+      "scope": "2017 Science paper; DOI 10.1126/science.aam6960; heads-up no-limit research system evaluated over 44,000 hands.",
+      "supports": [
+        "Poker as a serious imperfect-information AI research domain",
+        "The technical difficulty of heads-up no-limit strategy computation"
+      ],
+      "does_not_support": [
+        "A reusable strategy dataset",
+        "A claim that an unrelated heuristic is GTO",
+        "Multi-player conclusions"
+      ],
+      "product_uses": [
+        "Methodology bibliography",
+        "Solver-literacy education"
+      ],
+      "version": "DOI:10.1126/science.aam6960",
+      "last_verified": "2026-08-19",
+      "fingerprint": {
+        "status": "not_captured",
+        "sha256": null
+      },
+      "notes": "Cite the research; do not imply that its system or data powers Holdem Lab."
+    },
+    {
+      "id": "pluribus_paper",
+      "title": "Superhuman AI for multiplayer poker",
+      "publisher": "Science",
+      "url": "https://doi.org/10.1126/science.aay2400",
+      "source_type": "research",
+      "authority_tier": "B_peer_reviewed",
+      "rights_status": "all_rights_reserved",
+      "usage_status": "link_and_cite",
+      "scope": "2019 Science paper about six-player no-limit Hold'em; DOI 10.1126/science.aay2400.",
+      "supports": [
+        "The importance and difficulty of multi-player imperfect-information strategy",
+        "Why six-player expansion is a separate research and engineering scope"
+      ],
+      "does_not_support": [
+        "A downloadable complete six-max strategy",
+        "Transferring heads-up guarantees to multiplayer play",
+        "Calling heuristic feedback solver data"
+      ],
+      "product_uses": [
+        "Methodology bibliography",
+        "Scope education"
+      ],
+      "version": "DOI:10.1126/science.aay2400",
+      "last_verified": "2026-08-19",
+      "fingerprint": {
+        "status": "not_captured",
+        "sha256": null
+      },
+      "notes": "Useful for explaining why multiplayer strategy cannot be inferred from a heads-up engine."
+    },
+    {
+      "id": "poker_domain_of_expertise",
+      "title": "Poker as a Domain of Expertise",
+      "publisher": "Journal of Expertise / University of Helsinki",
+      "url": "https://researchportal.helsinki.fi/en/publications/poker-as-a-domain-of-expertise/",
+      "source_type": "research",
+      "authority_tier": "B_peer_reviewed",
+      "rights_status": "cc_by_3_0",
+      "usage_status": "link_and_cite",
+      "scope": "2020 review of poker expertise, decision-making, learning, and emotion self-regulation.",
+      "supports": [
+        "Framing poker as structured decision-making under uncertainty",
+        "Including learning and self-regulation in the curriculum"
+      ],
+      "does_not_support": [
+        "Specific hand or betting recommendations",
+        "Claims that training guarantees financial performance",
+        "A complete curriculum efficacy result"
+      ],
+      "product_uses": [
+        "Curriculum rationale",
+        "Responsible educational framing"
+      ],
+      "version": "Journal of Expertise 3(2), 2020",
+      "last_verified": "2026-08-19",
+      "fingerprint": {
+        "status": "not_captured",
+        "sha256": null
+      },
+      "notes": "CC BY permits attributed reuse, but product adaptations should still be independently authored and reviewed."
+    },
+    {
+      "id": "retrieval_practice_review_2021",
+      "title": "Retrieval Practice Consistently Benefits Student Learning: A Systematic Review of Applied Research in Schools and Classrooms",
+      "publisher": "Educational Psychology Review / ERIC index",
+      "url": "https://eric.ed.gov/?id=EJ1319572",
+      "source_type": "research",
+      "authority_tier": "B_peer_reviewed",
+      "rights_status": "all_rights_reserved",
+      "usage_status": "link_and_cite",
+      "scope": "2021 systematic review of 50 classroom experiments and 5,374 learners.",
+      "supports": [
+        "Using active recall instead of passive reading as a default learning loop",
+        "Testing knowledge repeatedly with feedback"
+      ],
+      "does_not_support": [
+        "A claim that Holdem Lab has already improved learning",
+        "One universal quiz format for every concept",
+        "Generalization without product-specific experiments"
+      ],
+      "product_uses": [
+        "Exercise-loop design",
+        "Research bibliography"
+      ],
+      "version": "Educational Psychology Review 33, 2021",
+      "last_verified": "2026-08-19",
+      "fingerprint": {
+        "status": "not_captured",
+        "sha256": null
+      },
+      "notes": "The review notes that only 6% of included experiments were conducted in non-WEIRD countries."
+    },
+    {
+      "id": "interleaving_review_2021",
+      "title": "A systematic review of interleaving as a concept learning strategy",
+      "publisher": "Review of Education",
+      "url": "https://doi.org/10.1002/rev3.3266",
+      "source_type": "research",
+      "authority_tier": "B_peer_reviewed",
+      "rights_status": "all_rights_reserved",
+      "usage_status": "link_and_cite",
+      "scope": "2021 systematic review focused on interleaving during concept learning.",
+      "supports": [
+        "Mixing confusable board textures or decision types when contrast aids concept discrimination",
+        "Using interleaving selectively rather than as a decorative randomizer"
+      ],
+      "does_not_support": [
+        "Interleaving every long or complex exercise",
+        "Random scenario generation without learning objectives",
+        "A poker-specific effect size"
+      ],
+      "product_uses": [
+        "Review-queue design",
+        "Curriculum sequencing"
+      ],
+      "version": "DOI:10.1002/rev3.3266",
+      "last_verified": "2026-08-19",
+      "fingerprint": {
+        "status": "not_captured",
+        "sha256": null
+      },
+      "notes": "Apply first to short, easily confused examples and measure transfer before expanding."
+    },
+    {
+      "id": "distributed_practice_review_2025",
+      "title": "The Distributed Practice Effect on Classroom Learning: A Meta-Analytic Review of Applied Research",
+      "publisher": "PubMed Central",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12189222/",
+      "source_type": "research",
+      "authority_tier": "B_peer_reviewed",
+      "rights_status": "unknown",
+      "usage_status": "link_and_cite",
+      "scope": "Applied review of distributed versus massed practice in classroom learning.",
+      "supports": [
+        "Spacing reviews across sessions instead of encouraging one long cram session",
+        "A due-review queue after initial learning"
+      ],
+      "does_not_support": [
+        "A specific scheduling algorithm for poker decisions",
+        "Daily streak pressure as an educational requirement",
+        "Guaranteed retention"
+      ],
+      "product_uses": [
+        "Review scheduling rationale"
+      ],
+      "version": "article observed 2026-08-19",
+      "last_verified": "2026-08-19",
+      "fingerprint": {
+        "status": "not_captured",
+        "sha256": null
+      },
+      "notes": "Confirm article-level license before adapting any figures or text."
+    },
+    {
+      "id": "confidence_feedback_study_2024",
+      "title": "Impact of performance and information feedback on medical interns' confidence-accuracy calibration",
+      "publisher": "Advances in Health Sciences Education",
+      "url": "https://doi.org/10.1007/s10459-023-10252-9",
+      "source_type": "research",
+      "authority_tier": "B_peer_reviewed",
+      "rights_status": "all_rights_reserved",
+      "usage_status": "link_and_cite",
+      "scope": "Randomized study of accuracy feedback, explanatory information, and confidence calibration in a medical-learning context.",
+      "supports": [
+        "Recording confidence alongside correctness",
+        "Testing whether explanatory feedback improves calibration"
+      ],
+      "does_not_support": [
+        "Assuming a confidence slider automatically improves judgment",
+        "Transferring medical-task results to poker without validation",
+        "Using confidence as a skill score by itself"
+      ],
+      "product_uses": [
+        "Confidence-calibration experiment design",
+        "Feedback UX rationale"
+      ],
+      "version": "DOI:10.1007/s10459-023-10252-9",
+      "last_verified": "2026-08-19",
+      "fingerprint": {
+        "status": "not_captured",
+        "sha256": null
+      },
+      "notes": "Treat confidence as a metacognitive signal and report sample size; do not reward high confidence alone."
+    },
+    {
+      "id": "ncpg_responsible_gambling",
+      "title": "Responsible Gambling Resources",
+      "publisher": "National Council on Problem Gambling",
+      "url": "https://www.ncpgambling.org/responsible-gambling/",
+      "source_type": "responsible_learning",
+      "authority_tier": "A_primary",
+      "rights_status": "all_rights_reserved",
+      "usage_status": "link_and_cite",
+      "scope": "Consumer-protection and gambling-harm education resources in the United States.",
+      "supports": [
+        "Clear signposting to independent help resources",
+        "A product policy that learning content should not glamorize gambling or hide risk"
+      ],
+      "does_not_support": [
+        "A legal compliance opinion for every country",
+        "Marketing an education app as harm-free",
+        "Copying helpline content without checking location and freshness"
+      ],
+      "product_uses": [
+        "Responsible Learning page",
+        "Regional support-link policy"
+      ],
+      "version": "live resource",
+      "last_verified": "2026-08-19",
+      "fingerprint": {
+        "status": "not_captured",
+        "sha256": null
+      },
+      "notes": "Support links must be localized and rechecked before launch. Holdem Lab remains an education product, not a gambling operator."
+    },
+    {
+      "id": "pokerstars_third_party_tools_policy",
+      "title": "Third Party Tools and Services Policy",
+      "publisher": "PokerStars",
+      "url": "https://www.pokerstars.com/poker/room/prohibited/",
+      "source_type": "platform_policy",
+      "authority_tier": "A_primary",
+      "rights_status": "all_rights_reserved",
+      "usage_status": "link_and_cite",
+      "scope": "First-party policy distinguishing study aids from prohibited real-time assistance and data mining.",
+      "supports": [
+        "A strict no-real-time-assistance product boundary",
+        "Avoiding client detection, current-table reading, automated actions, and opponent data mining"
+      ],
+      "does_not_support": [
+        "Approval of Holdem Lab by PokerStars",
+        "Permission to use the product while any specific poker client is running",
+        "A universal policy across operators"
+      ],
+      "product_uses": [
+        "Integrity policy design",
+        "Feature rejection checklist"
+      ],
+      "version": "live policy",
+      "last_verified": "2026-08-19",
+      "fingerprint": {
+        "status": "not_captured",
+        "sha256": null
+      },
+      "notes": "Operator policies can change. The safest product rule is stronger: no table connection, no screen/card detection, and no advice tied to a live hand."
+    }
+  ]
+}

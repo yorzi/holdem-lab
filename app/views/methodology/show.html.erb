@@ -1,0 +1,33 @@
+<% content_for :title, "How Holdem Lab Teaches Texas Hold'em — Method & Sources" %>
+<% content_for :description, "How Holdem Lab separates the rules of Texas Hold'em, a practice baseline and estimated feedback, so you know how much weight each answer carries." %>
+
+<section class="mx-auto max-w-5xl px-5 py-20 sm:py-28 lg:px-8">
+  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">Method &amp; sources</p>
+  <h1 class="mt-5 max-w-3xl font-display text-5xl tracking-tight sm:text-6xl">Trust is a boundary, not a badge.</h1>
+  <p class="mt-7 max-w-3xl text-lg leading-8 text-ink/70">Poker advice is easy to find and hard to weigh. Holdem Lab keeps three things apart: what the rules of Texas Hold'em settle outright, what a simple practice baseline suggests, and what is only an estimate. Every piece of feedback you see is labeled, so you know how much weight it can carry.</p>
+
+  <div class="mt-14 grid gap-5 md:grid-cols-3">
+    <% [["Rules", "How the cards are dealt, which actions are legal, and who wins at showdown. These are settled by the rules of the game, and the trainer applies them the same way every time."], ["Practice baseline", "A deliberately simple reference line used to give you a direction to compare against. It is a teaching aid, not the best play in every spot."], ["Estimated analysis", "Numbers such as pot odds and rough equity, shown with the assumptions behind them. Useful for building intuition; never presented as a final verdict."]].each do |title, body| %>
+      <article class="rounded-3xl border border-ink/10 bg-paper-deep p-6">
+        <h2 class="font-display text-2xl"><%= title %></h2>
+        <p class="mt-3 text-sm leading-6 text-ink/65"><%= body %></p>
+      </article>
+    <% end %>
+  </div>
+
+  <div class="mt-12 rounded-3xl border border-ink/10 bg-ink p-6 text-paper sm:p-8">
+    <h2 class="font-display text-3xl">What Holdem Lab will never do</h2>
+    <ul class="mt-5 space-y-3 text-sm leading-6 text-paper/75">
+      <li>• Handle real money. Practice uses virtual chips only—there is no deposit, wager, or cashout.</li>
+      <li>• Sit at a live table with you. There is no HUD, no overlay, and no in-game assistance of any kind.</li>
+      <li>• Claim that its feedback is solved, perfect, or GTO. Where a number is an estimate, it says so.</li>
+      <li>• Move your practice records without asking. They stay in your browser until you choose to save them to an account.</li>
+    </ul>
+  </div>
+
+  <div class="mt-12 max-w-3xl">
+    <h2 class="font-display text-3xl">Why the lessons cite their sources</h2>
+    <p class="mt-5 text-base leading-7 text-ink/70">Rules claims link to published tournament rules. Claims about how people learn link to the research they come from. Where a lesson stops short of a strategy recommendation, it says which piece of information is missing rather than filling the gap with confident guesswork. You can check any of it yourself—that is the point.</p>
+    <p class="mt-5 text-base leading-7 text-ink/70">Start with <%= link_to "the three foundation lessons", learn_path, class: "font-semibold text-moss underline" %>, then take the ideas into <%= link_to "a practice hand", practice_path, class: "font-semibold text-moss underline" %>.</p>
+  </div>
+</section>

@@ -1,0 +1,125 @@
+<% content_for :title, "Texas Hold'em Position: Heads-Up Action Order Explained" %>
+<% content_for :description, "Who acts first in heads-up Texas Hold'em, preflop and after. Learn the button, blinds and deal order, then check yourself with three questions." %>
+<% content_for :og_type, "article" %>
+<% content_for :structured_data do %>
+  <%= structured_data_script(breadcrumb_structured_data([["Learn", absolute_url_for(learn_path)], ["Position", canonical_url]])) %>
+  <%= structured_data_script(learning_resource_structured_data(name: "Position in Heads-Up Hold'em", description: "Learn the heads-up button, blind, deal, and action order, then answer three retrieval questions.", url: canonical_url, time_required: "PT12M", reviewed_at: @content_record.dig("domain_review", "reviewed_at"))) %>
+  <%= structured_data_script(faq_structured_data([
+        ["Is the button the small blind or the big blind heads-up?", "In a two-player game the button posts the small blind; there is no separate small blind player. Poker TDA Rule 34-B states it directly: heads-up, the small blind is the button."],
+        ["Who is dealt the first card heads-up?", "The big blind receives the first hole card and the button receives the last."],
+        ["Does acting last mean you should bet?", "No. Acting last lets you see the other player's action before choosing yours, but it does not by itself make any action correct. That depends on stack depth, ranges, and the rest of the decision."]
+      ])) %>
+<% end %>
+
+<% evidence_coverage = "Every rule here follows published tournament procedure, and the trainer deals hands the same way." %>
+<article class="mx-auto max-w-5xl px-5 py-12 sm:py-20 lg:px-8" data-controller="lesson-session" data-lesson-slug="position" data-content-asset-id="<%= @content_record.fetch("id") %>" data-content-curriculum-id="<%= @curriculum_lesson.fetch("id") %>" data-content-concept-ids="<%= @curriculum_lesson.fetch("concept_ids").join(" ") %>" data-content-exercise-ids="<%= @curriculum_lesson.fetch("exercise_ids").join(" ") %>" data-content-version="<%= @content_record.fetch("content_version") %>" data-content-publication-status="<%= @content_record.fetch("publication_status") %>" data-evidence-coverage="<%= evidence_coverage %>">
+  <nav aria-label="Breadcrumb" class="text-sm text-ink/55"><%= link_to "Learn", learn_path, class: "font-semibold hover:text-moss" %><span aria-hidden="true"> / </span><span>Position</span></nav>
+
+  <header class="mt-8 border-b border-ink/10 pb-10">
+    <div class="flex flex-wrap items-center gap-3"><span class="rounded-full bg-moss/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-moss">Foundation 01</span></div>
+    <h1 class="mt-6 max-w-4xl font-display text-5xl leading-[0.98] tracking-tight sm:text-7xl">Position is action order before it is strategy.</h1>
+    <p class="mt-7 max-w-3xl text-lg leading-8 text-ink/70">In a two-player hand, the same button changes roles across betting rounds. Learn the physical deal and action order first; do not jump from “in position” to an automatic action.</p>
+    <div class="mt-7 flex flex-wrap gap-3 text-xs"><span class="rounded-full border border-ink/10 bg-white/55 px-3 py-2">10–12 minutes</span><span class="rounded-full border border-ink/10 bg-white/55 px-3 py-2">3 retrieval questions</span><span class="rounded-full border border-ink/10 bg-white/55 px-3 py-2">Free · no sign-up</span></div>
+  </header>
+
+  <section class="mt-10 rounded-3xl border border-moss/25 bg-moss/5 p-6 sm:p-8" aria-labelledby="position-answer-title">
+    <h2 class="font-display text-3xl" id="position-answer-title">Who acts first in heads-up Texas Hold'em?</h2>
+    <p class="mt-4 max-w-3xl text-base leading-7 text-ink/80">Heads-up, the button is also the small blind. The big blind is dealt the first hole card and the button the last. Before the flop the button acts first; on the flop, turn and river the big blind acts first and the button acts last.</p>
+  </section>
+
+  <section class="grid gap-6 py-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(18rem,0.8fr)]" aria-labelledby="position-core-title">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">Core rule</p>
+      <h2 class="mt-4 font-display text-4xl" id="position-core-title">How does position change between betting rounds?</h2>
+      <div class="mt-6 space-y-5 text-base leading-7 text-ink/75">
+        <p>Heads-up, the <strong class="text-ink">button is also the small blind</strong>. The big blind receives the first hole card; the button receives the last hole card.</p>
+        <p><strong class="text-ink">Before the flop, the button acts first.</strong> On the flop, turn, and river, the big blind acts first and the button acts last.</p>
+        <p>Acting last postflop means seeing the other player’s action before choosing yours. That changes available information. It does not, by itself, prove that a bet, check, call, raise, or fold is best.</p>
+      </div>
+    </div>
+    <aside class="rounded-3xl bg-ink p-6 text-paper" aria-label="Heads-up position reference">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-moss-light">Heads-up reference</p>
+      <dl class="mt-6 space-y-5 text-sm">
+        <div class="border-b border-paper/15 pb-4"><dt class="text-paper/55">First hole card</dt><dd class="mt-1 font-semibold">Big blind</dd></div>
+        <div class="border-b border-paper/15 pb-4"><dt class="text-paper/55">Last hole card</dt><dd class="mt-1 font-semibold">Button / small blind</dd></div>
+        <div class="border-b border-paper/15 pb-4"><dt class="text-paper/55">First preflop action</dt><dd class="mt-1 font-semibold">Button / small blind</dd></div>
+        <div><dt class="text-paper/55">First postflop action</dt><dd class="mt-1 font-semibold">Big blind</dd></div>
+      </dl>
+    </aside>
+  </section>
+
+  <section class="rounded-3xl border border-sand/40 bg-sand/10 p-6 sm:p-8" aria-labelledby="position-boundary-title">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-sand">Reasoning boundary</p>
+    <h2 class="mt-3 font-display text-3xl" id="position-boundary-title">What does position not tell you?</h2>
+    <p class="mt-4 max-w-3xl text-sm leading-7 text-ink/70">Position alone does not give you an opening range, an equity estimate, a bet size, or a solver recommendation. Those require a defined game model, stack depth, ranges, actions, and—when relevant—rake. This lesson deliberately stops before those claims.</p>
+  </section>
+
+  <section class="py-12" aria-labelledby="position-practice-title">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">Active recall</p>
+    <h2 class="mt-4 font-display text-4xl" id="position-practice-title">Answer before reading the explanation.</h2>
+    <p class="mt-4 max-w-2xl text-sm leading-6 text-ink/65">Your first checked answer counts toward this session summary. Nothing is saved or uploaded.</p>
+    <div class="mt-6 grid gap-4 rounded-2xl border border-ink/10 bg-paper-deep p-5 sm:grid-cols-[minmax(0,1fr)_12rem]"><label class="text-sm font-semibold text-ink" for="position-reason">Before feedback, write the rule you plan to use.<textarea class="mt-2 min-h-20 w-full rounded-xl border border-ink/15 bg-paper p-3 text-sm font-normal outline-none focus:border-moss" data-lesson-session-target="reason" id="position-reason" placeholder="For example: preflop and postflop action order are different."></textarea></label><label class="text-sm font-semibold text-ink" for="position-confidence">Confidence before feedback<select class="mt-2 w-full rounded-xl border border-ink/15 bg-paper p-3 text-sm font-normal outline-none focus:border-moss" data-lesson-session-target="confidence" id="position-confidence"><option value="1">1 · Guessing</option><option value="2">2 · Uncertain</option><option value="3" selected>3 · Reasonable</option><option value="4">4 · Confident</option><option value="5">5 · Clear</option></select></label></div>
+
+    <div class="mt-8 space-y-6">
+      <fieldset class="rounded-3xl border border-ink/10 bg-white/55 p-6" data-answer="button" data-concept="Preflop action order" data-correct-feedback="Correct. Heads-up, the button/small blind acts first before the flop." data-review-feedback="Review the role change: the button is the small blind and acts first preflop." data-lesson-session-target="question" id="position-q1">
+        <legend class="px-2 font-display text-2xl">1. Who acts first preflop?</legend>
+        <p class="mt-3 text-sm leading-6 text-ink/65">Both players have received two hole cards and the blinds are posted.</p>
+        <div class="mt-5 grid gap-3 sm:grid-cols-3"><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="position-q1" type="radio" value="button"> <span>The button / small blind</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="position-q1" type="radio" value="bigBlind"> <span>The big blind</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="position-q1" type="radio" value="random"> <span>It is randomized each hand</span></label></div>
+        <button class="mt-5 min-h-11 rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-paper hover:bg-moss disabled:cursor-not-allowed disabled:opacity-45" data-action="lesson-session#check" type="button">Check answer</button>
+        <p class="mt-4 rounded-xl border border-ink/10 bg-paper p-4 text-sm leading-6 focus:outline-none" data-lesson-session-target="feedback" hidden role="status" tabindex="-1"></p>
+        <noscript><p class="mt-4 text-sm leading-6 text-ink/65">Answer: the button / small blind acts first preflop.</p></noscript>
+      </fieldset>
+
+      <fieldset class="rounded-3xl border border-ink/10 bg-white/55 p-6" data-answer="bigBlind" data-concept="Postflop action order" data-correct-feedback="Correct. On every postflop street, the big blind acts first and the button acts last." data-review-feedback="Postflop order reverses from preflop: the big blind acts first." data-lesson-session-target="question" id="position-q2">
+        <legend class="px-2 font-display text-2xl">2. Who acts first on the flop?</legend>
+        <p class="mt-3 text-sm leading-6 text-ink/65">Both players remain active after the preflop betting round.</p>
+        <div class="mt-5 grid gap-3 sm:grid-cols-3"><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="position-q2" type="radio" value="button"> <span>The button / small blind</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="position-q2" type="radio" value="bigBlind"> <span>The big blind</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="position-q2" type="radio" value="aggressor"> <span>The last preflop aggressor</span></label></div>
+        <button class="mt-5 min-h-11 rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-paper hover:bg-moss disabled:cursor-not-allowed disabled:opacity-45" data-action="lesson-session#check" type="button">Check answer</button>
+        <p class="mt-4 rounded-xl border border-ink/10 bg-paper p-4 text-sm leading-6 focus:outline-none" data-lesson-session-target="feedback" hidden role="status" tabindex="-1"></p>
+        <noscript><p class="mt-4 text-sm leading-6 text-ink/65">Answer: the big blind acts first on the flop, turn, and river.</p></noscript>
+      </fieldset>
+
+      <fieldset class="rounded-3xl border border-ink/10 bg-white/55 p-6" data-answer="information" data-concept="Position versus strategy" data-correct-feedback="Correct. Position changes action order and information timing; the best action still depends on the full decision model." data-review-feedback="Position is an information advantage, not a complete action recommendation." data-lesson-session-target="question" id="position-q3">
+        <legend class="px-2 font-display text-2xl">3. Which conclusion is supported?</legend>
+        <p class="mt-3 text-sm leading-6 text-ink/65">Choose the statement that stays within this lesson’s evidence.</p>
+        <div class="mt-5 grid gap-3"><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="position-q3" type="radio" value="alwaysBet"> <span>The button should always bet when checked to</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="position-q3" type="radio" value="information"> <span>Acting last reveals an action before your decision, but does not determine the best action</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="position-q3" type="radio" value="strongerCards"> <span>The button receives stronger cards on average</span></label></div>
+        <button class="mt-5 min-h-11 rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-paper hover:bg-moss disabled:cursor-not-allowed disabled:opacity-45" data-action="lesson-session#check" type="button">Check answer</button>
+        <p class="mt-4 rounded-xl border border-ink/10 bg-paper p-4 text-sm leading-6 focus:outline-none" data-lesson-session-target="feedback" hidden role="status" tabindex="-1"></p>
+        <noscript><p class="mt-4 text-sm leading-6 text-ink/65">Answer: acting last changes available information but does not determine the best action.</p></noscript>
+      </fieldset>
+    </div>
+
+    <section class="mt-8 rounded-3xl border border-moss/30 bg-moss/10 p-6 focus:outline-none sm:p-8" data-lesson-session-target="summary" hidden id="position-session-summary" tabindex="-1">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">Session summary</p>
+      <h2 class="mt-3 font-display text-4xl">You checked all three concepts.</h2>
+      <p class="mt-5 text-lg">Score: <strong data-lesson-session-target="score"></strong></p>
+      <p class="mt-3 text-sm leading-6 text-ink/70" data-lesson-session-target="missed"></p>
+      <dl class="mt-6 grid gap-3 text-sm sm:grid-cols-3"><div class="rounded-xl bg-paper/70 p-4"><dt class="font-semibold text-ink">Your reflection</dt><dd class="mt-2 leading-6 text-ink/65" data-lesson-session-target="reasonSummary"></dd></div><div class="rounded-xl bg-paper/70 p-4"><dt class="font-semibold text-ink">Confidence</dt><dd class="mt-2 leading-6 text-ink/65" data-lesson-session-target="confidenceSummary"></dd></div><div class="rounded-xl bg-paper/70 p-4"><dt class="font-semibold text-ink">Evidence coverage</dt><dd class="mt-2 leading-6 text-ink/65" data-lesson-session-target="evidence"></dd></div></dl>
+      <div class="mt-6 flex flex-col gap-3 sm:flex-row"><button class="min-h-11 rounded-full border border-ink/20 px-5 py-3 text-sm font-semibold hover:border-moss hover:text-moss" data-action="lesson-session#retry" type="button">Retry this lesson</button><%= link_to "Apply the rule in Practice →", practice_path, class: "inline-flex min-h-11 items-center justify-center rounded-full bg-moss px-5 py-3 text-sm font-semibold text-paper hover:bg-ink" %></div>
+    </section>
+  </section>
+
+  <section class="border-t border-ink/10 py-12" aria-labelledby="position-faq-title">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">Common questions</p>
+    <h2 class="mt-4 font-display text-4xl" id="position-faq-title">Questions people ask about position</h2>
+    <div class="mt-8 grid gap-4 md:grid-cols-2">
+      <details class="rounded-2xl border border-ink/10 bg-paper-deep p-5">
+        <summary class="cursor-pointer font-semibold">Is the button the small blind or the big blind heads-up?</summary>
+        <p class="mt-3 text-sm leading-6 text-ink/70">In a two-player game the button posts the small blind; there is no separate small blind player. Poker TDA Rule 34-B states it directly: heads-up, the small blind is the button.</p>
+      </details>
+      <details class="rounded-2xl border border-ink/10 bg-paper-deep p-5">
+        <summary class="cursor-pointer font-semibold">Who is dealt the first card heads-up?</summary>
+        <p class="mt-3 text-sm leading-6 text-ink/70">The big blind receives the first hole card and the button receives the last.</p>
+      </details>
+      <details class="rounded-2xl border border-ink/10 bg-paper-deep p-5 md:col-span-2">
+        <summary class="cursor-pointer font-semibold">Does acting last mean you should bet?</summary>
+        <p class="mt-3 text-sm leading-6 text-ink/70">No. Acting last lets you see the other player's action before choosing yours, but it does not by itself make any action correct. That depends on stack depth, ranges, and the rest of the decision.</p>
+      </details>
+    </div>
+  </section>
+
+  <footer class="border-t border-ink/10 pt-8 text-sm leading-6 text-ink/60">
+    <div class="flex flex-col justify-between gap-5 sm:flex-row sm:items-start"><div><p class="font-semibold text-ink">Where this comes from</p><p class="mt-2">The deal and action order described here follow published tournament procedure.</p></div><div class="sm:text-right"><p><a class="font-semibold text-moss underline" href="https://www.pokertda.com/view-poker-tda-rules/" rel="noreferrer">Poker TDA 2024 Rules, Rule 34B</a></p></div></div>
+    <p class="mt-5 rounded-xl bg-paper-deep p-4">Those rules cover procedure and action order only. They do not recommend heads-up strategy or opening ranges, and this lesson stops at the same line.</p>
+  </footer>
+</article>

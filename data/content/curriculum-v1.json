@@ -1,0 +1,448 @@
+{
+  "schema_version": 1,
+  "catalog_id": "holdem-curriculum-v1",
+  "technical_status": "automated_pass_required",
+  "lessons": [
+    {
+      "id": "curriculum-lesson-position-v1",
+      "slug": "position",
+      "sequence": 1,
+      "content_version": "position-curriculum-v1",
+      "asset_ids": ["lesson-position-en-v1", "lesson-position-zh-v1"],
+      "source_packet_ids": ["position-v1"],
+      "concept_ids": [
+        "concept-position-preflop-action-order",
+        "concept-position-postflop-action-order",
+        "concept-position-information-timing"
+      ],
+      "exercise_ids": [
+        "exercise-position-q1-v1",
+        "exercise-position-q2-v1",
+        "exercise-position-q3-v1"
+      ],
+      "source_reference_ids": [
+        "source-ref-position-heads-up-order-v1",
+        "source-ref-position-deal-order-v1",
+        "source-ref-position-information-boundary-v1"
+      ],
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "technical_review": {
+        "status": "passed",
+        "evidence": ["source-packet:position-v1", "test/system/position_lesson_test.rb"]
+      },
+      "domain_review": {
+        "status": "approved",
+        "reviewer": "Andy Wang (product owner)",
+        "reviewed_at": "2026-08-25"
+      }
+    },
+    {
+      "id": "curriculum-lesson-pot-odds-v1",
+      "slug": "pot-odds",
+      "sequence": 2,
+      "content_version": "pot-odds-curriculum-v1",
+      "asset_ids": ["lesson-pot-odds-en-v1", "lesson-pot-odds-zh-v1"],
+      "source_packet_ids": ["pot-odds-v1"],
+      "concept_ids": [
+        "concept-pot-odds-call-threshold",
+        "concept-pot-odds-bet-fraction",
+        "concept-pot-odds-price-versus-equity"
+      ],
+      "exercise_ids": [
+        "exercise-pot-odds-q1-v1",
+        "exercise-pot-odds-q2-v1",
+        "exercise-pot-odds-q3-v1"
+      ],
+      "source_reference_ids": [
+        "source-ref-pot-odds-call-threshold-v1",
+        "source-ref-pot-odds-bet-fraction-v1",
+        "source-ref-pot-odds-reference-values-v1"
+      ],
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "technical_review": {
+        "status": "passed",
+        "evidence": ["source-packet:pot-odds-v1", "test/system/foundation_lessons_test.rb"]
+      },
+      "domain_review": {
+        "status": "approved",
+        "reviewer": "Andy Wang (product owner)",
+        "reviewed_at": "2026-08-25"
+      }
+    },
+    {
+      "id": "curriculum-lesson-decision-quality-v1",
+      "slug": "decision-quality",
+      "sequence": 3,
+      "content_version": "decision-quality-curriculum-v1",
+      "asset_ids": ["lesson-decision-quality-en-v1", "lesson-decision-quality-zh-v1"],
+      "source_packet_ids": ["decision-quality-v1"],
+      "concept_ids": [
+        "concept-decision-quality-outcome-boundary",
+        "concept-decision-quality-confidence-calibration",
+        "concept-decision-quality-review-order"
+      ],
+      "exercise_ids": [
+        "exercise-decision-quality-q1-v1",
+        "exercise-decision-quality-q2-v1",
+        "exercise-decision-quality-q3-v1"
+      ],
+      "source_reference_ids": [
+        "source-ref-decision-retrieval-v1",
+        "source-ref-decision-confidence-v1",
+        "source-ref-decision-outcome-boundary-v1"
+      ],
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "technical_review": {
+        "status": "passed",
+        "evidence": ["source-packet:decision-quality-v1", "test/system/foundation_lessons_test.rb"]
+      },
+      "domain_review": {
+        "status": "approved",
+        "reviewer": "Andy Wang (product owner)",
+        "reviewed_at": "2026-08-25"
+      }
+    }
+  ],
+  "concepts": [
+    {
+      "id": "concept-position-preflop-action-order",
+      "slug": "preflop-action-order",
+      "lesson_slug": "position",
+      "difficulty": "foundation",
+      "prerequisite_ids": [],
+      "display": {
+        "en": {
+          "title": "Preflop action order",
+          "summary": "In heads-up play, the button/small blind acts first before the flop."
+        },
+        "zh": {
+          "title": "Preflop 行动顺序",
+          "summary": "Heads-up 中，button/small blind 在 flop 前先行动。"
+        }
+      },
+      "source_reference_ids": ["source-ref-position-heads-up-order-v1"],
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    },
+    {
+      "id": "concept-position-postflop-action-order",
+      "slug": "postflop-action-order",
+      "lesson_slug": "position",
+      "difficulty": "foundation",
+      "prerequisite_ids": ["concept-position-preflop-action-order"],
+      "display": {
+        "en": {
+          "title": "Postflop action order",
+          "summary": "The big blind acts first postflop and the button acts last."
+        },
+        "zh": {
+          "title": "Postflop 行动顺序",
+          "summary": "Postflop 由 big blind 先行动，button 最后行动。"
+        }
+      },
+      "source_reference_ids": ["source-ref-position-heads-up-order-v1"],
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    },
+    {
+      "id": "concept-position-information-timing",
+      "slug": "information-timing",
+      "lesson_slug": "position",
+      "difficulty": "foundation",
+      "prerequisite_ids": ["concept-position-preflop-action-order", "concept-position-postflop-action-order"],
+      "display": {
+        "en": {
+          "title": "Information timing",
+          "summary": "Acting later reveals an action before your decision without deciding the best action for you."
+        },
+        "zh": {
+          "title": "信息时机",
+          "summary": "后行动意味着先看到对手 action，但不会自动决定最佳 action。"
+        }
+      },
+      "source_reference_ids": ["source-ref-position-information-boundary-v1"],
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    },
+    {
+      "id": "concept-pot-odds-call-threshold",
+      "slug": "call-threshold",
+      "lesson_slug": "pot-odds",
+      "difficulty": "foundation",
+      "prerequisite_ids": [],
+      "display": {
+        "en": {
+          "title": "Call-price threshold",
+          "summary": "Required equity equals the call divided by the pot after adding that call."
+        },
+        "zh": {
+          "title": "Call price threshold",
+          "summary": "Required equity 等于 call 除以加入该 call 后的最终 pot。"
+        }
+      },
+      "source_reference_ids": ["source-ref-pot-odds-call-threshold-v1"],
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    },
+    {
+      "id": "concept-pot-odds-bet-fraction",
+      "slug": "bet-fraction-conversion",
+      "lesson_slug": "pot-odds",
+      "difficulty": "foundation",
+      "prerequisite_ids": ["concept-pot-odds-call-threshold"],
+      "display": {
+        "en": {
+          "title": "Bet-fraction conversion",
+          "summary": "A bet fraction can be converted into an immediate-call threshold under explicit assumptions."
+        },
+        "zh": {
+          "title": "Bet fraction 转换",
+          "summary": "在明确假设下，可以把 bet fraction 转换为 immediate-call threshold。"
+        }
+      },
+      "source_reference_ids": ["source-ref-pot-odds-bet-fraction-v1"],
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    },
+    {
+      "id": "concept-pot-odds-price-versus-equity",
+      "slug": "price-versus-equity",
+      "lesson_slug": "pot-odds",
+      "difficulty": "foundation",
+      "prerequisite_ids": ["concept-pot-odds-call-threshold"],
+      "display": {
+        "en": {
+          "title": "Price versus equity",
+          "summary": "A threshold describes price; a call decision still needs an explicit equity model."
+        },
+        "zh": {
+          "title": "Price 与 equity",
+          "summary": "Threshold 描述 price；call decision 仍需要明确的 equity model。"
+        }
+      },
+      "source_reference_ids": ["source-ref-pot-odds-reference-values-v1"],
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    },
+    {
+      "id": "concept-decision-quality-outcome-boundary",
+      "slug": "outcome-boundary",
+      "lesson_slug": "decision-quality",
+      "difficulty": "foundation",
+      "prerequisite_ids": [],
+      "display": {
+        "en": {
+          "title": "Outcome boundary",
+          "summary": "A result is evidence about an outcome, not a verdict on one decision."
+        },
+        "zh": {
+          "title": "Outcome 边界",
+          "summary": "Result 是 outcome 的 evidence，不是对单次 decision 的 verdict。"
+        }
+      },
+      "source_reference_ids": ["source-ref-decision-outcome-boundary-v1"],
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    },
+    {
+      "id": "concept-decision-quality-confidence-calibration",
+      "slug": "confidence-calibration",
+      "lesson_slug": "decision-quality",
+      "difficulty": "foundation",
+      "prerequisite_ids": ["concept-decision-quality-outcome-boundary"],
+      "display": {
+        "en": {
+          "title": "Confidence calibration",
+          "summary": "Confidence becomes useful when compared with correctness across repeated attempts."
+        },
+        "zh": {
+          "title": "Confidence calibration",
+          "summary": "Confidence 要在多次尝试中与 correctness 对照才有意义。"
+        }
+      },
+      "source_reference_ids": ["source-ref-decision-confidence-v1"],
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    },
+    {
+      "id": "concept-decision-quality-review-order",
+      "slug": "hindsight-resistant-review-order",
+      "lesson_slug": "decision-quality",
+      "difficulty": "foundation",
+      "prerequisite_ids": ["concept-decision-quality-outcome-boundary"],
+      "display": {
+        "en": {
+          "title": "Hindsight-resistant review order",
+          "summary": "Freeze the decision-time state before using the result as additional evidence."
+        },
+        "zh": {
+          "title": "抗 hindsight 的复盘顺序",
+          "summary": "先冻结 decision-time state，再把 result 当作额外 evidence。"
+        }
+      },
+      "source_reference_ids": ["source-ref-decision-retrieval-v1", "source-ref-decision-outcome-boundary-v1"],
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    }
+  ],
+  "exercises": [
+    {
+      "id": "exercise-position-q1-v1",
+      "lesson_slug": "position",
+      "dom_id": "position-q1",
+      "concept_id": "concept-position-preflop-action-order",
+      "answer_code": "button-small-blind",
+      "view_answer_value": "button",
+      "source_reference_ids": ["source-ref-position-heads-up-order-v1"],
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "technical_review": {"status": "passed", "evidence": ["test/system/position_lesson_test.rb"]},
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    },
+    {
+      "id": "exercise-position-q2-v1",
+      "lesson_slug": "position",
+      "dom_id": "position-q2",
+      "concept_id": "concept-position-postflop-action-order",
+      "answer_code": "big-blind",
+      "view_answer_value": "bigBlind",
+      "source_reference_ids": ["source-ref-position-heads-up-order-v1"],
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "technical_review": {"status": "passed", "evidence": ["test/system/position_lesson_test.rb"]},
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    },
+    {
+      "id": "exercise-position-q3-v1",
+      "lesson_slug": "position",
+      "dom_id": "position-q3",
+      "concept_id": "concept-position-information-timing",
+      "answer_code": "information-without-recommendation",
+      "view_answer_value": "information",
+      "source_reference_ids": ["source-ref-position-information-boundary-v1"],
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "technical_review": {"status": "passed", "evidence": ["test/system/position_lesson_test.rb"]},
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    },
+    {
+      "id": "exercise-pot-odds-q1-v1",
+      "lesson_slug": "pot-odds",
+      "dom_id": "pot-odds-q1",
+      "concept_id": "concept-pot-odds-call-threshold",
+      "answer_code": "threshold-25-percent",
+      "view_answer_value": "25",
+      "source_reference_ids": ["source-ref-pot-odds-call-threshold-v1", "source-ref-pot-odds-reference-values-v1"],
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "technical_review": {"status": "passed", "evidence": ["test/system/foundation_lessons_test.rb"]},
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    },
+    {
+      "id": "exercise-pot-odds-q2-v1",
+      "lesson_slug": "pot-odds",
+      "dom_id": "pot-odds-q2",
+      "concept_id": "concept-pot-odds-bet-fraction",
+      "answer_code": "threshold-28-6-percent",
+      "view_answer_value": "28.6",
+      "source_reference_ids": ["source-ref-pot-odds-bet-fraction-v1", "source-ref-pot-odds-reference-values-v1"],
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "technical_review": {"status": "passed", "evidence": ["test/system/foundation_lessons_test.rb"]},
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    },
+    {
+      "id": "exercise-pot-odds-q3-v1",
+      "lesson_slug": "pot-odds",
+      "dom_id": "pot-odds-q3",
+      "concept_id": "concept-pot-odds-price-versus-equity",
+      "answer_code": "explicit-range-equity",
+      "view_answer_value": "range",
+      "source_reference_ids": ["source-ref-pot-odds-reference-values-v1"],
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "technical_review": {"status": "passed", "evidence": ["test/system/foundation_lessons_test.rb"]},
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    },
+    {
+      "id": "exercise-decision-quality-q1-v1",
+      "lesson_slug": "decision-quality",
+      "dom_id": "decision-quality-q1",
+      "concept_id": "concept-decision-quality-outcome-boundary",
+      "answer_code": "outcome-needs-decision-time-review",
+      "view_answer_value": "unresolved",
+      "source_reference_ids": ["source-ref-decision-outcome-boundary-v1"],
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "technical_review": {"status": "passed", "evidence": ["test/system/foundation_lessons_test.rb"]},
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    },
+    {
+      "id": "exercise-decision-quality-q2-v1",
+      "lesson_slug": "decision-quality",
+      "dom_id": "decision-quality-q2",
+      "concept_id": "concept-decision-quality-confidence-calibration",
+      "answer_code": "repeated-attempt-calibration",
+      "view_answer_value": "calibration",
+      "source_reference_ids": ["source-ref-decision-confidence-v1"],
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "technical_review": {"status": "passed", "evidence": ["test/system/foundation_lessons_test.rb"]},
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    },
+    {
+      "id": "exercise-decision-quality-q3-v1",
+      "lesson_slug": "decision-quality",
+      "dom_id": "decision-quality-q3",
+      "concept_id": "concept-decision-quality-review-order",
+      "answer_code": "freeze-decision-time-state",
+      "view_answer_value": "reconstruct",
+      "source_reference_ids": ["source-ref-decision-retrieval-v1", "source-ref-decision-outcome-boundary-v1"],
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "technical_review": {"status": "passed", "evidence": ["test/system/foundation_lessons_test.rb"]},
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    }
+  ],
+  "source_references": [
+    {
+      "id": "source-ref-position-heads-up-order-v1"
+    },
+    {
+      "id": "source-ref-position-deal-order-v1"
+    },
+    {
+      "id": "source-ref-position-information-boundary-v1"
+    },
+    {
+      "id": "source-ref-pot-odds-call-threshold-v1"
+    },
+    {
+      "id": "source-ref-pot-odds-bet-fraction-v1"
+    },
+    {
+      "id": "source-ref-pot-odds-reference-values-v1"
+    },
+    {
+      "id": "source-ref-decision-retrieval-v1"
+    },
+    {
+      "id": "source-ref-decision-confidence-v1"
+    },
+    {
+      "id": "source-ref-decision-outcome-boundary-v1"
+    }
+  ]
+}

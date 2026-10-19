@@ -1,0 +1,94 @@
+en:
+  site:
+    title: Holdem Lab
+    description: An evidence-first No-Limit Texas Hold'em learning app for deliberate practice, replayable review, and honest strategy boundaries.
+    og_image_alt: Holdem Lab — evidence-first Texas Hold'em learning
+  nav:
+    home_label: Holdem Lab home
+    brand_descriptor: Evidence-first training
+    menu: Menu
+    toggle_navigation: Toggle navigation
+    learn: Learn
+    practice: Practice
+    methodology: Methodology
+    start_practice: Start a free practice
+    account: Account
+    sign_in: Sign In
+    sign_up: Sign Up
+    sign_out: Sign out
+    language: Language
+  auth:
+    account: Account
+    sign_in_title: Sign in
+    sign_in_description: Your core practice remains available without an account. Sign in when you want to build a durable learning record.
+    email_address: Email address
+    password: Password
+    password_confirmation: Confirm password
+    sign_in_button: Sign in
+    sign_up_title: Create your learning account.
+    sign_up_description: Keep the anonymous-first practice loop, then connect your local progress when you are ready.
+    create_account_button: Create account
+    forgot_password: Forgot password?
+    no_account: New here?
+    have_account: Already have an account?
+    account_created: Account created.
+    signed_in: Signed in.
+    signed_out: Signed out.
+    invalid_credentials: Try another email address or password.
+    try_again_later: Try again later.
+    password_reset_title: Reset your password.
+    password_reset_description: Enter your email and we will queue reset instructions if an account exists.
+    send_reset_button: Email reset instructions
+    reset_instructions_sent: Reset instructions sent if that email has an account.
+    update_password_title: Choose a new password.
+    update_password_description: Use a new password with at least 12 characters.
+    save_password_button: Save password
+    password_reset: Password has been reset.
+    passwords_do_not_match: Passwords did not match or did not meet the minimum length.
+    invalid_reset_link: That password reset link is invalid or has expired.
+  profile:
+    title: Account profile
+    eyebrow: Account
+    heading: Keep your learning account clear and portable.
+    description: Update the name shown in your account navigation and export the account data currently held by Holdem Lab.
+    display_name: Display name
+    display_name_hint: Optional. Up to 120 characters.
+    save_button: Save profile
+    saved: Profile saved.
+    export_title: Download your account data
+    export_description: The export includes your account details, your sign-in history, and any practice records you chose to save to this account. Practice that only ever lived in your browser stays there.
+    export_button: Download JSON export
+    export_note: The file is plain JSON, so you can read it or move it elsewhere. Deleting your account removes this data from our side.
+    delete_title: Delete account
+    delete_description: Permanently remove this account, its sign-in history, and any practice records you saved to it. Practice kept only in your browser is not touched. This cannot be undone.
+    delete_password: Current password
+    delete_confirmation: Type DELETE to confirm
+    delete_confirmation_hint: Enter DELETE in capitals. Nothing is removed if the password or confirmation does not match.
+    delete_button: Delete account permanently
+    account_deleted: Account deleted.
+    account_delete_failed: We could not verify your password and confirmation. Nothing was deleted.
+  footer:
+    site_links: Site sections
+    eyebrow: Keep the boundary visible
+    heading: Make the next decision a little clearer.
+    description: Learn the rule, practice the choice, and review the reasoning without pretending that a noisy result proves anything.
+    cta: Start a free practice
+    learn_group: Learn
+    product_group: Product
+    language_group: Language
+    virtual_chips_label: Virtual chips
+    position_lesson: Position
+    pot_odds_lesson: Pot odds
+    decision_quality_lesson: Decision quality
+    virtual_chips: Holdem Lab is for learning with virtual chips, not real-money play.
+    evidence_first: Evidence first. Results are noisy.
+    privacy: Privacy
+  analytics:
+    consent:
+      aria_label: Analytics preferences
+      note_required: We would like to count page views and five coarse product events to see which lessons people finish. Nothing loads until you choose.
+      note_optional: Analytics is on. It counts page views and five coarse product events so we can see which lessons people finish. You can turn it off here.
+      never_collected: Your cards, your written reasoning, and your practice records are never sent.
+      read_more: Read what is measured
+      accept: Allow analytics
+      decline: No thanks

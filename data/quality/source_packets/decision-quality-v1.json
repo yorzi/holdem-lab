@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "decision-quality-v1",
+  "lesson_slug": "decision-quality",
+  "locale": "en",
+  "content_version": "decision-quality-content-v1",
+  "publication_status": "review_preview",
+  "technical_review": {
+    "status": "passed",
+    "reviewed_at": "2026-08-20",
+    "evidence": ["lesson-session-v1", "decision-record-v2", "local-review-replay-v2"]
+  },
+  "domain_review": {
+    "status": "pending",
+    "reviewer": null,
+    "reviewed_at": null,
+    "notes": "A learning-design rationale is not evidence of poker-domain correctness or product learning outcomes."
+  },
+  "claims": [
+    {
+      "id": "decision-quality-retrieval",
+      "text": "A short answer-before-feedback exercise is consistent with retrieval-practice evidence and is preferable to presenting every explanation passively.",
+      "claim_type": "learning_design",
+      "source_ids": ["retrieval_practice_review_2021"],
+      "source_locators": ["Systematic review scope and findings as registered in poker_knowledge_sources.json"],
+      "internal_evidence": ["position-lesson-three-question-session"],
+      "limitations": ["The research does not prove that this product or this exact poker exercise improves learning."]
+    },
+    {
+      "id": "decision-quality-confidence",
+      "text": "Recording confidence before explanatory feedback creates a signal that can later be tested for confidence-accuracy calibration.",
+      "claim_type": "learning_design",
+      "source_ids": ["confidence_feedback_study_2024"],
+      "source_locators": ["Registered randomized-study scope"],
+      "internal_evidence": ["decision-record-v2-confidence-field"],
+      "limitations": ["Medical-learning findings cannot be assumed to transfer to poker, and confidence is not a skill score."]
+    },
+    {
+      "id": "decision-quality-outcome-boundary",
+      "text": "The product should store the information and reasoning available at decision time separately from the eventual hand result.",
+      "claim_type": "product_boundary",
+      "source_ids": [],
+      "source_locators": [],
+      "internal_evidence": ["decision-record-v2", "immutable-snapshot-and-result-state"],
+      "limitations": ["A stored reason does not establish that the reason or action was strategically correct."]
+    }
+  ],
+  "rights": {
+    "content_mode": "original_synthesis_with_citation",
+    "source_reproduction": "No paper text is reproduced.",
+    "allowed_product_use": "Use original learning-loop copy with explicit transfer limitations and source links."
+  }
+}

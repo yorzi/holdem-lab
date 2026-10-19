@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "contract_id": "holdem-canonical-content-v1",
+  "technical_status": "automated_pass_required",
+  "publication_policy": {
+    "required_status_fields": [
+      "rights_status",
+      "integrity_status",
+      "domain_review",
+      "publication_status"
+    ],
+    "published_requires": [
+      "rights_ready",
+      "integrity_verified",
+      "technical_review_passed",
+      "domain_review_approved_with_metadata"
+    ],
+    "strategy_solver_policy": "solver_data requires a reproducible solver provenance record; no solver record is published by this contract."
+  },
+  "layers": [
+    {
+      "id": "exercises",
+      "path": "data/exercises/exercise-templates-v1.json",
+      "record_key": "template_id",
+      "runtime_status": "validation_only",
+      "description": "Reusable exercise contracts cross-checked against the current curriculum graph; not a new runtime question source."
+    },
+    {
+      "id": "sources",
+      "path": "data/sources/source-registry-v1.json",
+      "record_key": "source_id",
+      "runtime_status": "provenance_only",
+      "description": "Rights, integrity, research, quality-packet, and internal-contract provenance for canonical references."
+    },
+    {
+      "id": "source_references",
+      "path": "data/sources/source-reference-registry-v1.json",
+      "record_key": "source_reference_id",
+      "runtime_status": "provenance_only",
+      "description": "Per-claim provenance bindings used by the curriculum graph; not a lesson or exercise runtime source."
+    },
+    {
+      "id": "strategy",
+      "path": "data/strategy/strategy-registry-v1.json",
+      "record_key": "baseline_id",
+      "runtime_status": "local_practice_only",
+      "description": "Evidence-labeled strategy metadata; it does not authorize solver claims or published strategy content."
+    }
+  ]
+}

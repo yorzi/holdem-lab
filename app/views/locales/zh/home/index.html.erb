@@ -1,0 +1,153 @@
+<% content_for :title, "Holdem Lab — 免费德州扑克训练与决策练习" %>
+<% content_for :description, "用「先做决定、写下理由、再复盘思路」的方式学德州扑克。免费课程涵盖位置、底池赔率与决策质量，并提供虚拟筹码练习牌桌。" %>
+<% content_for :structured_data do %>
+  <%= structured_data_script(faq_structured_data([
+        ["Holdem Lab 是实时扑克辅助工具吗？", "不是。它是使用虚拟筹码的教学练习应用，不连接牌桌、不提供 HUD、不自动执行动作，也不处理真钱。"],
+        ["可以不注册就开始吗？", "可以。公开课程与核心练习流程都可以直接使用，你之后再决定是否需要一份长期保存的学习记录。"],
+        ["底池赔率能告诉我什么？", "在给定模型下，它描述跟注的即时价格；它不会替你计算胜率、选择动作，也不处理后续街的影响。"],
+        ["估算分析等于 solver 数据吗？", "不是。估算分析必须展示它的假设、样本与不确定性；solver 数据是另一个标签，需要可核验的证据与明确范围。"]
+      ])) %>
+<% end %>
+
+<section class="relative overflow-hidden border-b border-ink/10">
+  <div class="mx-auto grid max-w-7xl gap-14 px-5 py-16 sm:py-24 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-8 lg:py-28">
+    <div>
+      <p class="mb-6 text-sm font-semibold uppercase tracking-[0.18em] text-moss">以证据为先的扑克学习</p>
+      <h1 class="max-w-3xl font-display text-5xl leading-[0.98] tracking-tight text-ink sm:text-7xl">
+        练习决策。<br />
+        <span class="text-moss">复盘思考。</span>
+      </h1>
+      <p class="mt-7 max-w-xl text-lg leading-8 text-ink/70 sm:text-xl">
+        Holdem Lab 将扑克概念转化为刻意练习：先做出决定，记录理由，看清证据边界，再回到真正需要训练的模式。
+      </p>
+      <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+        <%= link_to "开始免费练习", practice_path, class: "rounded-full bg-moss px-6 py-3 text-center text-sm font-semibold text-paper shadow-sm transition-colors hover:bg-ink" %>
+        <%= link_to "先学习 Position", position_lesson_path, class: "rounded-full border border-ink/20 px-6 py-3 text-center text-sm font-semibold text-ink transition-colors hover:border-moss hover:text-moss" %>
+      </div>
+      <div class="mt-8" data-hm-react-mount></div>
+    </div>
+
+    <div class="relative">
+      <div class="absolute -inset-5 rounded-[2.5rem] bg-moss/10 blur-2xl" aria-hidden="true"></div>
+      <article class="relative rounded-[2rem] border border-ink/15 bg-ink p-6 text-paper shadow-2xl sm:p-8">
+        <div class="flex items-center justify-between text-xs uppercase tracking-[0.16em] text-paper/55">
+          <span>Decision card</span>
+          <span>01 / 05</span>
+        </div>
+        <div class="mt-8 rounded-2xl border border-paper/15 bg-paper/5 p-5">
+          <p class="text-xs uppercase tracking-[0.16em] text-paper/50">情境</p>
+          <p class="mt-3 font-display text-2xl">Button 对 Big Blind · 100BB</p>
+          <p class="mt-2 text-sm leading-6 text-paper/65">只有当假设保持可见时，一个决定才有复盘价值。</p>
+        </div>
+        <div class="mt-4 grid gap-3 sm:grid-cols-2">
+          <div class="rounded-2xl border border-paper/15 p-4">
+            <p class="text-xs uppercase tracking-[0.16em] text-paper/50">你的推理</p>
+            <p class="mt-3 text-sm leading-6 text-paper/80">“我选择较小的尺寸，因为牌面偏干。”</p>
+          </div>
+          <div class="rounded-2xl border border-sand/45 bg-sand/10 p-4">
+            <p class="text-xs uppercase tracking-[0.16em] text-sand">复盘</p>
+            <p class="mt-3 text-sm leading-6 text-paper/80">检查价格、范围，以及后续街道会发生什么变化。</p>
+          </div>
+        </div>
+        <div class="mt-6 flex items-center justify-between border-t border-paper/15 pt-5 text-sm">
+          <span class="text-paper/55">反馈证据</span>
+          <span class="rounded-full bg-paper/10 px-3 py-1 text-paper/80">Approximate analysis</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="learning-loop" class="mx-auto max-w-7xl px-5 py-16 sm:py-24 lg:px-8">
+  <div class="max-w-2xl">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">学习循环</p>
+    <h2 class="mt-4 font-display text-4xl tracking-tight sm:text-5xl">从知识走向判断，可以更从容。</h2>
+  </div>
+  <div class="mt-12 grid gap-px overflow-hidden rounded-3xl border border-ink/10 bg-ink/10 md:grid-cols-4">
+    <% [["01", "学习", "先建立概念与假设。"], ["02", "练习", "在看到反馈前先做出选择。"], ["03", "复盘", "保留原始情境、理由与信心。"], ["04", "进步", "训练错误模式，而不是追逐短期结果。"]].each do |number, title, body| %>
+      <article class="bg-paper p-6 sm:p-7">
+        <p class="text-sm font-semibold text-sand"><%= number %></p>
+        <h3 class="mt-10 font-display text-2xl"><%= title %></h3>
+        <p class="mt-3 text-sm leading-6 text-ink/65"><%= body %></p>
+      </article>
+    <% end %>
+  </div>
+</section>
+
+<section id="learning-path" class="mx-auto max-w-7xl px-5 py-16 sm:py-24 lg:px-8" aria-labelledby="learning-path-title">
+  <div class="max-w-3xl">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">从这里开始</p>
+    <h2 id="learning-path-title" class="mt-4 font-display text-4xl tracking-tight sm:text-5xl">用三节短课打好 heads-up 基础。</h2>
+    <p class="mt-5 text-lg leading-8 text-ink/70">每个课程地址都可以单独阅读或分享：行动顺序、call 的即时价格，以及如何在 variance 中判断一个决定的质量。</p>
+  </div>
+  <div class="mt-10 grid gap-5 md:grid-cols-3">
+    <article class="flex flex-col rounded-3xl border border-ink/10 bg-paper-deep p-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-moss">01 · Position</p>
+      <h3 class="mt-5 font-display text-2xl">Heads-up 的行动顺序</h3>
+      <p class="mt-3 flex-1 text-sm leading-6 text-ink/65">先理解发牌与 betting round 中谁先行动，再给 position 加上 strategy 标签。</p>
+      <%= link_to "阅读 Position 课程 →", position_lesson_path, class: "mt-7 font-semibold text-moss hover:text-ink" %>
+    </article>
+    <article class="flex flex-col rounded-3xl border border-ink/10 bg-paper-deep p-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-moss">02 · Pot odds</p>
+      <h3 class="mt-5 font-display text-2xl">Call 的即时价格</h3>
+      <p class="mt-3 flex-1 text-sm leading-6 text-ink/65">先算出 immediate threshold，再说清楚它没有回答的 range 与 future action 假设。</p>
+      <%= link_to "阅读 Pot Odds 课程 →", pot_odds_lesson_path, class: "mt-7 font-semibold text-moss hover:text-ink" %>
+    </article>
+    <article class="flex flex-col rounded-3xl border border-ink/10 bg-paper-deep p-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-moss">03 · Decision quality</p>
+      <h3 class="mt-5 font-display text-2xl">不被 hindsight 改写</h3>
+      <p class="mt-3 flex-1 text-sm leading-6 text-ink/65">把决定当时可获得的信息，与后来发生的 outcome 分开观察。</p>
+      <%= link_to "阅读 Decision Quality 课程 →", decision_quality_lesson_path, class: "mt-7 font-semibold text-moss hover:text-ink" %>
+    </article>
+  </div>
+</section>
+
+<section id="common-questions" class="bg-paper-deep" aria-labelledby="common-questions-title">
+  <div class="mx-auto max-w-7xl px-5 py-16 sm:py-20 lg:px-8">
+    <div class="max-w-3xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">常见问题</p>
+      <h2 id="common-questions-title" class="mt-4 font-display text-4xl tracking-tight sm:text-5xl">Holdem Lab 是什么，不是什么。</h2>
+    </div>
+    <div class="mt-10 grid gap-4 md:grid-cols-2">
+      <details class="rounded-2xl border border-ink/10 bg-paper p-5">
+        <summary class="cursor-pointer font-semibold">Holdem Lab 是实时扑克辅助工具吗？</summary>
+        <p class="mt-3 text-sm leading-6 text-ink/65">不是。它是使用虚拟筹码的教育练习应用，不连接牌桌、不提供 HUD、不自动执行动作，也不处理真钱。</p>
+      </details>
+      <details class="rounded-2xl border border-ink/10 bg-paper p-5">
+        <summary class="cursor-pointer font-semibold">可以不注册就开始吗？</summary>
+        <p class="mt-3 text-sm leading-6 text-ink/65">可以。公开课程与核心练习流程都可以直接使用，你之后再决定是否需要一份长期保存的学习记录。</p>
+      </details>
+      <details class="rounded-2xl border border-ink/10 bg-paper p-5">
+        <summary class="cursor-pointer font-semibold">底池赔率能告诉我什么？</summary>
+        <p class="mt-3 text-sm leading-6 text-ink/65">在给定模型下，它描述跟注的即时价格；它不会替你计算胜率、选择动作，也不处理后续街的影响。</p>
+      </details>
+      <details class="rounded-2xl border border-ink/10 bg-paper p-5">
+        <summary class="cursor-pointer font-semibold">估算分析等于 solver 数据吗？</summary>
+        <p class="mt-3 text-sm leading-6 text-ink/65">不是。估算分析必须展示它的假设、样本与不确定性；solver 数据是另一个标签，需要可核验的证据与明确范围。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="bg-paper-deep">
+  <div class="mx-auto grid max-w-7xl gap-10 px-5 py-16 sm:py-20 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">诚实的产品边界</p>
+      <h2 class="mt-4 font-display text-4xl tracking-tight">这是训练实验室，不是实时牌桌工具。</h2>
+    </div>
+    <div class="grid gap-4 sm:grid-cols-3">
+      <div class="rounded-2xl border border-ink/10 bg-paper p-5">
+        <p class="font-semibold">仅使用虚拟筹码</p>
+        <p class="mt-2 text-sm leading-6 text-ink/65">不提供真钱游戏、牌桌连接或下注流程。</p>
+      </div>
+      <div class="rounded-2xl border border-ink/10 bg-paper p-5">
+        <p class="font-semibold">牌局可回放</p>
+        <p class="mt-2 text-sm leading-6 text-ink/65">任何一手牌都能按当时的发牌完整重放，方便你反复研究同一个局面。</p>
+      </div>
+      <div class="rounded-2xl border border-ink/10 bg-paper p-5">
+        <p class="font-semibold">证据标签分开</p>
+        <p class="mt-2 text-sm leading-6 text-ink/65">基准线、估算分析与 solver 结论不会混为一谈。</p>
+      </div>
+    </div>
+  </div>
+</section>

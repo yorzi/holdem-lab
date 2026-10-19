@@ -1,0 +1,292 @@
+<%# GA4 is the only analytics tag on this site, and Google Tag Manager is
+    deliberately unsupported: a GTM container can inject arbitrary tags outside
+    the consent flow below, which would make every guarantee in
+    docs/analytics-and-search-console.md unenforceable from this repository. %>
+<% if analytics_enabled? %>
+  <script <%= tag.attributes(nonce: content_security_policy_nonce) %>>
+    (function() {
+      var measurementId = "<%= j analytics_measurement_id %>";
+      var productEvents = <%= analytics_product_events? %>;
+      var consentKey = "holdem_lab_analytics_consent";
+      var loaded = false;
+      var bridged = false;
+      var lastPageLocation = null;
+
+      // Acquisition parameters are kept so a campaign link is still
+      // attributable; everything else in the query string is dropped rather
+      // than enumerated, because the safe default for an unknown parameter is
+      // to not send it.
+      var KEEP_QUERY = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term",
+                        "gclid", "gbraid", "wbraid", "msclkid", "src"];
+
+      // Every URL that leaves this page goes through here first.
+      //
+      // A password reset link carries a single-use credential in its path.
+      // Sending it to a third party would hand Google a working reset token and
+      // print it in a report a human can read, so the segment is replaced
+      // before the URL is used for anything. /zh/passwords/… is covered too.
+      function scrubUrl(value) {
+        var url = new URL(value, window.location.origin);
+        url.pathname = url.pathname.replace(/\/passwords\/[^/]+/, "/passwords/:token");
+
+        var kept = new URLSearchParams();
+        url.searchParams.forEach(function(param, key) {
+          if (KEEP_QUERY.indexOf(key) !== -1) kept.append(key, param);
+        });
+        url.search = kept.toString();
+        url.hash = "";
+        return url;
+      }
+
+      // GA sends the referrer as `dr` on its own, straight from
+      // document.referrer, with none of the scrubbing above. On an internal
+      // navigation that referrer is one of our own URLs — so leaving it alone
+      // sends Google the very reset token the page_location scrub exists to
+      // remove, one navigation later. A referrer from another site is
+      // acquisition data and is not ours to rewrite.
+      function currentReferrer() {
+        if (!document.referrer) return null;
+        try {
+          var url = new URL(document.referrer);
+          return url.origin === window.location.origin ? scrubUrl(url.href).href : url.href;
+        } catch (_error) {
+          return null;
+        }
+      }
+
+      function currentPage() {
+        var canonical = document.querySelector('link[rel="canonical"]');
+        var parsed = scrubUrl(canonical ? canonical.href : window.location.href);
+
+        // The path comes from the canonical so duplicate URLs collapse into
+        // one, but the query has to come from the address the visitor actually
+        // arrived at: a canonical never carries a query string, so reading the
+        // campaign off `parsed` silently drops every UTM tag and the allowlist
+        // becomes dead code. Verified against production on 2026-08-25, when it
+        // reported `dl=https://holdem-lab.example/` for a visit tagged
+        // ?utm_source=… — campaign attribution lost, exactly the failure the
+        // allowlist was written to prevent.
+        parsed.search = scrubUrl(window.location.href).search;
+
+        var page = {
+          page_title: document.title,
+          page_location: parsed.href,
+          // GA4's built-in language dimension reports the *browser's*
+          // language, which cannot tell an English browser reading /zh from
+          // one reading /. This carries the edition actually being read.
+          content_locale: document.documentElement.lang || "en"
+        };
+
+        var referrer = currentReferrer();
+        if (referrer) page.page_referrer = referrer;
+        return page;
+      }
+
+      // Turbo swaps the body without a document load, so gtag's ambient
+      // page_location would otherwise stay pinned to the first page of the
+      // visit. The automatic events — user_engagement above all, which carries
+      // engagement_time_msec — are stamped with that ambient value, not with
+      // the parameters of the manual page_view below. Without this set() call
+      // every second a reader spends on a Turbo-navigated lesson is credited
+      // to whichever page they entered on.
+      function trackPageView() {
+        if (!loaded || !window.gtag) return;
+        var page = currentPage();
+        if (page.page_location === lastPageLocation) return;
+
+        // On a Turbo navigation the referrer is the page just left, and our own
+        // scrubbed record of it is the only copy worth sending. Setting
+        // page_referrer on the event alone is not enough: `dr` is stamped from
+        // the ambient value, and with none set gtag reconstructs it from the raw
+        // previous URL. That is how the unscrubbed query string reappeared on
+        // 2026-08-25 on a hit whose page_location was correctly scrubbed —
+        // the same ambient-value trap as page_location itself.
+        if (lastPageLocation) page.page_referrer = lastPageLocation;
+        lastPageLocation = page.page_location;
+
+        var ambient = { page_location: page.page_location, page_title: page.page_title };
+        if (page.page_referrer) ambient.page_referrer = page.page_referrer;
+        window.gtag("set", ambient);
+        window.gtag("event", "page_view", page);
+      }
+
+      // The five events of the DOM contract in app/frontend/telemetry/events.ts,
+      // rebuilt field by field. Reading only the properties named here is what
+      // keeps a future addition to that contract from reaching Google before
+      // anyone has reviewed it: an unknown event, or an unknown field on a
+      // known event, is dropped rather than forwarded.
+      function productEventParams(detail) {
+        switch (detail && detail.name) {
+          case "lesson_view":
+            return { lesson_slug: detail.lessonSlug };
+          case "practice_start":
+            return { mode: detail.mode };
+          case "decision_locked":
+            return { mode: detail.mode, street: detail.street };
+          case "session_complete":
+            return { lesson_slug: detail.lessonSlug, score_band: detail.scoreBand };
+          case "review_open":
+            return {};
+          default:
+            return null;
+        }
+      }
+
+      // Events raised before consent are discarded, never queued: buffering
+      // them would be recording behaviour in order to send it the moment
+      // someone agrees, which is the thing consent exists to prevent.
+      function bindProductEvents() {
+        if (bridged || !productEvents) return;
+        bridged = true;
+        window.addEventListener("holdem:telemetry", function(event) {
+          if (!loaded || !window.gtag) return;
+          var detail = event.detail;
+          var params = productEventParams(detail);
+          if (!params) return;
+          params.content_locale = document.documentElement.lang || "en";
+          window.gtag("event", detail.name, params);
+        });
+      }
+
+      function loadGoogleAnalytics() {
+        if (loaded) return;
+        loaded = true;
+
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function() { window.dataLayer.push(arguments); };
+
+        // Basic Consent Mode: the Google tag is not requested until opt-in.
+        // Advertising storage stays denied in every region — this site runs no
+        // ads and has no reason to grant it.
+        window.gtag("consent", "default", {
+          ad_storage: "denied",
+          ad_user_data: "denied",
+          ad_personalization: "denied",
+          analytics_storage: "denied"
+        });
+        window.gtag("consent", "update", { analytics_storage: "granted" });
+        window.gtag("js", new Date());
+
+        var config = currentPage();
+        config.send_page_view = false;
+        window.gtag("config", measurementId, config);
+        trackPageView();
+
+        var script = document.createElement("script");
+        script.async = true;
+        script.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(measurementId);
+        document.head.appendChild(script);
+      }
+
+      function storedConsent() {
+        try { return window.localStorage.getItem(consentKey); } catch (_error) { return null; }
+      }
+
+      function storeConsent(value) {
+        try { window.localStorage.setItem(consentKey, value); } catch (_error) { /* no-op */ }
+      }
+
+      // Prior opt-in is required for EEA, UK, and Swiss visitors. This app is
+      // not behind a geo-aware proxy, so the region is inferred from the
+      // browser's IANA time zone: no IP lookup, no third-party geo service,
+      // and nothing leaves the page. Over-inclusion is deliberate — an unknown
+      // or unreadable zone is treated as consent-required, and Europe/*
+      // deliberately covers non-EEA European zones too, because the cost of a
+      // false positive is only a banner shown to someone who did not strictly
+      // need one.
+      var consentRequiredZones = /^(Europe\/|Atlantic\/(Azores|Madeira|Canary|Reykjavik|Faroe)|Africa\/Ceuta|Asia\/(Nicosia|Famagusta)|Indian\/(Mayotte|Reunion)|America\/(Martinique|Guadeloupe|Cayenne))/;
+
+      function consentRequired() {
+        try {
+          var zone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+          return !zone || consentRequiredZones.test(zone);
+        } catch (_error) {
+          return true;
+        }
+      }
+
+      // Returns "granted", "denied", or null (= ask). An explicit stored choice
+      // always wins. Global Privacy Control is a legally binding opt-out under
+      // several US state privacy laws, so it is honoured in every region. DNT
+      // is deliberately not honoured: it is deprecated and widely sent by
+      // default, which would suppress data with no matching legal obligation.
+      function resolveConsent() {
+        var choice = storedConsent();
+        if (choice === "granted" || choice === "denied") return choice;
+        if (navigator.globalPrivacyControl === true) return "denied";
+        return consentRequired() ? null : "granted";
+      }
+
+      function clearAnalyticsCookies() {
+        document.cookie.split(";").forEach(function(cookie) {
+          var name = cookie.split("=")[0].trim();
+          if (name === "_ga" || name.indexOf("_ga_") === 0) {
+            document.cookie = name + "=; Max-Age=0; path=/; SameSite=Lax";
+            document.cookie = name + "=; Max-Age=0; path=/; domain=." + window.location.hostname + "; SameSite=Lax";
+          }
+        });
+      }
+
+      function banner() {
+        return document.querySelector("[data-analytics-consent-banner]");
+      }
+
+      function showPreferences() {
+        var panel = banner();
+        if (!panel) return;
+        // The panel explains two different situations. Where opt-in is required
+        // the tag has not loaded yet; everywhere else it already has, and this
+        // panel is reached from the privacy page to turn it off.
+        var mode = consentRequired() ? "required" : "optional";
+        panel.querySelectorAll("[data-analytics-consent-note]").forEach(function(note) {
+          note.hidden = note.dataset.analyticsConsentNote !== mode;
+        });
+        panel.hidden = false;
+      }
+
+      function hidePreferences() {
+        var panel = banner();
+        if (panel) panel.hidden = true;
+      }
+
+      function bind(selector, handler) {
+        document.querySelectorAll(selector).forEach(function(button) {
+          if (button.dataset.analyticsConsentBound) return;
+          button.dataset.analyticsConsentBound = "true";
+          button.addEventListener("click", handler);
+        });
+      }
+
+      function bindPreferences() {
+        var choice = resolveConsent();
+        if (choice === "granted") loadGoogleAnalytics();
+        trackPageView();
+        if (choice === null) showPreferences();
+
+        bind("[data-analytics-consent-accept]", function() {
+          storeConsent("granted");
+          loadGoogleAnalytics();
+          hidePreferences();
+        });
+
+        bind("[data-analytics-consent-decline]", function() {
+          storeConsent("denied");
+          if (loaded && window.gtag) {
+            window.gtag("consent", "update", { analytics_storage: "denied" });
+            clearAnalyticsCookies();
+            window.location.reload();
+            return;
+          }
+          hidePreferences();
+        });
+
+        bind("[data-analytics-consent-manage]", showPreferences);
+      }
+
+      bindProductEvents();
+      window.addEventListener("turbo:load", bindPreferences);
+      document.addEventListener("DOMContentLoaded", bindPreferences, { once: true });
+      if (resolveConsent() === "granted") loadGoogleAnalytics();
+    })();
+  </script>
+<% end %>

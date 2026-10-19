@@ -1,0 +1,33 @@
+<% content_for :title, "德州扑克训练方法与资料来源 — Holdem Lab" %>
+<% content_for :description, "Holdem Lab 如何区分德州扑克的规则、练习基准线与估算反馈，让你清楚每一条建议到底有多大分量。" %>
+
+<section class="mx-auto max-w-5xl px-5 py-20 sm:py-28 lg:px-8">
+  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">方法与来源</p>
+  <h1 class="mt-5 max-w-3xl font-display text-5xl tracking-tight sm:text-6xl">可信来自边界，而不是标签。</h1>
+  <p class="mt-7 max-w-3xl text-lg leading-8 text-ink/70">扑克建议很容易找到，但很难判断分量。Holdem Lab 把三件事分开：德州扑克规则本身就能确定的部分、一条简化基准线给出的方向，以及只是估算的数字。你看到的每一条反馈都会标明属于哪一类。</p>
+
+  <div class="mt-14 grid gap-5 md:grid-cols-3">
+    <% [["规则", "怎么发牌、哪些动作合法、摊牌时谁赢。这些由德州扑克规则本身决定，训练器每次都用同样的方式判定。"], ["练习基准线", "一条刻意简化的参考线，用来给你一个可以对照的方向。它是教学辅助，不是每个牌面下的最优打法。"], ["估算分析", "底池赔率、粗略胜率这类数字，会连同背后的假设一起显示。它帮你建立直觉，但不会被当成最终结论。"]].each do |title, body| %>
+      <article class="rounded-3xl border border-ink/10 bg-paper-deep p-6">
+        <h2 class="font-display text-2xl"><%= title %></h2>
+        <p class="mt-3 text-sm leading-6 text-ink/65"><%= body %></p>
+      </article>
+    <% end %>
+  </div>
+
+  <div class="mt-12 rounded-3xl border border-ink/10 bg-ink p-6 text-paper sm:p-8">
+    <h2 class="font-display text-3xl">Holdem Lab 不会做的事</h2>
+    <ul class="mt-5 space-y-3 text-sm leading-6 text-paper/75">
+      <li>• 不碰真钱。练习只使用虚拟筹码，没有充值、下注或提现。</li>
+      <li>• 不会跟你上真实牌桌。没有 HUD、没有悬浮窗，也不提供任何实战辅助。</li>
+      <li>• 不会声称反馈就是标准答案或 GTO。凡是估算出来的数字，都会明确说明。</li>
+      <li>• 不会擅自搬走你的练习记录。它们保存在你的浏览器里，除非你主动选择同步到账户。</li>
+    </ul>
+  </div>
+
+  <div class="mt-12 max-w-3xl">
+    <h2 class="font-display text-3xl">课程为什么要标注来源</h2>
+    <p class="mt-5 text-base leading-7 text-ink/70">涉及规则的说法会链接到公开的赛事规则；涉及学习方式的说法会链接到相应研究。如果一节课没有给出策略建议，它会直接说明缺的是哪一条信息，而不是用听起来笃定的猜测把空缺填上。这些你都可以自己去核对——这正是我们标注来源的意义。</p>
+    <p class="mt-5 text-base leading-7 text-ink/70">建议从<%= link_to "三节基础课", learn_path, class: "font-semibold text-moss underline" %>开始，再把学到的东西带进<%= link_to "一手练习牌局", practice_path, class: "font-semibold text-moss underline" %>。</p>
+  </div>
+</section>

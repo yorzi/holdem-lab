@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "registry_id": "holdem-strategy-registry-v1",
+  "layer": "strategy",
+  "technical_status": "automated_pass_required",
+  "records": [
+    {
+      "baseline_id": "strategy-approximate-analysis-local-v1",
+      "evidence_label": "approximate_analysis",
+      "strategy_kind": "transparent_heuristic",
+      "runtime_status": "local_practice_only",
+      "runtime_path": "app/frontend/holdem/strategy/advisory.ts",
+      "runtime_digest": "6bd69c7b9644c8206d6f1fed7e6bac1ee3c4db63c015d1991672d8211636494d",
+      "method": "deterministic-random-sampling-v1",
+      "game_model": {
+        "variant": "no_limit_holdem",
+        "players": 2,
+        "effective_stack": "100BB",
+        "opponent_model": "uniform_random_two_card_hand",
+        "sampling": "deterministic_seed_derived"
+      },
+      "assumptions": [
+        "Samples deterministic runouts against uniformly random opponent hole cards.",
+        "Immediate chip cost is compared without future-street realization, range construction, rake, or a full betting tree.",
+        "The recommendation is a local practice comparison and not a population model."
+      ],
+      "supported_claim_codes": ["price_vs_sampled_equity", "transparent_local_comparison"],
+      "unsupported_claim_codes": ["solver_data", "absolute_gto", "future_street_ev", "population_strategy"],
+      "source_ids": ["holdem-rules-v2", "hand-evaluator-v1", "pot-odds-math-v1", "holdem-golden-v2"],
+      "rights_status": "original_authored",
+      "integrity_status": "verified",
+      "publication_status": "draft",
+      "technical_review": {"status": "passed", "evidence": ["npm run typecheck", "npm test"]},
+      "domain_review": {"status": "pending", "reviewer": null, "reviewed_at": null}
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+<% content_for :title, "德州扑克底池赔率怎么算：跟注的价格 — Holdem Lab" %>
+<% content_for :description, "学习底池赔率的即时跟注公式，核算三种常见下注尺寸对应的临界胜率，并弄清这个数字回答不了什么。" %>
+<% content_for :og_type, "article" %>
+<% content_for :structured_data do %>
+  <%= structured_data_script(breadcrumb_structured_data([["学习", absolute_url_for(learn_path)], ["Pot Odds", canonical_url]])) %>
+  <%= structured_data_script(learning_resource_structured_data(name: "底池赔率：避免虚假精确", description: "学习即时跟注的底池赔率公式，核算三种常见下注尺寸，并明确范围与后续街的限制。", url: canonical_url, time_required: "PT12M", reviewed_at: @content_record.dig("domain_review", "reviewed_at"))) %>
+  <%= structured_data_script(faq_structured_data([
+        ["底池赔率怎么算？", "用你需要跟注的金额，除以跟注之后的底池。底池 150、跟注 50，跟注后底池变成 200，临界胜率就是 50 ÷ 200 = 25%。"],
+        ["面对半池下注需要多少胜率？", "25%。面对三分之一池需要 20%，三分之二池需要 28.6%，满池下注需要 33.3%。若对手下注为底池的 b 倍，临界胜率就是 b ÷ (1 + 2b)。"],
+        ["底池赔率能告诉我该不该跟注吗？", "不能，它只给出价格。要把价格变成决定，你还需要估算自己面对对手真实牌范围时的胜率；而且这个价格没有算上后续下注、抽水，以及胜率能否兑现。"]
+      ])) %>
+<% end %>
+
+<% evidence_coverage = "本课的每个数字都由上面给出的公式复算得出，你可以自己验算。" %>
+<article class="mx-auto max-w-5xl px-5 py-12 sm:py-20 lg:px-8" data-controller="lesson-session" data-lesson-slug="pot-odds" data-content-asset-id="<%= @content_record.fetch("id") %>" data-content-curriculum-id="<%= @curriculum_lesson.fetch("id") %>" data-content-concept-ids="<%= @curriculum_lesson.fetch("concept_ids").join(" ") %>" data-content-exercise-ids="<%= @curriculum_lesson.fetch("exercise_ids").join(" ") %>" data-content-version="<%= @content_record.fetch("content_version") %>" data-content-publication-status="<%= @content_record.fetch("publication_status") %>" data-evidence-coverage="<%= evidence_coverage %>">
+  <nav aria-label="面包屑" class="text-sm text-ink/55"><%= link_to "学习", learn_path, class: "font-semibold hover:text-moss" %><span aria-hidden="true"> / </span><span>底池赔率</span></nav>
+
+  <header class="mt-8 border-b border-ink/10 pb-10">
+    <div class="flex flex-wrap items-center gap-3"><span class="rounded-full bg-moss/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-moss">基础 02</span></div>
+    <h1 class="mt-6 max-w-4xl font-display text-5xl leading-[0.98] tracking-tight sm:text-7xl">底池赔率给出跟注的价格，但不等于你的胜率。</h1>
+    <p class="mt-7 max-w-3xl text-lg leading-8 text-ink/70">公式再干净，如果缺了对手范围或后续下注的考虑，也可能推出很糟糕的扑克结论。先学会算即时价格，再弄清楚这个价格回答不了什么。</p>
+    <div class="mt-7 flex flex-wrap gap-3 text-xs"><span class="rounded-full border border-ink/10 bg-white/55 px-3 py-2">10–12 分钟</span><span class="rounded-full border border-ink/10 bg-white/55 px-3 py-2">3 道计算题</span><span class="rounded-full border border-ink/10 bg-white/55 px-3 py-2">免费 · 无需注册</span></div>
+  </header>
+
+  <section class="mt-10 rounded-3xl border border-moss/25 bg-moss/5 p-6 sm:p-8" aria-labelledby="pot-odds-answer-title">
+    <h2 class="font-display text-3xl" id="pot-odds-answer-title">底池赔率怎么算？</h2>
+    <p class="mt-4 max-w-3xl text-base leading-7 text-ink/80">用你需要跟注的金额，除以跟注之后的底池。底池是 150、跟注要 50，跟注后底池变成 200，因此你需要赢下 50 ÷ 200 = 25% 才能打平。这是跟注的价格，不是跟注的理由。</p>
+  </section>
+
+  <section class="grid gap-6 py-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)]" aria-labelledby="pot-odds-formula-title">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">即时跟注模型</p>
+      <h2 class="mt-4 font-display text-4xl" id="pot-odds-formula-title">即时跟注的公式是什么？</h2>
+      <div class="mt-6 space-y-5 text-base leading-7 text-ink/75">
+        <p>设 <strong class="text-ink">C</strong> 为你需要跟注的金额，<strong class="text-ink">P</strong> 为对手下注之后、你跟注之前底池里已有的筹码。</p>
+        <p class="rounded-2xl border border-moss/25 bg-moss/10 p-5 font-mono text-lg text-ink">所需胜率 = C ÷ (P + C)</p>
+        <p>如果底池原本是 100，对手下注 50，现在底池是 150。你跟注 50 之后底池变成 200，所以盈亏平衡的临界胜率是 <strong class="text-ink">50 ÷ 200 = 25%</strong>。</p>
+      </div>
+    </div>
+    <aside class="rounded-3xl bg-ink p-6 text-paper" aria-label="常见的临界胜率">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-moss-light">跟注前的下注尺寸</p>
+      <dl class="mt-6 space-y-5 text-sm"><div class="border-b border-paper/15 pb-4"><dt class="text-paper/55">三分之一池</dt><dd class="mt-1 font-semibold">20.0%</dd></div><div class="border-b border-paper/15 pb-4"><dt class="text-paper/55">半池</dt><dd class="mt-1 font-semibold">25.0%</dd></div><div class="border-b border-paper/15 pb-4"><dt class="text-paper/55">三分之二池</dt><dd class="mt-1 font-semibold">28.6%</dd></div><div><dt class="text-paper/55">满池下注</dt><dd class="mt-1 font-semibold">33.3%</dd></div></dl>
+    </aside>
+  </section>
+
+  <section class="rounded-3xl border border-sand/40 bg-sand/10 p-6 sm:p-8" aria-labelledby="pot-odds-boundary-title">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-sand">模型边界</p>
+    <h2 class="mt-3 font-display text-3xl" id="pot-odds-boundary-title">临界值不等于「可以跟注」。</h2>
+    <p class="mt-4 max-w-3xl text-sm leading-7 text-ink/70">你仍然需要针对一个明确的对手范围，给出站得住脚的胜率估算。后续下注、抽水、反向隐含赔率、弃牌带来的价值，以及胜率无法完全兑现，都可能改变最终决定。本课只负责把算术算对。</p>
+  </section>
+
+  <section class="py-12" aria-labelledby="pot-odds-practice-title">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">主动回忆</p>
+    <h2 class="mt-4 font-display text-4xl" id="pot-odds-practice-title">先计算，再说出缺少的假设。</h2>
+    <p class="mt-4 max-w-2xl text-sm leading-6 text-ink/65">每题第一次核对的答案会计入本节小结。答案和你写的思考都不会被保存。</p>
+    <div class="mt-6 grid gap-4 rounded-2xl border border-ink/10 bg-paper-deep p-5 sm:grid-cols-[minmax(0,1fr)_12rem]"><label class="text-sm font-semibold text-ink" for="pot-odds-reason">在看反馈之前，先说明你的分母是怎么来的。<textarea class="mt-2 min-h-20 w-full rounded-xl border border-ink/15 bg-paper p-3 text-sm font-normal outline-none focus:border-moss" data-lesson-session-target="reason" id="pot-odds-reason" placeholder="你的 call 之后，pot 包含什么？"></textarea></label><label class="text-sm font-semibold text-ink" for="pot-odds-confidence">反馈前的信心<select class="mt-2 w-full rounded-xl border border-ink/15 bg-paper p-3 text-sm font-normal outline-none focus:border-moss" data-lesson-session-target="confidence" id="pot-odds-confidence"><option value="1">1 · 猜测</option><option value="2">2 · 不确定</option><option value="3" selected>3 · 基本确定</option><option value="4">4 · 有信心</option><option value="5">5 · 清楚</option></select></label></div>
+
+    <div class="mt-8 space-y-6">
+      <fieldset class="rounded-3xl border border-ink/10 bg-white/55 p-6" data-answer="25" data-concept="Call-price denominator" data-correct-feedback="正确。可见的 150 pot 加上你的 50 call 得到 200；50 除以 200 是 25%。" data-review-feedback="最终 pot 要包含你自己的 call：50 ÷ (150 + 50) = 25%。" data-lesson-session-target="question" id="pot-odds-q1"><legend class="px-2 font-display text-2xl">1. 底池是 150，跟注需要 50。临界胜率是多少？</legend><div class="mt-5 grid gap-3 sm:grid-cols-3"><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="pot-odds-q1" type="radio" value="20"> <span>20%</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="pot-odds-q1" type="radio" value="25"> <span>25%</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="pot-odds-q1" type="radio" value="33"> <span>33.3%</span></label></div><button class="mt-5 min-h-11 rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-paper hover:bg-moss disabled:cursor-not-allowed disabled:opacity-45" data-action="lesson-session#check" type="button">检查答案</button><p class="mt-4 rounded-xl border border-ink/10 bg-paper p-4 text-sm leading-6 focus:outline-none" data-lesson-session-target="feedback" hidden role="status" tabindex="-1"></p><noscript><p class="mt-4 text-sm text-ink/65">答案：25%。</p></noscript></fieldset>
+
+      <fieldset class="rounded-3xl border border-ink/10 bg-white/55 p-6" data-answer="28.6" data-concept="Bet-size conversion" data-correct-feedback="正确。Two-thirds-pot bet 的 threshold 是 (2/3) ÷ (1 + 4/3) = 2/7，约为 28.6%。" data-review-feedback="使用 b ÷ (1 + 2b)。当 b = 2/3 时，结果是 2/7，约为 28.6%。" data-lesson-session-target="question" id="pot-odds-q2"><legend class="px-2 font-display text-2xl">2. 面对三分之二池的下注，临界胜率是多少？</legend><div class="mt-5 grid gap-3 sm:grid-cols-3"><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="pot-odds-q2" type="radio" value="25"> <span>25.0%</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="pot-odds-q2" type="radio" value="28.6"> <span>28.6%</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="pot-odds-q2" type="radio" value="40"> <span>40.0%</span></label></div><button class="mt-5 min-h-11 rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-paper hover:bg-moss disabled:cursor-not-allowed disabled:opacity-45" data-action="lesson-session#check" type="button">检查答案</button><p class="mt-4 rounded-xl border border-ink/10 bg-paper p-4 text-sm leading-6 focus:outline-none" data-lesson-session-target="feedback" hidden role="status" tabindex="-1"></p><noscript><p class="mt-4 text-sm text-ink/65">答案：约 28.6%。</p></noscript></fieldset>
+
+      <fieldset class="rounded-3xl border border-ink/10 bg-white/55 p-6" data-answer="range" data-concept="Price versus equity" data-correct-feedback="正确。Pot odds 给出价格；call decision 仍需要针对明确 range 的 equity，以及对被省略影响的建模。" data-review-feedback="缺少的不是另一个 pot-odds 数字，而是针对明确 opponent range 的 defensible equity estimate。" data-lesson-session-target="question" id="pot-odds-q3"><legend class="px-2 font-display text-2xl">3. 在能建议跟注之前，还缺什么？</legend><div class="mt-5 grid gap-3"><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="pot-odds-q3" type="radio" value="range"> <span>针对明确对手范围、站得住脚的胜率估算</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="pot-odds-q3" type="radio" value="suit"> <span>你的牌的花色</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="pot-odds-q3" type="radio" value="result"> <span>这一次跟注最后会不会赢</span></label></div><button class="mt-5 min-h-11 rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-paper hover:bg-moss disabled:cursor-not-allowed disabled:opacity-45" data-action="lesson-session#check" type="button">检查答案</button><p class="mt-4 rounded-xl border border-ink/10 bg-paper p-4 text-sm leading-6 focus:outline-none" data-lesson-session-target="feedback" hidden role="status" tabindex="-1"></p><noscript><p class="mt-4 text-sm text-ink/65">答案：针对明确对手范围、站得住脚的胜率估算。</p></noscript></fieldset>
+    </div>
+
+    <section class="mt-8 rounded-3xl border border-moss/30 bg-moss/10 p-6 focus:outline-none sm:p-8" data-lesson-session-target="summary" hidden id="pot-odds-session-summary" tabindex="-1"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">本节小结</p><h2 class="mt-3 font-display text-4xl">算术核对完毕，假设依然摆在明处。</h2><p class="mt-5 text-lg">得分：<strong data-lesson-session-target="score"></strong></p><p class="mt-3 text-sm leading-6 text-ink/70" data-lesson-session-target="missed"></p><dl class="mt-6 grid gap-3 text-sm sm:grid-cols-3"><div class="rounded-xl bg-paper/70 p-4"><dt class="font-semibold text-ink">你的反思</dt><dd class="mt-2 leading-6 text-ink/65" data-lesson-session-target="reasonSummary"></dd></div><div class="rounded-xl bg-paper/70 p-4"><dt class="font-semibold text-ink">信心</dt><dd class="mt-2 leading-6 text-ink/65" data-lesson-session-target="confidenceSummary"></dd></div><div class="rounded-xl bg-paper/70 p-4"><dt class="font-semibold text-ink">证据覆盖</dt><dd class="mt-2 leading-6 text-ink/65" data-lesson-session-target="evidence"></dd></div></dl><div class="mt-6 flex flex-col gap-3 sm:flex-row"><button class="min-h-11 rounded-full border border-ink/20 px-5 py-3 text-sm font-semibold hover:border-moss hover:text-moss" data-action="lesson-session#retry" type="button">重新练习本课程</button><%= link_to "继续学习「决策质量」→", decision_quality_lesson_path, class: "inline-flex min-h-11 items-center justify-center rounded-full bg-moss px-5 py-3 text-sm font-semibold text-paper hover:bg-ink" %></div></section>
+  </section>
+
+  <section class="border-t border-ink/10 py-12" aria-labelledby="pot-odds-faq-title">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">常见问题</p>
+    <h2 class="mt-4 font-display text-4xl" id="pot-odds-faq-title">关于底池赔率的常见问题</h2>
+    <div class="mt-8 grid gap-4 md:grid-cols-2">
+      <details class="rounded-2xl border border-ink/10 bg-paper-deep p-5">
+        <summary class="cursor-pointer font-semibold">底池赔率怎么算？</summary>
+        <p class="mt-3 text-sm leading-6 text-ink/70">用你需要跟注的金额，除以跟注之后的底池。底池 150、跟注 50，跟注后底池变成 200，临界胜率就是 50 ÷ 200 = 25%。</p>
+      </details>
+      <details class="rounded-2xl border border-ink/10 bg-paper-deep p-5">
+        <summary class="cursor-pointer font-semibold">面对半池下注需要多少胜率？</summary>
+        <p class="mt-3 text-sm leading-6 text-ink/70">25%。面对三分之一池需要 20%，三分之二池需要 28.6%，满池下注需要 33.3%。若对手下注为底池的 b 倍，临界胜率就是 b ÷ (1 + 2b)。</p>
+      </details>
+      <details class="rounded-2xl border border-ink/10 bg-paper-deep p-5 md:col-span-2">
+        <summary class="cursor-pointer font-semibold">底池赔率能告诉我该不该跟注吗？</summary>
+        <p class="mt-3 text-sm leading-6 text-ink/70">不能，它只给出价格。要把价格变成决定，你还需要估算自己面对对手真实牌范围时的胜率；而且这个价格没有算上后续下注、抽水，以及胜率能否兑现。</p>
+      </details>
+    </div>
+  </section>
+
+  <footer class="border-t border-ink/10 pt-8 text-sm leading-6 text-ink/60"><div class="grid gap-4 sm:grid-cols-2"><div><p class="font-semibold text-ink">内容依据</p><p class="mt-2">本页的公式和每一道例题都由基本原理推导而来，你可以自己重新算一遍。</p></div><div class="sm:text-right"><p>原创推导。</p><p class="mt-2">没有复制外部文本。</p></div></div><p class="mt-5 rounded-xl bg-paper-deep p-4">本页只讨论跟注的即时价格。它不给出起手牌范围、胜率评分，也不构成跟注建议。</p></footer>
+</article>

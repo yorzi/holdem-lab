@@ -1,0 +1,28 @@
+<% content_for :title, "#{t('auth.update_password_title')} — Holdem Lab" %>
+<% content_for :robots, "noindex, nofollow" %>
+
+<section class="mx-auto max-w-3xl px-5 py-16 sm:py-24 lg:px-8" data-auth-page="password-update">
+  <header class="max-w-2xl">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss"><%= t("auth.account") %></p>
+    <h1 class="mt-5 font-display text-5xl tracking-tight sm:text-6xl"><%= t("auth.update_password_title") %></h1>
+    <p class="mt-6 text-lg leading-8 text-ink/70"><%= t("auth.update_password_description") %></p>
+  </header>
+
+  <div class="mt-10 rounded-3xl border border-ink/10 bg-white/70 p-6 shadow-sm sm:p-8">
+    <% if flash[:alert] %>
+      <div class="mb-6 rounded-2xl border border-sand/40 bg-sand/10 p-4 text-sm leading-6" role="alert"><%= flash[:alert] %></div>
+    <% end %>
+
+    <%= form_with url: password_path(token: params[:token]), method: :put, class: "space-y-6" do |form| %>
+      <div>
+        <%= form.label :password, t("auth.password"), class: "block text-sm font-semibold" %>
+        <%= form.password_field :password, required: true, autocomplete: "new-password", minlength: 12, maxlength: 72, class: "mt-2 block w-full rounded-xl border border-ink/20 bg-paper px-4 py-3" %>
+      </div>
+      <div>
+        <%= form.label :password_confirmation, t("auth.password_confirmation"), class: "block text-sm font-semibold" %>
+        <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password", minlength: 12, maxlength: 72, class: "mt-2 block w-full rounded-xl border border-ink/20 bg-paper px-4 py-3" %>
+      </div>
+      <%= form.submit t("auth.save_password_button"), class: "min-h-11 w-full rounded-full bg-moss px-5 py-3 text-sm font-semibold text-paper transition-colors hover:bg-ink" %>
+    <% end %>
+  </div>
+</section>

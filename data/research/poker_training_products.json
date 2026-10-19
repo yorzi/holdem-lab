@@ -1,0 +1,859 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-08-19",
+  "caveat": "Features and prices are first-party public-page snapshots, not audited product tests. Strategic observations are Holdem Lab inferences and must be rechecked before pricing or positioning decisions.",
+  "direct_competitors": [
+    {
+      "id": "gto_wizard",
+      "name": "GTO Wizard",
+      "official_url": "https://gtowizard.com/",
+      "segment": "solver_study_and_trainer",
+      "stage": "established",
+      "primary_audience": [
+        "Serious cash and tournament players",
+        "Solver-literate learners",
+        "Players analyzing imported hand histories"
+      ],
+      "business_model": "Freemium subscription with paid solver, study, trainer, and analysis tiers.",
+      "pricing_snapshot": {
+        "status": "partial",
+        "as_of": "2026-08-19",
+        "plans": [
+          {
+            "name": "Free",
+            "amount": 0,
+            "currency": "USD",
+            "interval": "free",
+            "note": "Official help describes daily postflop/practice and monthly analysis limits; paid prices are dynamic behind the app and were not captured as current facts."
+          }
+        ]
+      },
+      "core_loop": "Study a solved spot, practice decisions, upload histories, inspect EV loss and leaks.",
+      "key_capabilities": [
+        "Large pre-solved library and custom solving",
+        "Preflop-to-river trainer with instant EV feedback",
+        "Hand-history analysis and leak reports",
+        "Aggregated reports and custom drills",
+        "Education-only heads-up PokerArena with virtual currency"
+      ],
+      "solver_or_ai_claim": "First-party site describes GTO Wizard AI as a solver and its reports as solver-backed.",
+      "real_money_relationship": "The site states that the study platform and PokerArena do not offer real-money gambling. It also markets a separate table tool with layouts, overlays, and automatic history upload, so Holdem Lab should keep a clearer no-table-software boundary.",
+      "strengths": [
+        "Breadth and depth of solved situations",
+        "Unified study, practice, and analysis workflow",
+        "Strong integrity messaging and Fair Play Check"
+      ],
+      "strategic_observations": [
+        "Competing on solution volume or solver speed is not a credible early wedge for Holdem Lab.",
+        "A simpler explanation-first path can serve learners who are not ready to configure ranges and trees.",
+        "Integrity should be a visible product feature, not only a legal footnote."
+      ],
+      "source_urls": [
+        "https://gtowizard.com/",
+        "https://help.gtowizard.com/subscription/"
+      ],
+      "last_verified": "2026-08-19"
+    },
+    {
+      "id": "lucid_poker",
+      "name": "Lucid Poker",
+      "official_url": "https://lucidpoker.com/try-lucid",
+      "segment": "solver_drills_and_microlearning",
+      "stage": "established",
+      "primary_audience": [
+        "Cash-game learners",
+        "Players who want short daily solver drills",
+        "Users who find raw solver databases difficult"
+      ],
+      "business_model": "Freemium subscription.",
+      "pricing_snapshot": {
+        "status": "current",
+        "as_of": "2026-08-19",
+        "plans": [
+          {
+            "name": "Basic",
+            "amount": 0,
+            "currency": "USD",
+            "interval": "free",
+            "note": "Daily Cardle, unlimited preflop ranges, and limited postflop/re-solve usage."
+          },
+          {
+            "name": "Pro introductory month",
+            "amount": 29,
+            "currency": "USD",
+            "interval": "first_month",
+            "note": "Renews at the standard monthly price."
+          },
+          {
+            "name": "Pro monthly renewal",
+            "amount": 49,
+            "currency": "USD",
+            "interval": "month",
+            "note": "Unlimited product access described on the pricing page."
+          },
+          {
+            "name": "Pro first annual term",
+            "amount": 470,
+            "currency": "USD",
+            "interval": "year",
+            "note": "Pricing page says renewal is USD 490/year."
+          }
+        ]
+      },
+      "core_loop": "Complete a short Cardle or drill, inspect a solve and expert explanation, repeat daily.",
+      "key_capabilities": [
+        "Daily five-situation Cardles",
+        "Preflop and postflop solves",
+        "Turn and river re-solving",
+        "Custom and leaderboard drills",
+        "Multiple formats and stack depths"
+      ],
+      "solver_or_ai_claim": "First-party page describes precomputed solver output translated into plain decisions and explanations.",
+      "real_money_relationship": "Training product; page discusses formats and branded poker ecosystems but does not offer real-money play itself.",
+      "strengths": [
+        "Very short daily practice loop",
+        "Plain-language positioning",
+        "Meaningful free tier"
+      ],
+      "strategic_observations": [
+        "Daily microlearning is already competitive territory, so Holdem Lab needs durable reasoning and review records, not only a daily quiz.",
+        "A USD 49/month price anchor reflects solver-backed depth, not the correct launch price for a fundamentals product."
+      ],
+      "source_urls": [
+        "https://lucidpoker.com/try-lucid"
+      ],
+      "last_verified": "2026-08-19"
+    },
+    {
+      "id": "dto_cash",
+      "name": "DTO Cash",
+      "official_url": "https://www.dtopoker.com/cash",
+      "segment": "gto_trainer_and_explorer",
+      "stage": "established",
+      "primary_audience": [
+        "Six-max and heads-up cash players",
+        "Learners who prefer simplified solved strategies"
+      ],
+      "business_model": "Freemium subscription.",
+      "pricing_snapshot": {
+        "status": "current",
+        "as_of": "2026-08-19",
+        "plans": [
+          {
+            "name": "Free",
+            "amount": 0,
+            "currency": "USD",
+            "interval": "free",
+            "note": "Free preflop cash solutions and one postflop training spot."
+          },
+          {
+            "name": "Beginner",
+            "amount": 9.99,
+            "currency": "USD",
+            "interval": "month",
+            "note": "Official page also lists USD 99.90/year."
+          },
+          {
+            "name": "Pro",
+            "amount": 39.99,
+            "currency": "USD",
+            "interval": "month",
+            "note": "Official page also lists USD 399.90/year."
+          }
+        ]
+      },
+      "core_loop": "Train a solved cash-game spot, receive feedback, then explore ranges and aggregate reports.",
+      "key_capabilities": [
+        "Preflop and postflop drills",
+        "Simplified solved strategies",
+        "Range explorer and aggregate reports",
+        "Performance tracking",
+        "Heads-up and three-way content at higher tiers"
+      ],
+      "solver_or_ai_claim": "First-party page markets GTO solutions, optimal frequencies, and exact EV loss in its advanced tier.",
+      "real_money_relationship": "Study tool for cash-game players; no real-money game is offered on the cited page.",
+      "strengths": [
+        "Clear tier ladder from free to advanced",
+        "Training plus exploration",
+        "Simplification as a learning proposition"
+      ],
+      "strategic_observations": [
+        "USD 9.99/month validates a lower-price training tier, but DTO's core value still relies on solver libraries.",
+        "Holdem Lab can distinguish itself by teaching when assumptions make an EV number unreliable."
+      ],
+      "source_urls": [
+        "https://www.dtopoker.com/cash"
+      ],
+      "last_verified": "2026-08-19"
+    },
+    {
+      "id": "pokercoaching_peakgto",
+      "name": "PokerCoaching and PeakGTO",
+      "official_url": "https://pokercoaching.com/pricing/",
+      "segment": "courses_coaching_and_solver_drills",
+      "stage": "established",
+      "primary_audience": [
+        "Learners seeking a structured course library",
+        "Serious players seeking live coaching or solver drills"
+      ],
+      "business_model": "Annual subscriptions for courses, solver tools, or a bundle.",
+      "pricing_snapshot": {
+        "status": "current",
+        "as_of": "2026-08-19",
+        "plans": [
+          {
+            "name": "PokerCoaching Premium",
+            "amount": 999,
+            "currency": "USD",
+            "interval": "year",
+            "note": "Courses, quizzes, coaching, hand review, and study plans."
+          },
+          {
+            "name": "PeakGTO",
+            "amount": 599,
+            "currency": "USD",
+            "interval": "year",
+            "note": "Solver-backed libraries, trainer, daily drill, and leak finding."
+          },
+          {
+            "name": "Bundle",
+            "amount": 1299,
+            "currency": "USD",
+            "interval": "year",
+            "note": "Combined course and PeakGTO access."
+          }
+        ]
+      },
+      "core_loop": "Follow a structured lesson or live session, answer quizzes, then use solver-backed drills for repetition.",
+      "key_capabilities": [
+        "Large course and lesson library",
+        "Interactive quizzes",
+        "Live coaching and Q&A",
+        "Preflop and postflop libraries",
+        "GTO trainer and leak finder"
+      ],
+      "solver_or_ai_claim": "PeakGTO is described as solver-backed; PokerCoaching Premium is positioned as expert-led structured learning.",
+      "real_money_relationship": "Education and study product aimed at active poker players.",
+      "strengths": [
+        "Broad expert content",
+        "Strong distinction between course learning and solver study",
+        "Community and live support"
+      ],
+      "strategic_observations": [
+        "Holdem Lab should not compete on coach celebrity or hours of video.",
+        "The separation between structured learning and advanced solver tooling supports a staged product architecture."
+      ],
+      "source_urls": [
+        "https://pokercoaching.com/pricing/"
+      ],
+      "last_verified": "2026-08-19"
+    },
+    {
+      "id": "run_it_once",
+      "name": "Run It Once Training",
+      "official_url": "https://www.runitonce.com/register/plans-and-pricing/",
+      "segment": "expert_video_library_and_community",
+      "stage": "established",
+      "primary_audience": [
+        "Low-stakes learners seeking expert video content",
+        "High-stakes players seeking elite coaching content"
+      ],
+      "business_model": "Freemium video subscriptions with separate trainer/course offerings.",
+      "pricing_snapshot": {
+        "status": "current",
+        "as_of": "2026-08-19",
+        "plans": [
+          {
+            "name": "Basic",
+            "amount": 0,
+            "currency": "USD",
+            "interval": "free",
+            "note": "Forum and a limited taste of content."
+          },
+          {
+            "name": "Essential",
+            "amount": 24.99,
+            "currency": "USD",
+            "interval": "month",
+            "note": "Low-stakes video library."
+          },
+          {
+            "name": "Elite",
+            "amount": 199.99,
+            "currency": "USD",
+            "interval": "month",
+            "note": "Official page lists an annual promotional price of USD 1,400."
+          }
+        ]
+      },
+      "core_loop": "Watch expert analysis and play-and-explain videos, join forums or live sessions, and optionally use a visual GTO trainer.",
+      "key_capabilities": [
+        "Large expert video library",
+        "Frequent new releases",
+        "Forums and community",
+        "Mini-courses, seminars, and Q&A",
+        "Multi-language captions on newer elite content"
+      ],
+      "solver_or_ai_claim": "The training site is primarily expert-content-led; its Vision product is separately described as a GTO trainer.",
+      "real_money_relationship": "Education product for poker players; annual elite benefits may include third-party poker media access.",
+      "strengths": [
+        "Expert credibility",
+        "Depth across formats",
+        "Community discussion"
+      ],
+      "strategic_observations": [
+        "Passive video abundance creates an opening for a smaller, action-first curriculum.",
+        "Holdem Lab should link each lesson claim to an exercise and retrieval schedule."
+      ],
+      "source_urls": [
+        "https://www.runitonce.com/register/plans-and-pricing/",
+        "https://www.runitonce.com/elite-poker-training/"
+      ],
+      "last_verified": "2026-08-19"
+    },
+    {
+      "id": "upswing_lab",
+      "name": "Upswing Lab 2.0",
+      "official_url": "https://upswingpoker.com/the-poker-lab-coaching/",
+      "segment": "structured_expert_course_membership",
+      "stage": "established",
+      "primary_audience": [
+        "Cash and tournament players seeking a progressive course",
+        "Learners valuing coach access and community"
+      ],
+      "business_model": "Subscription course membership.",
+      "pricing_snapshot": {
+        "status": "current",
+        "as_of": "2026-08-19",
+        "plans": [
+          {
+            "name": "Monthly",
+            "amount": 99,
+            "currency": "USD",
+            "interval": "month",
+            "note": "Complete Lab library, charts, and private community."
+          },
+          {
+            "name": "Six months",
+            "amount": 399,
+            "currency": "USD",
+            "interval": "six_months",
+            "note": "Single six-month term price shown by the official page."
+          },
+          {
+            "name": "Annual",
+            "amount": 699,
+            "currency": "USD",
+            "interval": "year",
+            "note": "Annual membership price shown by the official page."
+          }
+        ]
+      },
+      "core_loop": "Progress through expert-created modules, consult preflop charts, and use private Q&A/community support.",
+      "key_capabilities": [
+        "Progressive learning modules",
+        "Premium preflop charts",
+        "Weekly strategy content",
+        "Private Discord and coach Q&A"
+      ],
+      "solver_or_ai_claim": "Course and expert-methodology product; it includes game-theory material but is not positioned primarily as an on-demand solver.",
+      "real_money_relationship": "Education product; the cited pricing page also displays a partner promotional chip benefit, which Holdem Lab should avoid.",
+      "strengths": [
+        "Clear expert-led curriculum",
+        "Community and recurring updates",
+        "Strong brand authority"
+      ],
+      "strategic_observations": [
+        "Holdem Lab should keep its commercial experience separate from any game-chip or operator incentive.",
+        "Its lower-cost wedge should be practice records and transparent feedback, not access to famous coaches."
+      ],
+      "source_urls": [
+        "https://upswingpoker.com/the-poker-lab-coaching/"
+      ],
+      "last_verified": "2026-08-19"
+    },
+    {
+      "id": "red_chip_core",
+      "name": "Red Chip Poker CORE 2.0",
+      "official_url": "https://redchippoker.com/launch-core/",
+      "segment": "low_cost_structured_course",
+      "stage": "established",
+      "primary_audience": [
+        "Beginner and intermediate players",
+        "Price-sensitive learners seeking a syllabus"
+      ],
+      "business_model": "Low-cost weekly subscription.",
+      "pricing_snapshot": {
+        "status": "current",
+        "as_of": "2026-08-19",
+        "plans": [
+          {
+            "name": "CORE 2.0",
+            "amount": 5,
+            "currency": "USD",
+            "interval": "week",
+            "note": "Cancel-anytime access advertised on the official page."
+          }
+        ]
+      },
+      "core_loop": "Follow progressive lessons, complete quizzes and hand analyses, and earn progress achievements.",
+      "key_capabilities": [
+        "200-plus lessons",
+        "Progressive levels and sub-courses",
+        "Quizzes and hand analyses",
+        "Achievements and leaderboard"
+      ],
+      "solver_or_ai_claim": "Primarily a coach-authored curriculum and quiz product.",
+      "real_money_relationship": "Poker education product aimed at players; the sales copy emphasizes financial return, unlike Holdem Lab's intended framing.",
+      "strengths": [
+        "Accessible price",
+        "Explicit syllabus",
+        "Beginner-to-intermediate scope"
+      ],
+      "strategic_observations": [
+        "A cheap structured course already exists, so curriculum organization alone is not a moat.",
+        "Avoid winnings-based ROI copy and progress competition; emphasize decision quality and retention."
+      ],
+      "source_urls": [
+        "https://redchippoker.com/launch-core/"
+      ],
+      "last_verified": "2026-08-19"
+    },
+    {
+      "id": "pokersnowie",
+      "name": "PokerSnowie",
+      "official_url": "https://www.pokersnowie.com/",
+      "segment": "ai_opponent_training_and_hand_analysis",
+      "stage": "established",
+      "primary_audience": [
+        "Players who want to practice against AI opponents",
+        "Users importing histories for mistake analysis"
+      ],
+      "business_model": "Paid software subscription with trial; current official price was not reliably exposed in this research pass.",
+      "pricing_snapshot": {
+        "status": "not_observed",
+        "as_of": "2026-08-19",
+        "plans": []
+      },
+      "core_loop": "Play against PokerSnowie, import or auto-save hands, review errors and progress over time.",
+      "key_capabilities": [
+        "AI-opponent training",
+        "Hand-history import and analysis",
+        "Scenario editing and range advice",
+        "Position/action filters",
+        "Longitudinal error tracking"
+      ],
+      "solver_or_ai_claim": "First-party pages describe AI evaluations and GTO-like suggestions; this wording is not the same as a documented solver-data provenance contract.",
+      "real_money_relationship": "Imports histories from supported poker sites for post-session analysis; Holdem Lab should permit only explicit offline/manual import if that feature is later approved.",
+      "strengths": [
+        "Learn-by-playing loop",
+        "Post-training analysis",
+        "Longitudinal error metrics"
+      ],
+      "strategic_observations": [
+        "The product shows the value of simulated practice plus review, but Holdem Lab can be stricter about evidence labels and immutable reasoning records.",
+        "Current pricing must be checked directly before any commercial comparison."
+      ],
+      "source_urls": [
+        "https://www.pokersnowie.com/blog/pokerSnowie-Mac-Update",
+        "https://www.pokersnowie.com/blog/new-Mac-update%3ATrack-your-improvements%21"
+      ],
+      "last_verified": "2026-08-19"
+    },
+    {
+      "id": "advanced_poker_training",
+      "name": "Advanced Poker Training",
+      "official_url": "https://www.pokertraining.com/",
+      "segment": "simulated_play_and_adaptive_coaching",
+      "stage": "established",
+      "primary_audience": [
+        "Beginners learning through play",
+        "Cash and tournament players seeking targeted repetition"
+      ],
+      "business_model": "Freemium; paid tiers unlock higher volume, advisors, challenges, and reports. Current paid price was not captured.",
+      "pricing_snapshot": {
+        "status": "partial",
+        "as_of": "2026-08-19",
+        "plans": [
+          {
+            "name": "Free account",
+            "amount": 0,
+            "currency": "USD",
+            "interval": "free",
+            "note": "Official FAQ says core training is available without a credit card."
+          }
+        ]
+      },
+      "core_loop": "Play high-volume simulated hands, receive advisor feedback, review reports, then follow a weekly training plan.",
+      "key_capabilities": [
+        "Simulated cash, Sit & Go, and MTT play",
+        "Targeted scenarios and multiple advisors",
+        "Saved hand database and reports",
+        "Weekly training plans",
+        "Interactive challenges"
+      ],
+      "solver_or_ai_claim": "First-party page uses AI-powered and GTO-style language. The public page does not provide a Holdem Lab-compatible solver provenance record.",
+      "real_money_relationship": "Simulated training site; marketing is oriented toward improving real play but the cited product itself is not a cash game.",
+      "strengths": [
+        "Practice volume and targeted repetition",
+        "Adaptive reports and plans",
+        "Long operating history"
+      ],
+      "strategic_observations": [
+        "High-volume simulation is established; the sharper wedge is recording why a user chose an action and calibrating confidence.",
+        "Avoid unqualified improvement-speed claims unless Holdem Lab runs its own study."
+      ],
+      "source_urls": [
+        "https://www.pokertraining.com/",
+        "https://www.pokertraining.com/poker/reports_training_plan_demo.php"
+      ],
+      "last_verified": "2026-08-19"
+    },
+    {
+      "id": "pokerstars_learn",
+      "name": "PokerStars Learn",
+      "official_url": "https://www.pokerstars.com/poker/learn/courses/",
+      "segment": "free_operator_education",
+      "stage": "established",
+      "primary_audience": [
+        "New players",
+        "Players exploring multiple poker formats"
+      ],
+      "business_model": "Free education that feeds an operator ecosystem.",
+      "pricing_snapshot": {
+        "status": "current",
+        "as_of": "2026-08-19",
+        "plans": [
+          {
+            "name": "Learn",
+            "amount": 0,
+            "currency": "USD",
+            "interval": "free",
+            "note": "Official help describes it as a free training program."
+          }
+        ]
+      },
+      "core_loop": "Follow structured lessons by level or format and then practice through the PokerStars ecosystem.",
+      "key_capabilities": [
+        "Basics, core, improver, cash, tournament, heads-up, and mindset courses",
+        "Rules, glossary, articles, and hand replayer",
+        "Progressive lesson structure"
+      ],
+      "solver_or_ai_claim": "Primarily educational editorial content rather than solver training.",
+      "real_money_relationship": "Directly connected to a real-money/play-money poker operator; official help explicitly mentions both practice modes.",
+      "strengths": [
+        "Free breadth",
+        "Strong search footprint and brand",
+        "Clear beginner curriculum"
+      ],
+      "strategic_observations": [
+        "Holdem Lab cannot win by publishing generic rules articles alone.",
+        "Independent education, evidence transparency, and no operator funnel are meaningful trust distinctions."
+      ],
+      "source_urls": [
+        "https://www.pokerstars.com/poker/learn/courses/",
+        "https://www.pokerstars.com/help/articles/sch-pso-explanation/117292/"
+      ],
+      "last_verified": "2026-08-19"
+    },
+    {
+      "id": "poker_toolkit",
+      "name": "Poker Toolkit",
+      "official_url": "https://docs.poker-toolkit.com/en",
+      "segment": "all_in_one_study_toolkit",
+      "stage": "active",
+      "primary_audience": [
+        "Beginner and recreational players",
+        "Learners organizing ranges, mental game, and equity work"
+      ],
+      "business_model": "Low-cost annual subscriptions.",
+      "pricing_snapshot": {
+        "status": "current",
+        "as_of": "2026-08-19",
+        "plans": [
+          {
+            "name": "Range-focused entry plan",
+            "amount": 16,
+            "currency": "EUR",
+            "interval": "year",
+            "note": "Documentation says plans start at EUR 16/year."
+          },
+          {
+            "name": "Full access ceiling",
+            "amount": 48,
+            "currency": "EUR",
+            "interval": "year",
+            "note": "Documentation states full access up to EUR 48/year."
+          }
+        ]
+      },
+      "core_loop": "Create and memorize ranges, estimate equity, track mental-game goals, and use an AI coaching assistant.",
+      "key_capabilities": [
+        "Range editor, folders, drawing, and recall drills",
+        "Equity calculator and guess-the-equity quiz",
+        "Goals and mental-leak tracking",
+        "AI coaching chat"
+      ],
+      "solver_or_ai_claim": "Documentation says its personal assistant is powered by Claude. That assistant's poker authority and evidence provenance are not established by the cited page.",
+      "real_money_relationship": "Independent study toolkit aimed at players; no game is offered in the cited documentation.",
+      "strengths": [
+        "Very low price",
+        "Broad personal-study organization",
+        "Active range-recall interactions"
+      ],
+      "strategic_observations": [
+        "An all-in-one feature list is easy to imitate and risks product sprawl.",
+        "Holdem Lab should make deterministic rule and evidence authority explicit wherever an assistant is later introduced."
+      ],
+      "source_urls": [
+        "https://docs.poker-toolkit.com/en/getting-started",
+        "https://docs.poker-toolkit.com/en/ranges"
+      ],
+      "last_verified": "2026-08-19"
+    },
+    {
+      "id": "pokerac",
+      "name": "PokerAC",
+      "official_url": "https://www.pokerac.com/",
+      "segment": "personal_study_gym_and_club_tools",
+      "stage": "active",
+      "primary_audience": [
+        "Players organizing their own study materials",
+        "Licensed clubs using a separate operations toolkit"
+      ],
+      "business_model": "Free study account plus separate paid services and operator tools; public recurring price not observed.",
+      "pricing_snapshot": {
+        "status": "partial",
+        "as_of": "2026-08-19",
+        "plans": [
+          {
+            "name": "Study account",
+            "amount": 0,
+            "currency": "USD",
+            "interval": "free",
+            "note": "Official FAQ says the personal library and spaced-repetition trainer are available with a free account."
+          }
+        ]
+      },
+      "core_loop": "Capture external study material, organize it as spots/flashcards/ranges, drill with spaced repetition, and track progress.",
+      "key_capabilities": [
+        "User-created spots, flashcards, and ranges",
+        "Spaced repetition",
+        "Video timestamp notes",
+        "Private personal library",
+        "Separate live-club management tools"
+      ],
+      "solver_or_ai_claim": "Study organization product; it mostly expects users to bring their own content.",
+      "real_money_relationship": "The same brand also markets operations tools for licensed clubs. Holdem Lab should not enter that adjacent category.",
+      "strengths": [
+        "Turns scattered material into a review system",
+        "User-owned private content",
+        "Spaced repetition"
+      ],
+      "strategic_observations": [
+        "Personal knowledge accumulation is a real product category, not merely a dashboard feature.",
+        "Holdem Lab can differentiate with its own reviewed curriculum and deterministic scenario generator while retaining personal notes."
+      ],
+      "source_urls": [
+        "https://www.pokerac.com/"
+      ],
+      "last_verified": "2026-08-19"
+    },
+    {
+      "id": "river_gamified_lessons",
+      "name": "River — Gamified Poker Lessons",
+      "official_url": "https://play.google.com/store/apps/details?id=com.gtosolutions.pokercourseapp",
+      "segment": "mobile_microlearning",
+      "stage": "early",
+      "primary_audience": [
+        "Beginners through advanced learners seeking short lessons",
+        "Mobile-first users"
+      ],
+      "business_model": "Mobile app; price was not observed on the cited listing.",
+      "pricing_snapshot": {
+        "status": "not_observed",
+        "as_of": "2026-08-19",
+        "plans": []
+      },
+      "core_loop": "Move through short adaptive modules, answer interactive questions, and progress from beginner to advanced levels.",
+      "key_capabilities": [
+        "Bite-sized lessons",
+        "Adaptive difficulty",
+        "Concept explanations and questions",
+        "Gamified progression"
+      ],
+      "solver_or_ai_claim": "The listing emphasizes reasoning and structured learning rather than publishing solver parameters.",
+      "real_money_relationship": "Google Play listing states that it is educational and contains no gambling or real-money play.",
+      "strengths": [
+        "Clear mobile learning path",
+        "Low-friction lesson format",
+        "Reasoning-oriented positioning"
+      ],
+      "strategic_observations": [
+        "Duolingo-style poker learning is no longer an empty niche.",
+        "Holdem Lab should avoid shallow streak gamification and make review evidence, source provenance, and replay its deeper differentiation."
+      ],
+      "source_urls": [
+        "https://play.google.com/store/apps/details?id=com.gtosolutions.pokercourseapp"
+      ],
+      "last_verified": "2026-08-19"
+    },
+    {
+      "id": "pokerwise",
+      "name": "PokerWise",
+      "official_url": "https://pokerwise.app/",
+      "segment": "structured_mobile_course",
+      "stage": "prelaunch_waitlist",
+      "primary_audience": [
+        "Beginners seeking structured concepts",
+        "Mobile and offline learners"
+      ],
+      "business_model": "Planned monthly or lifetime purchase.",
+      "pricing_snapshot": {
+        "status": "prelaunch",
+        "as_of": "2026-08-19",
+        "plans": [
+          {
+            "name": "Monthly planned",
+            "amount": 4.99,
+            "currency": "EUR",
+            "interval": "month",
+            "note": "The page currently presents a waitlist rather than confirmed general availability."
+          },
+          {
+            "name": "Lifetime planned",
+            "amount": 24.99,
+            "currency": "EUR",
+            "interval": "lifetime",
+            "note": "Planned one-time access displayed on the waitlist page."
+          }
+        ]
+      },
+      "core_loop": "Read structured lessons, answer quizzes, track achievements, and progress through learning books.",
+      "key_capabilities": [
+        "Eight learning books",
+        "Hundreds of lessons and topics",
+        "Quizzes and tests",
+        "Progress and achievement system",
+        "Planned offline mobile access"
+      ],
+      "solver_or_ai_claim": "The page emphasizes logic, psychology, mathematics, and disciplined decision-making rather than solver authority.",
+      "real_money_relationship": "The page explicitly says the app is not a casino and does not offer real-money gambling.",
+      "strengths": [
+        "Very accessible planned pricing",
+        "Broad fundamentals positioning",
+        "Explicit education-only boundary"
+      ],
+      "strategic_observations": [
+        "A low-cost course may cap willingness to pay for static lessons.",
+        "Holdem Lab's paid value should come from accumulated personal practice and review, not locking basic rules behind a subscription."
+      ],
+      "source_urls": [
+        "https://pokerwise.app/"
+      ],
+      "last_verified": "2026-08-19"
+    }
+  ],
+  "learning_analogues": [
+    {
+      "id": "anki",
+      "name": "Anki",
+      "official_url": "https://docs.ankiweb.net/background.html",
+      "category": "spaced_repetition",
+      "mechanics": [
+        "Active recall before revealing the answer",
+        "Review intervals that respond to recall difficulty",
+        "A due queue instead of an endless content feed"
+      ],
+      "product_lessons": [
+        "Schedule concepts and error patterns, not exact card deals alone.",
+        "Let users distinguish forgotten, difficult, and easy recalls.",
+        "Keep the scheduling algorithm versioned and explainable."
+      ],
+      "avoid_copying": [
+        "Reducing multi-step poker judgment to fact flashcards",
+        "Overloading new learners with an unbounded review backlog"
+      ],
+      "source_urls": [
+        "https://docs.ankiweb.net/background.html",
+        "https://docs.ankiweb.net/deck-options"
+      ],
+      "last_verified": "2026-08-19"
+    },
+    {
+      "id": "chessable",
+      "name": "Chessable MoveTrainer",
+      "official_url": "https://support.chess.com/en/articles/10318195-what-are-movetrainer-courses",
+      "category": "interactive_course_repetition",
+      "mechanics": [
+        "Courses combine explanations with trainable decisions",
+        "Move-by-move recall and spaced reviews",
+        "User-created or paid expert repertoires"
+      ],
+      "product_lessons": [
+        "A lesson should compile into trainable decision points.",
+        "Users can build a personal repertoire without changing the canonical course.",
+        "Expert content and the practice engine can be separate assets joined by a stable schema."
+      ],
+      "avoid_copying": [
+        "Treating poker as memorizing one forced move",
+        "Rewarding review volume without measuring transfer to new situations"
+      ],
+      "source_urls": [
+        "https://support.chess.com/en/articles/10318195-what-are-movetrainer-courses",
+        "https://support.chess.com/en/collections/11380472-features"
+      ],
+      "last_verified": "2026-08-19"
+    },
+    {
+      "id": "brilliant",
+      "name": "Brilliant",
+      "official_url": "https://brilliant.org/faq/",
+      "category": "interactive_explanation",
+      "mechanics": [
+        "Learn by solving rather than watching",
+        "Stepwise hints and feedback",
+        "Personalized paths from foundations to advanced topics"
+      ],
+      "product_lessons": [
+        "Teach pot odds, ranges, and board texture through manipulable examples.",
+        "Use a sequence of small insights before a full-hand decision.",
+        "Make mistakes productive by explaining the misconception."
+      ],
+      "avoid_copying": [
+        "Quoting marketing efficacy numbers as proof for Holdem Lab",
+        "Turning every topic into decorative animation instead of a real decision"
+      ],
+      "source_urls": [
+        "https://brilliant.org/faq/",
+        "https://brilliant.org/science/"
+      ],
+      "last_verified": "2026-08-19"
+    },
+    {
+      "id": "lichess",
+      "name": "Lichess Puzzles and Studies",
+      "official_url": "https://lichess.org/training",
+      "category": "free_puzzles_and_review",
+      "mechanics": [
+        "Puzzles adapted by rating and selectable themes",
+        "Replay of missed puzzles",
+        "Studies that combine positions, annotations, variations, and interactive lessons"
+      ],
+      "product_lessons": [
+        "Build a free public practice commons around stable themes.",
+        "Offer retry and analysis after commitment.",
+        "Keep public study content linkable and remixable only when rights allow."
+      ],
+      "avoid_copying": [
+        "Using one opaque rating as the only learning model",
+        "Assuming a best-move puzzle maps cleanly to mixed-frequency poker decisions"
+      ],
+      "source_urls": [
+        "https://lichess.org/training",
+        "https://lichess.org/page/blind-mode-tutorial"
+      ],
+      "last_verified": "2026-08-19"
+    }
+  ]
+}

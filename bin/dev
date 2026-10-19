@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+set -eu
+cd "$(dirname "$0")/.."
+
+# Rails and password-reset links share this local port. Vite uses 3036.
+export PORT="${PORT:-3100}"
+
+exec bundle exec foreman start -f Procfile.dev "$@"

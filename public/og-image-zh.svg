@@ -1,0 +1,13 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#1C2B27"/>
+  <rect x="48" y="48" width="1104" height="534" rx="34" fill="#F4F0E8"/>
+  <path d="M844 48H1118C1136.78 48 1152 63.2223 1152 82V548C1152 566.778 1136.78 582 1118 582H844V48Z" fill="#D4A56A"/>
+  <path d="M920 140H1016C1026.49 140 1035 148.507 1035 159V250H901V159C901 148.507 909.507 140 920 140Z" fill="#F4F0E8"/>
+  <path d="M901 250H1035V471C1035 481.493 1026.49 490 1016 490H920C909.507 490 901 481.493 901 471V250Z" fill="#1C2B27"/>
+  <path d="M968 234L1020 286L968 338L916 286L968 234Z" fill="#D4A56A"/>
+  <rect x="112" y="126" width="112" height="46" rx="23" fill="#D4A56A"/>
+  <text x="112" y="236" fill="#1C2B27" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif" font-size="68" font-weight="700" letter-spacing="-2">Holdem Lab</text>
+  <text x="112" y="322" fill="#2E4B42" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif" font-size="38" font-weight="700">练习决策，复盘思考。</text>
+  <text x="112" y="388" fill="#50645D" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif" font-size="26">以证据边界为先的 Texas Hold'em 学习</text>
+  <text x="112" y="438" fill="#50645D" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif" font-size="24">虚拟筹码 · 可回放复盘 · 诚实的策略边界</text>
+</svg>

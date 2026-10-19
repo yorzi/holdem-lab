@@ -1,0 +1,36 @@
+<%# Rendered on every page but hidden until the snippet in _analytics_head
+    decides this visitor has to be asked. It is also the panel the privacy
+    page reopens through [data-analytics-consent-manage], which is why the
+    decline button exists even where analytics loads by default. %>
+<% if analytics_enabled? %>
+  <div
+    class="fixed inset-x-0 bottom-0 z-50 border-t border-ink/10 bg-paper/95 px-5 py-5 shadow-[0_-8px_30px_rgba(28,43,39,0.12)] backdrop-blur-md lg:px-8"
+    data-analytics-consent-banner
+    hidden
+    role="region"
+    aria-label="<%= t("analytics.consent.aria_label") %>"
+  >
+    <div class="mx-auto flex max-w-7xl flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+      <div class="max-w-2xl text-sm leading-6 text-ink/75">
+        <p data-analytics-consent-note="required"><%= t("analytics.consent.note_required") %></p>
+        <p data-analytics-consent-note="optional" hidden><%= t("analytics.consent.note_optional") %></p>
+        <p class="mt-2 text-xs text-ink/55">
+          <%= t("analytics.consent.never_collected") %>
+          <%= link_to t("analytics.consent.read_more"), privacy_path, class: "font-semibold text-moss underline underline-offset-2 hover:text-ink" %>
+        </p>
+      </div>
+      <div class="flex flex-wrap items-center gap-3">
+        <button
+          type="button"
+          class="inline-flex min-h-11 items-center justify-center rounded-full border border-ink/15 bg-paper px-5 py-2.5 text-sm font-semibold text-ink/70 transition-colors hover:border-ink/30 hover:text-ink"
+          data-analytics-consent-decline
+        ><%= t("analytics.consent.decline") %></button>
+        <button
+          type="button"
+          class="inline-flex min-h-11 items-center justify-center rounded-full bg-moss px-5 py-2.5 text-sm font-semibold text-paper shadow-sm transition-colors hover:bg-ink"
+          data-analytics-consent-accept
+        ><%= t("analytics.consent.accept") %></button>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "manifest_id": "holdem-content-manifest-v1",
+  "technical_status": "automated_pass_required",
+  "records": [
+    {
+      "id": "lesson-position-en-v1",
+      "kind": "lesson",
+      "slug": "position",
+      "locale": "en",
+      "content_version": "position-content-v1",
+      "route_path": "/learn/position",
+      "view_path": "app/views/lessons/position.html.erb",
+      "content_mode": "original_authored_synthesis",
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "asset_digest": "d93c29796ea96c76eff2d0571aa8b80f65b49b7948eab86c0d501033c5619549",
+      "source_packet_ids": [
+        "position-v1"
+      ],
+      "technical_review": {
+        "status": "passed",
+        "evidence": [
+          "source-packet:position-v1",
+          "test/system/position_lesson_test.rb",
+          "test/controllers/learn_controller_test.rb"
+        ]
+      },
+      "domain_review": {
+        "status": "approved",
+        "reviewer": "Andy Wang (product owner)",
+        "reviewed_at": "2026-08-25"
+      },
+      "rights_notes": "Original lesson synthesis with source attribution; no source text is reproduced."
+    },
+    {
+      "id": "lesson-position-zh-v1",
+      "kind": "lesson",
+      "slug": "position",
+      "locale": "zh",
+      "content_version": "position-zh-content-v1",
+      "route_path": "/zh/learn/position",
+      "view_path": "app/views/locales/zh/lessons/position.html.erb",
+      "content_mode": "independent_authored_sibling",
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "asset_digest": "6a2cb5813b8f206f1f6af66bc408292fa869f8eaf4e55f7555d9b6bc28caba23",
+      "source_packet_ids": [
+        "position-v1"
+      ],
+      "technical_review": {
+        "status": "passed",
+        "evidence": [
+          "source-packet:position-v1",
+          "test/controllers/localization_controller_test.rb",
+          "test/system/localization_test.rb"
+        ]
+      },
+      "domain_review": {
+        "status": "approved",
+        "reviewer": "Andy Wang (product owner)",
+        "reviewed_at": "2026-08-25"
+      },
+      "rights_notes": "Independently authored Chinese sibling; English source packet is provenance, not a machine-translated runtime source."
+    },
+    {
+      "id": "lesson-pot-odds-en-v1",
+      "kind": "lesson",
+      "slug": "pot-odds",
+      "locale": "en",
+      "content_version": "pot-odds-content-v1",
+      "route_path": "/learn/pot-odds",
+      "view_path": "app/views/lessons/pot_odds.html.erb",
+      "content_mode": "original_authored_synthesis",
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "asset_digest": "cfc9d26e2dd7feb493ec4e1996aaf421661764eacca7ad68d484a49ead22cddf",
+      "source_packet_ids": [
+        "pot-odds-v1"
+      ],
+      "technical_review": {
+        "status": "passed",
+        "evidence": [
+          "source-packet:pot-odds-v1",
+          "test/system/foundation_lessons_test.rb",
+          "test/controllers/learn_controller_test.rb"
+        ]
+      },
+      "domain_review": {
+        "status": "approved",
+        "reviewer": "Andy Wang (product owner)",
+        "reviewed_at": "2026-08-25"
+      },
+      "rights_notes": "Original lesson synthesis with independently recomputed arithmetic fixtures; no source text is reproduced."
+    },
+    {
+      "id": "lesson-pot-odds-zh-v1",
+      "kind": "lesson",
+      "slug": "pot-odds",
+      "locale": "zh",
+      "content_version": "pot-odds-zh-content-v1",
+      "route_path": "/zh/learn/pot-odds",
+      "view_path": "app/views/locales/zh/lessons/pot_odds.html.erb",
+      "content_mode": "independent_authored_sibling",
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "asset_digest": "98ddd1679a8d6dc15d6cedc74fa1d9b5a330a5260d3311bcf94d5a13fe7d34ff",
+      "source_packet_ids": [
+        "pot-odds-v1"
+      ],
+      "technical_review": {
+        "status": "passed",
+        "evidence": [
+          "source-packet:pot-odds-v1",
+          "test/controllers/localization_controller_test.rb",
+          "test/system/localization_test.rb"
+        ]
+      },
+      "domain_review": {
+        "status": "approved",
+        "reviewer": "Andy Wang (product owner)",
+        "reviewed_at": "2026-08-25"
+      },
+      "rights_notes": "Independently authored Chinese sibling; English source packet is provenance, not a machine-translated runtime source."
+    },
+    {
+      "id": "lesson-decision-quality-en-v1",
+      "kind": "lesson",
+      "slug": "decision-quality",
+      "locale": "en",
+      "content_version": "decision-quality-content-v1",
+      "route_path": "/learn/decision-quality",
+      "view_path": "app/views/lessons/decision_quality.html.erb",
+      "content_mode": "original_authored_synthesis",
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "asset_digest": "c3ce8f3088df638ec855eef757a2bb210b16e6d064970d06c7e2e95395a2aca6",
+      "source_packet_ids": [
+        "decision-quality-v1"
+      ],
+      "technical_review": {
+        "status": "passed",
+        "evidence": [
+          "source-packet:decision-quality-v1",
+          "test/system/foundation_lessons_test.rb",
+          "test/controllers/learn_controller_test.rb"
+        ]
+      },
+      "domain_review": {
+        "status": "approved",
+        "reviewer": "Andy Wang (product owner)",
+        "reviewed_at": "2026-08-25"
+      },
+      "rights_notes": "Original learning-loop synthesis with explicit transfer limits; cited research is not reproduced."
+    },
+    {
+      "id": "lesson-decision-quality-zh-v1",
+      "kind": "lesson",
+      "slug": "decision-quality",
+      "locale": "zh",
+      "content_version": "decision-quality-zh-content-v1",
+      "route_path": "/zh/learn/decision-quality",
+      "view_path": "app/views/locales/zh/lessons/decision_quality.html.erb",
+      "content_mode": "independent_authored_sibling",
+      "publication_status": "published",
+      "rights_status": "original_authored",
+      "asset_digest": "85cf632f76d78f057c05969501b7db656cffba0e11349f014d57a962aa178f82",
+      "source_packet_ids": [
+        "decision-quality-v1"
+      ],
+      "technical_review": {
+        "status": "passed",
+        "evidence": [
+          "source-packet:decision-quality-v1",
+          "test/controllers/localization_controller_test.rb",
+          "test/system/localization_test.rb"
+        ]
+      },
+      "domain_review": {
+        "status": "approved",
+        "reviewer": "Andy Wang (product owner)",
+        "reviewed_at": "2026-08-25"
+      },
+      "rights_notes": "Independently authored Chinese sibling; English source packet is provenance, not a machine-translated runtime source."
+    }
+  ]
+}

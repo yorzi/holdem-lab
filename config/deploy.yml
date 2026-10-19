@@ -1,0 +1,50 @@
+# Kamal 2 EXAMPLE, not the maintainer's infrastructure.
+# Replace the documentation-only host, registry, image, and domain before use.
+# Deployment is disabled by default in CI. See docs/deployment-plan.md.
+service: holdem_lab
+image: your-registry-user/holdem_lab
+
+servers:
+  web:
+    - 192.0.2.10
+
+ssh:
+  user: deploy
+
+proxy:
+  ssl: true
+  hosts:
+    - holdem.example.com
+  app_port: 80
+
+deploy_timeout: 90
+
+registry:
+  server: docker.io
+  username: your-registry-user
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+env:
+  secret:
+    - SECRET_KEY_BASE
+  clear:
+    PUBLIC_BASE_URL: https://holdem.example.com
+    RAILS_LOG_TO_STDOUT: "true"
+    SOLID_QUEUE_IN_PUMA: "true"
+    # No analytics or collector is configured. Do not add a shared stream id.
+
+aliases:
+  console: app exec --interactive --reuse "bin/rails console"
+  shell: app exec --interactive --reuse "bash"
+  logs: app logs -f
+  dbc: app exec --interactive --reuse "bin/rails dbconsole --include-password"
+
+volumes:
+  - "holdem_lab_storage:/rails/storage"
+
+asset_path: /rails/public/assets
+
+builder:
+  arch: amd64
+  context: .

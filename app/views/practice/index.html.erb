@@ -1,0 +1,19 @@
+<% content_for :title, "Free Texas Hold'em Practice Trainer — Holdem Lab" %>
+<% content_for :description, "Play heads-up No-Limit Texas Hold'em with virtual chips, optionally record why you chose each action, then review the reasoning. Free, no account needed." %>
+
+<section class="bg-paper">
+  <div data-hm-trainer-mount data-import-enabled="<%= Rails.application.config.x.local_progress_import_enabled %>" data-testid="trainer-island">
+    <div class="mx-auto max-w-4xl px-5 py-20 text-center sm:py-28 lg:px-8" role="status">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">Practice</p>
+      <h1 class="mt-5 font-display text-5xl tracking-tight sm:text-6xl">Dealing your practice table…</h1>
+      <p class="mx-auto mt-7 max-w-2xl text-lg leading-8 text-ink/70">Setting up a heads-up hand with virtual chips. This takes a moment on a slow connection.</p>
+    </div>
+  </div>
+  <noscript>
+    <div class="mx-auto max-w-4xl px-5 py-20 sm:py-28 lg:px-8">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">Practice</p>
+      <h1 class="mt-5 font-display text-5xl tracking-tight sm:text-6xl">The practice table needs JavaScript.</h1>
+      <p class="mt-7 max-w-2xl text-lg leading-8 text-ink/70">Playing a hand requires JavaScript to be turned on. If you would rather read first, the <%= link_to "foundation lessons", learn_path, class: "font-semibold text-moss underline" %> work without it—including their questions and answers.</p>
+    </div>
+  </noscript>
+</section>

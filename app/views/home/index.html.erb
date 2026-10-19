@@ -1,0 +1,153 @@
+<% content_for :title, "Holdem Lab — Free Texas Hold'em Training and Decision Practice" %>
+<% content_for :description, "Learn No-Limit Texas Hold'em by making a decision, writing down why, then reviewing the reasoning. Free lessons on position, pot odds and decision quality." %>
+<% content_for :structured_data do %>
+  <%= structured_data_script(faq_structured_data([
+        ["Is Holdem Lab a live poker assistant?", "No. It is an educational practice app with virtual chips. It does not connect to a table, provide a HUD, automate actions, or handle real money."],
+        ["Can I start without an account?", "Yes. The public lessons and core practice loop are designed to be useful before you decide whether you need a connected learning record."],
+        ["What do pot odds tell me?", "They describe the immediate price of a call under a stated model. They do not calculate equity, choose an action, or settle the effect of future streets."],
+        ["Does approximate analysis mean solver data?", "No. Approximate analysis keeps its assumptions, samples, and uncertainty visible. Solver data is a separate label that requires verifiable evidence and scope."]
+      ])) %>
+<% end %>
+
+<section class="relative overflow-hidden border-b border-ink/10">
+  <div class="mx-auto grid max-w-7xl gap-14 px-5 py-16 sm:py-24 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-8 lg:py-28">
+    <div>
+      <p class="mb-6 text-sm font-semibold uppercase tracking-[0.18em] text-moss">Evidence-first poker learning</p>
+      <h1 class="max-w-3xl font-display text-5xl leading-[0.98] tracking-tight text-ink sm:text-7xl">
+        Practice decisions.<br />
+        <span class="text-moss">Review the thinking.</span>
+      </h1>
+      <p class="mt-7 max-w-xl text-lg leading-8 text-ink/70 sm:text-xl">
+        Holdem Lab turns poker concepts into deliberate practice: make a decision, record why, see the evidence boundary, and return to the pattern that needs work.
+      </p>
+      <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+        <%= link_to "Start a free practice", practice_path, class: "rounded-full bg-moss px-6 py-3 text-center text-sm font-semibold text-paper shadow-sm transition-colors hover:bg-ink" %>
+        <%= link_to "Learn position first", position_lesson_path, class: "rounded-full border border-ink/20 px-6 py-3 text-center text-sm font-semibold text-ink transition-colors hover:border-moss hover:text-moss" %>
+      </div>
+      <div class="mt-8" data-hm-react-mount></div>
+    </div>
+
+    <div class="relative">
+      <div class="absolute -inset-5 rounded-[2.5rem] bg-moss/10 blur-2xl" aria-hidden="true"></div>
+      <article class="relative rounded-[2rem] border border-ink/15 bg-ink p-6 text-paper shadow-2xl sm:p-8">
+        <div class="flex items-center justify-between text-xs uppercase tracking-[0.16em] text-paper/55">
+          <span>Decision card</span>
+          <span>01 / 05</span>
+        </div>
+        <div class="mt-8 rounded-2xl border border-paper/15 bg-paper/5 p-5">
+          <p class="text-xs uppercase tracking-[0.16em] text-paper/50">Situation</p>
+          <p class="mt-3 font-display text-2xl">Button vs. big blind · 100BB</p>
+          <p class="mt-2 text-sm leading-6 text-paper/65">A decision is useful only when its assumptions stay visible.</p>
+        </div>
+        <div class="mt-4 grid gap-3 sm:grid-cols-2">
+          <div class="rounded-2xl border border-paper/15 p-4">
+            <p class="text-xs uppercase tracking-[0.16em] text-paper/50">Your reasoning</p>
+            <p class="mt-3 text-sm leading-6 text-paper/80">“I chose the smaller size because the board is dry.”</p>
+          </div>
+          <div class="rounded-2xl border border-sand/45 bg-sand/10 p-4">
+            <p class="text-xs uppercase tracking-[0.16em] text-sand">Review</p>
+            <p class="mt-3 text-sm leading-6 text-paper/80">Check price, range, and what changes on later streets.</p>
+          </div>
+        </div>
+        <div class="mt-6 flex items-center justify-between border-t border-paper/15 pt-5 text-sm">
+          <span class="text-paper/55">Feedback evidence</span>
+          <span class="rounded-full bg-paper/10 px-3 py-1 text-paper/80">Approximate analysis</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="learning-loop" class="mx-auto max-w-7xl px-5 py-16 sm:py-24 lg:px-8">
+  <div class="max-w-2xl">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">The learning loop</p>
+    <h2 class="mt-4 font-display text-4xl tracking-tight sm:text-5xl">A calmer route from knowledge to judgment.</h2>
+  </div>
+  <div class="mt-12 grid gap-px overflow-hidden rounded-3xl border border-ink/10 bg-ink/10 md:grid-cols-4">
+    <% [["01", "Learn", "Build the concepts and assumptions first."], ["02", "Practice", "Make the call before seeing feedback."], ["03", "Review", "Keep the original context, reason, and confidence."], ["04", "Progress", "Train the error pattern, not the short-term result."]].each do |number, title, body| %>
+      <article class="bg-paper p-6 sm:p-7">
+        <p class="text-sm font-semibold text-sand"><%= number %></p>
+        <h3 class="mt-10 font-display text-2xl"><%= title %></h3>
+        <p class="mt-3 text-sm leading-6 text-ink/65"><%= body %></p>
+      </article>
+    <% end %>
+  </div>
+</section>
+
+<section id="learning-path" class="mx-auto max-w-7xl px-5 py-16 sm:py-24 lg:px-8" aria-labelledby="learning-path-title">
+  <div class="max-w-3xl">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">Start here</p>
+    <h2 id="learning-path-title" class="mt-4 font-display text-4xl tracking-tight sm:text-5xl">Three focused lessons for heads-up fundamentals.</h2>
+    <p class="mt-5 text-lg leading-8 text-ink/70">Use a stable lesson page when you want to study or share one idea: action order, the immediate price of a call, or decision quality under variance.</p>
+  </div>
+  <div class="mt-10 grid gap-5 md:grid-cols-3">
+    <article class="flex flex-col rounded-3xl border border-ink/10 bg-paper-deep p-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-moss">01 · Position</p>
+      <h3 class="mt-5 font-display text-2xl">Heads-up action order</h3>
+      <p class="mt-3 flex-1 text-sm leading-6 text-ink/65">Learn who acts first across the deal and betting rounds before attaching a strategy label.</p>
+      <%= link_to "Read the Position lesson →", position_lesson_path, class: "mt-7 font-semibold text-moss hover:text-ink" %>
+    </article>
+    <article class="flex flex-col rounded-3xl border border-ink/10 bg-paper-deep p-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-moss">02 · Pot odds</p>
+      <h3 class="mt-5 font-display text-2xl">The price of a call</h3>
+      <p class="mt-3 flex-1 text-sm leading-6 text-ink/65">Calculate the immediate threshold, then name the range and future-action assumptions it cannot answer.</p>
+      <%= link_to "Read the Pot Odds lesson →", pot_odds_lesson_path, class: "mt-7 font-semibold text-moss hover:text-ink" %>
+    </article>
+    <article class="flex flex-col rounded-3xl border border-ink/10 bg-paper-deep p-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-moss">03 · Decision quality</p>
+      <h3 class="mt-5 font-display text-2xl">Review without hindsight</h3>
+      <p class="mt-3 flex-1 text-sm leading-6 text-ink/65">Separate the information available at decision time from the outcome that arrived later.</p>
+      <%= link_to "Read the Decision Quality lesson →", decision_quality_lesson_path, class: "mt-7 font-semibold text-moss hover:text-ink" %>
+    </article>
+  </div>
+</section>
+
+<section id="common-questions" class="bg-paper-deep" aria-labelledby="common-questions-title">
+  <div class="mx-auto max-w-7xl px-5 py-16 sm:py-20 lg:px-8">
+    <div class="max-w-3xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">Common questions</p>
+      <h2 id="common-questions-title" class="mt-4 font-display text-4xl tracking-tight sm:text-5xl">What Holdem Lab is—and is not.</h2>
+    </div>
+    <div class="mt-10 grid gap-4 md:grid-cols-2">
+      <details class="rounded-2xl border border-ink/10 bg-paper p-5">
+        <summary class="cursor-pointer font-semibold">Is Holdem Lab a live poker assistant?</summary>
+        <p class="mt-3 text-sm leading-6 text-ink/65">No. It is an educational practice app with virtual chips. It does not connect to a table, provide a HUD, automate actions, or handle real money.</p>
+      </details>
+      <details class="rounded-2xl border border-ink/10 bg-paper p-5">
+        <summary class="cursor-pointer font-semibold">Can I start without an account?</summary>
+        <p class="mt-3 text-sm leading-6 text-ink/65">Yes. The public lessons and core practice loop are designed to be useful before you decide whether you need a connected learning record.</p>
+      </details>
+      <details class="rounded-2xl border border-ink/10 bg-paper p-5">
+        <summary class="cursor-pointer font-semibold">What do pot odds tell me?</summary>
+        <p class="mt-3 text-sm leading-6 text-ink/65">They describe the immediate price of a call under a stated model. They do not calculate equity, choose an action, or settle the effect of future streets.</p>
+      </details>
+      <details class="rounded-2xl border border-ink/10 bg-paper p-5">
+        <summary class="cursor-pointer font-semibold">Does approximate analysis mean solver data?</summary>
+        <p class="mt-3 text-sm leading-6 text-ink/65">No. Approximate analysis keeps its assumptions, samples, and uncertainty visible. Solver data is a separate label that requires verifiable evidence and scope.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="bg-paper-deep">
+  <div class="mx-auto grid max-w-7xl gap-10 px-5 py-16 sm:py-20 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">Scope with honesty</p>
+      <h2 class="mt-4 font-display text-4xl tracking-tight">A training lab, not a live-game tool.</h2>
+    </div>
+    <div class="grid gap-4 sm:grid-cols-3">
+      <div class="rounded-2xl border border-ink/10 bg-paper p-5">
+        <p class="font-semibold">Virtual chips only</p>
+        <p class="mt-2 text-sm leading-6 text-ink/65">No real-money play, table connection, or wagering workflow.</p>
+      </div>
+      <div class="rounded-2xl border border-ink/10 bg-paper p-5">
+        <p class="font-semibold">Replayable hands</p>
+        <p class="mt-2 text-sm leading-6 text-ink/65">Any hand can be replayed exactly as it was dealt, so you can study the spot again.</p>
+      </div>
+      <div class="rounded-2xl border border-ink/10 bg-paper p-5">
+        <p class="font-semibold">Evidence labels</p>
+        <p class="mt-2 text-sm leading-6 text-ink/65">Benchmark, approximate, and solver claims stay separate.</p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,51 @@
+<% content_for :title, "隐私说明 — Holdem Lab 统计什么，什么永远不会离开你的浏览器" %>
+<% content_for :description, "Holdem Lab 到底统计哪些数据、哪些永远不收集，以及如何关闭统计。你的底牌、你写下的理由和你的练习记录不会被发送到任何地方。" %>
+
+<section class="mx-auto max-w-3xl px-5 py-20 sm:py-28 lg:px-8">
+  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">隐私说明</p>
+  <h1 class="mt-5 font-display text-5xl tracking-tight sm:text-6xl">我们统计什么，又绝不碰什么。</h1>
+  <% unless analytics_enabled? %>
+    <p class="mt-7 rounded-xl border border-moss/30 p-4 text-base leading-7">当前实例已关闭统计，不加载 Google Analytics 标签或采集器。下方关于统计的说明仅适用于运营者主动启用后的行为。</p>
+  <% end %>
+  <p class="mt-7 text-lg leading-8 text-ink/70">Holdem Lab 是学习工具，所以你有必要知道练习过程中哪些部分被计数、哪些始终属于你自己。这一页就是完整答案，不是某份更长文件的摘要。</p>
+
+  <div class="mt-14 rounded-3xl border border-ink/10 bg-ink p-6 text-paper sm:p-8">
+    <h2 class="font-display text-3xl">永远不会收集</h2>
+    <p class="mt-4 text-sm leading-6 text-paper/70">无论你是否同意统计，也无论你在哪个国家，以下内容都不会发送给 Google Analytics 或任何第三方：</p>
+    <ul class="mt-5 space-y-3 text-sm leading-6 text-paper/75">
+      <li>• 你的底牌、公共牌、筹码量，以及你打过的任何一手牌。</li>
+      <li>• 你在做决定前写下的理由，以及你给出的信心评分。</li>
+      <li>• 你的决策记录和复盘笔记，无论它们保存在浏览器里还是账户里。</li>
+      <li>• 你的邮箱地址、显示名称、密码或账户标识。</li>
+      <li>• 密码重置链接。其中的令牌在统计读取页面地址之前就已被移除。</li>
+    </ul>
+  </div>
+
+  <h2 class="mt-14 font-display text-3xl">同意统计后会记录什么</h2>
+  <p class="mt-5 text-base leading-7 text-ink/70">本站只使用 Google Analytics 4 这一个统计工具，没有标签管理器、没有广告代码、没有会话录制、也没有热力图。你同意之后，它会记录：</p>
+  <ul class="mt-5 space-y-3 text-base leading-7 text-ink/70">
+    <li>• <strong class="font-semibold text-ink">页面浏览</strong>——访问了哪个页面、页面标题、你正在阅读的语言版本、你从哪里来、Google 根据 IP 推断的大致位置，以及你的设备和浏览器。</li>
+    <li>• <strong class="font-semibold text-ink">五个产品事件</strong>，且仅有这五个：打开课程（哪一节）、开始练习（哪种模式）、锁定一次决定（哪种模式、哪条街）、完成课程小结（哪一节，以及全对、部分对还是全错），以及打开复盘。</li>
+  </ul>
+  <p class="mt-5 text-base leading-7 text-ink/70">这些事件携带的值只有：课程标识、练习模式、街道名称和一个粗粒度的得分档位。这就是全部。它们能说明有多少人把开始的内容做完，但无法还原任何一手牌，也无法还原任何一个人。</p>
+  <p class="mt-5 text-base leading-7 text-ink/70">同意也意味着 Google 会写入一个第一方 Cookie，其中保存一个随机生成的标识，用于把重复访问算作一次而不是两次。Google 作为受托方处理这些数据；事件数据保留 14 个月后删除。</p>
+
+  <h2 class="mt-14 font-display text-3xl">你的选择，以及如何改变它</h2>
+  <p class="mt-5 text-base leading-7 text-ink/70">在欧洲经济区、英国和瑞士，你做出选择之前不会加载任何统计：不写入统计 Cookie，也不向 Google 发出任何请求。在其他地区统计默认加载，你随时可以在这里关闭；选择拒绝会立即清除统计 Cookie。如果你的浏览器发送 Global Privacy Control 信号，我们在所有地区都直接按拒绝处理，不再询问。</p>
+  <p class="mt-5 text-base leading-7 text-ink/70">你的选择保存在浏览器本地，因此它是按浏览器、按设备生效的。</p>
+  <p class="mt-8">
+    <button
+      type="button"
+      class="inline-flex min-h-11 items-center justify-center rounded-full bg-moss px-5 py-2.5 text-sm font-semibold text-paper shadow-sm transition-colors hover:bg-ink"
+      data-analytics-consent-manage
+    >管理统计设置</button>
+  </p>
+
+  <h2 class="mt-14 font-display text-3xl">站点自身保存什么</h2>
+  <p class="mt-5 text-base leading-7 text-ink/70">未创建账户时，你的练习记录保存在浏览器本地存储中，不会上传。如果你创建了账户，我们会保存邮箱地址、经过哈希的密码、可选的显示名称、登录记录，以及你主动同步到账户的练习记录。保持登录状态需要一个会话 Cookie，它是站点运行所必需的，不是统计 Cookie。服务器日志会记录请求元数据，用于运维。</p>
+  <p class="mt-5 text-base leading-7 text-ink/70">你可以在<%= link_to "账户设置", profile_settings_path, class: "font-semibold text-moss underline" %>里导出账户中的全部数据，或删除账户及其记录。删除立即生效且无法撤销。</p>
+
+  <h2 class="mt-14 font-display text-3xl">联系方式</h2>
+  <p class="mt-5 text-base leading-7 text-ink/70">本地实例的数据由你自己管理。自建站点请联系该站运营者。源码问题可提交至 <a href="https://github.com/yorzi/holdem-lab/issues" class="font-semibold text-moss underline">项目仓库</a>；安全问题请使用 <a href="https://github.com/yorzi/holdem-lab/security/advisories/new" class="font-semibold text-moss underline">私密漏洞报告</a>，不要公开个人数据。</p>
+  <p class="mt-10 text-sm text-ink/50">Holdem Lab 只使用虚拟筹码，不是博彩服务，也不处理真实资金。</p>
+</section>

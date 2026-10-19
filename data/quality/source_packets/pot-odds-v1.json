@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "pot-odds-v1",
+  "lesson_slug": "pot-odds",
+  "locale": "en",
+  "content_version": "pot-odds-content-v1",
+  "publication_status": "review_preview",
+  "technical_review": {
+    "status": "passed",
+    "reviewed_at": "2026-08-20",
+    "evidence": ["golden-pot-odds-half-pot", "golden-pot-odds-two-thirds-pot", "golden-pot-odds-pot-size"]
+  },
+  "domain_review": {
+    "status": "pending",
+    "reviewer": null,
+    "reviewed_at": null,
+    "notes": "Arithmetic is reproducible; scope and poker-language review remain independent gates."
+  },
+  "claims": [
+    {
+      "id": "pot-odds-call-threshold",
+      "text": "For an immediate call with no future betting modeled, the break-even equity threshold is call amount divided by the pot after the call.",
+      "claim_type": "math",
+      "source_ids": [],
+      "source_locators": [],
+      "internal_evidence": ["required_equity = call / (current_pot + call)", "golden-pot-odds-half-pot", "golden-pot-odds-two-thirds-pot", "golden-pot-odds-pot-size"],
+      "limitations": ["The formula excludes future action, rake, range uncertainty, and equity realization."]
+    },
+    {
+      "id": "pot-odds-bet-fraction",
+      "text": "Facing a bet of b times the pot before the bet, the same simplified threshold is b divided by 1 plus 2b.",
+      "claim_type": "derived_math",
+      "source_ids": [],
+      "source_locators": [],
+      "internal_evidence": ["call = bP; final pot after call = P + bP + bP; threshold = bP / (P + 2bP)"],
+      "limitations": ["This is an algebraic identity under the stated immediate-call model, not a strategy recommendation."]
+    },
+    {
+      "id": "pot-odds-reference-values",
+      "text": "The simplified thresholds are 25% against a half-pot bet, approximately 28.6% against a two-thirds-pot bet, and approximately 33.3% against a pot-sized bet.",
+      "claim_type": "math_fixture",
+      "source_ids": [],
+      "source_locators": [],
+      "internal_evidence": ["0.5 / 2 = 0.25", "(2/3) / (7/3) = 2/7", "1 / 3 = 0.333333"],
+      "limitations": ["Percentages are call-price thresholds only; trustworthy equity still requires an explicit opponent range and future-card model."]
+    }
+  ],
+  "rights": {
+    "content_mode": "original_mathematical_derivation",
+    "source_reproduction": "None.",
+    "allowed_product_use": "Display formulas, worked examples, and independently recomputed fixtures."
+  }
+}

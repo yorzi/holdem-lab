@@ -1,0 +1,40 @@
+<% content_for :title, "#{t('auth.sign_in_title')} — Holdem Lab" %>
+<% content_for :robots, "noindex, nofollow" %>
+
+<section class="mx-auto max-w-3xl px-5 py-16 sm:py-24 lg:px-8" data-auth-page="sign-in">
+  <header class="max-w-2xl">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss"><%= t("auth.account") %></p>
+    <h1 class="mt-5 font-display text-5xl tracking-tight sm:text-6xl"><%= t("auth.sign_in_title") %></h1>
+    <p class="mt-6 text-lg leading-8 text-ink/70"><%= t("auth.sign_in_description") %></p>
+  </header>
+
+  <div class="mt-10 rounded-3xl border border-ink/10 bg-white/70 p-6 shadow-sm sm:p-8">
+    <nav aria-label="<%= t("auth.account") %>" class="mb-6 grid grid-cols-2 rounded-2xl border border-ink/10 bg-paper-deep/40 p-1">
+      <span aria-current="page" class="rounded-xl bg-ink px-4 py-3 text-center text-sm font-semibold text-paper"><%= t("nav.sign_in") %></span>
+      <%= link_to t("nav.sign_up"), new_registration_path, class: "rounded-xl px-4 py-3 text-center text-sm font-semibold text-ink/60 transition-colors hover:bg-paper hover:text-ink" %>
+    </nav>
+
+    <% if flash[:alert] %>
+      <div class="mb-6 rounded-2xl border border-sand/40 bg-sand/10 p-4 text-sm leading-6" role="alert"><%= flash[:alert] %></div>
+    <% end %>
+    <% if flash[:notice] %>
+      <div class="mb-6 rounded-2xl border border-moss/30 bg-moss/10 p-4 text-sm leading-6" role="status"><%= flash[:notice] %></div>
+    <% end %>
+
+    <%= form_with url: session_path, class: "space-y-6" do |form| %>
+      <div>
+        <%= form.label :email_address, t("auth.email_address"), class: "block text-sm font-semibold" %>
+        <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", value: params[:email_address], class: "mt-2 block w-full rounded-xl border border-ink/20 bg-paper px-4 py-3", inputmode: "email" %>
+      </div>
+      <div>
+        <%= form.label :password, t("auth.password"), class: "block text-sm font-semibold" %>
+        <%= form.password_field :password, required: true, autocomplete: "current-password", maxlength: 72, class: "mt-2 block w-full rounded-xl border border-ink/20 bg-paper px-4 py-3" %>
+      </div>
+      <%= form.submit t("auth.sign_in_button"), class: "min-h-11 w-full rounded-full bg-moss px-5 py-3 text-sm font-semibold text-paper transition-colors hover:bg-ink" %>
+    <% end %>
+
+    <div class="mt-6 border-t border-ink/10 pt-6 text-sm">
+      <%= link_to t("auth.forgot_password"), new_password_path, class: "font-semibold text-moss hover:text-ink" %>
+    </div>
+  </div>
+</section>

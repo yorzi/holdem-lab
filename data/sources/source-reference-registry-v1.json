@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "registry_id": "holdem-source-reference-registry-v1",
+  "layer": "source_references",
+  "technical_status": "automated_pass_required",
+  "records": [
+    {
+      "source_reference_id": "source-ref-position-heads-up-order-v1",
+      "kind": "external_claim",
+      "source_packet_id": "position-v1",
+      "claim_id": "position-heads-up-order",
+      "source_ids": ["poker_tda_rules_2024"],
+      "integrity_status": "verified",
+      "rights_status": "reference_only",
+      "publication_status": "published",
+      "technical_review": {"status": "passed", "evidence": ["data/quality/source_packets/position-v1.json", "npm run validate:quality"]},
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    },
+    {
+      "source_reference_id": "source-ref-position-deal-order-v1",
+      "kind": "derived_rule",
+      "source_packet_id": "position-v1",
+      "claim_id": "position-big-blind-first-card",
+      "source_ids": ["poker_tda_rules_2024"],
+      "integrity_status": "verified",
+      "rights_status": "reference_only",
+      "publication_status": "published",
+      "technical_review": {"status": "passed", "evidence": ["data/quality/source_packets/position-v1.json", "npm run validate:quality"]},
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    },
+    {
+      "source_reference_id": "source-ref-position-information-boundary-v1",
+      "kind": "instructional_boundary",
+      "source_packet_id": "position-v1",
+      "claim_id": "position-information-boundary",
+      "source_ids": ["poker_tda_rules_2024"],
+      "integrity_status": "verified",
+      "rights_status": "reference_only",
+      "publication_status": "published",
+      "technical_review": {"status": "passed", "evidence": ["data/quality/source_packets/position-v1.json", "npm run validate:quality"]},
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    },
+    {
+      "source_reference_id": "source-ref-pot-odds-call-threshold-v1",
+      "kind": "original_derivation",
+      "source_packet_id": "pot-odds-v1",
+      "claim_id": "pot-odds-call-threshold",
+      "source_ids": [],
+      "integrity_status": "verified",
+      "rights_status": "original_authored",
+      "publication_status": "published",
+      "technical_review": {"status": "passed", "evidence": ["data/quality/source_packets/pot-odds-v1.json", "npm run validate:quality"]},
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    },
+    {
+      "source_reference_id": "source-ref-pot-odds-bet-fraction-v1",
+      "kind": "original_derivation",
+      "source_packet_id": "pot-odds-v1",
+      "claim_id": "pot-odds-bet-fraction",
+      "source_ids": [],
+      "integrity_status": "verified",
+      "rights_status": "original_authored",
+      "publication_status": "published",
+      "technical_review": {"status": "passed", "evidence": ["data/quality/source_packets/pot-odds-v1.json", "npm run validate:quality"]},
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    },
+    {
+      "source_reference_id": "source-ref-pot-odds-reference-values-v1",
+      "kind": "original_fixture",
+      "source_packet_id": "pot-odds-v1",
+      "claim_id": "pot-odds-reference-values",
+      "source_ids": [],
+      "integrity_status": "verified",
+      "rights_status": "original_authored",
+      "publication_status": "published",
+      "technical_review": {"status": "passed", "evidence": ["data/quality/source_packets/pot-odds-v1.json", "npm run validate:quality"]},
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    },
+    {
+      "source_reference_id": "source-ref-decision-retrieval-v1",
+      "kind": "learning_design_research",
+      "source_packet_id": "decision-quality-v1",
+      "claim_id": "decision-quality-retrieval",
+      "source_ids": ["retrieval_practice_review_2021"],
+      "integrity_status": "verified",
+      "rights_status": "reference_only",
+      "publication_status": "published",
+      "technical_review": {"status": "passed", "evidence": ["data/quality/source_packets/decision-quality-v1.json", "npm run validate:quality"]},
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    },
+    {
+      "source_reference_id": "source-ref-decision-confidence-v1",
+      "kind": "learning_design_research",
+      "source_packet_id": "decision-quality-v1",
+      "claim_id": "decision-quality-confidence",
+      "source_ids": ["confidence_feedback_study_2024"],
+      "integrity_status": "verified",
+      "rights_status": "reference_only",
+      "publication_status": "published",
+      "technical_review": {"status": "passed", "evidence": ["data/quality/source_packets/decision-quality-v1.json", "npm run validate:quality"]},
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    },
+    {
+      "source_reference_id": "source-ref-decision-outcome-boundary-v1",
+      "kind": "product_boundary",
+      "source_packet_id": "decision-quality-v1",
+      "claim_id": "decision-quality-outcome-boundary",
+      "source_ids": [],
+      "integrity_status": "verified",
+      "rights_status": "original_authored",
+      "publication_status": "published",
+      "technical_review": {"status": "passed", "evidence": ["data/quality/source_packets/decision-quality-v1.json", "npm run validate:quality"]},
+      "domain_review": {"status": "approved", "reviewer": "Andy Wang (product owner)", "reviewed_at": "2026-08-25"}
+    }
+  ]
+}

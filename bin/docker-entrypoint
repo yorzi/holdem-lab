@@ -1,0 +1,13 @@
+#!/bin/bash -e
+
+# If running the rails server then create or migrate existing database
+if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
+  ./bin/rails db:prepare
+  # db:prepare seeds only a brand new database, so an existing storage volume
+  # would keep serving the content graph captured at first boot. The mirrors are
+  # idempotent, and this is the only point where a release's content files reach
+  # production.
+  ./bin/rails content:import
+fi
+
+exec "${@}"

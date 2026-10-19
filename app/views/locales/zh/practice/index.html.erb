@@ -1,0 +1,19 @@
+<% content_for :title, "免费德州扑克练习训练器 — Holdem Lab" %>
+<% content_for :description, "用虚拟筹码打单挑无限注德州扑克，在每个动作前写下你的理由，事后再复盘思路。免费，无需注册。" %>
+
+<section class="bg-paper">
+  <div data-hm-trainer-mount data-import-enabled="<%= Rails.application.config.x.local_progress_import_enabled %>" data-testid="trainer-island">
+    <div class="mx-auto max-w-4xl px-5 py-20 text-center sm:py-28 lg:px-8" role="status">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">练习</p>
+      <h1 class="mt-5 font-display text-5xl tracking-tight sm:text-6xl">正在为你发牌…</h1>
+      <p class="mx-auto mt-7 max-w-2xl text-lg leading-8 text-ink/70">正在准备一手单挑牌局，使用虚拟筹码。网络较慢时需要稍等片刻。</p>
+    </div>
+  </div>
+  <noscript>
+    <div class="mx-auto max-w-4xl px-5 py-20 sm:py-28 lg:px-8">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">练习</p>
+      <h1 class="mt-5 font-display text-5xl tracking-tight sm:text-6xl">练习牌桌需要开启 JavaScript。</h1>
+      <p class="mt-7 max-w-2xl text-lg leading-8 text-ink/70">打一手牌需要浏览器开启 JavaScript。如果你想先读一读，<%= link_to "基础课程", learn_path, class: "font-semibold text-moss underline" %>在关闭 JavaScript 时也能正常阅读，包括其中的练习题与答案。</p>
+    </div>
+  </noscript>
+</section>

@@ -1,0 +1,94 @@
+zh:
+  site:
+    title: Holdem Lab
+    description: 德州扑克（No-Limit Texas Hold'em）学习与训练应用：刻意练习、可回放复盘，每条反馈都标明它的边界。
+    og_image_alt: Holdem Lab — 讲清楚边界的德州扑克学习与训练
+  nav:
+    home_label: Holdem Lab 首页
+    brand_descriptor: 证据优先的训练
+    menu: 菜单
+    toggle_navigation: 切换导航
+    learn: 学习
+    practice: 练习
+    methodology: 方法与来源
+    start_practice: 开始免费练习
+    account: 账户
+    sign_in: 登录
+    sign_up: 创建账户
+    sign_out: 退出登录
+    language: 语言
+  auth:
+    account: 账户
+    sign_in_title: 登录
+    sign_in_description: 不创建账户也可以完成核心练习；准备好保存长期学习记录时再登录即可。
+    email_address: 邮箱地址
+    password: 密码
+    password_confirmation: 确认密码
+    sign_in_button: 登录
+    sign_up_title: 创建学习账户。
+    sign_up_description: 保留匿名优先的练习流程，准备好时再连接本地进度。
+    create_account_button: 创建账户
+    forgot_password: 忘记密码？
+    no_account: 还没有账户？
+    have_account: 已经有账户？
+    account_created: 账户已创建。
+    signed_in: 已登录。
+    signed_out: 已退出登录。
+    invalid_credentials: 请检查邮箱地址或密码。
+    try_again_later: 请稍后再试。
+    password_reset_title: 重置密码。
+    password_reset_description: 输入邮箱；如果账户存在，我们会加入重置说明发送队列。
+    send_reset_button: 发送重置说明
+    reset_instructions_sent: 如果该邮箱存在账户，重置说明已加入发送队列。
+    update_password_title: 设置新密码。
+    update_password_description: 新密码至少需要 12 个字符。
+    save_password_button: 保存密码
+    password_reset: 密码已重置。
+    passwords_do_not_match: 密码不匹配，或未达到最小长度。
+    invalid_reset_link: 密码重置链接无效或已过期。
+  profile:
+    title: 账户资料
+    eyebrow: 账户
+    heading: 让学习账户清晰且可带走。
+    description: 更新账户导航中显示的名称，并导出 Holdem Lab 当前保存的账户数据。
+    display_name: 显示名称
+    display_name_hint: 可选，最多 120 个字符。
+    save_button: 保存资料
+    saved: 资料已保存。
+    export_title: 下载账户数据
+    export_description: 导出内容包括账户资料、登录记录，以及你主动同步到这个账户的练习记录。只保存在浏览器里的练习记录不在其中，也不会被改动。
+    export_button: 下载 JSON 导出
+    export_note: 导出文件是标准 JSON，你可以直接阅读，也可以带去别处。删除账户会把这些数据从我们这边一并移除。
+    delete_title: 删除账户
+    delete_description: 永久删除这个账户、它的登录记录，以及你同步到账户里的练习记录。只保存在浏览器里的练习记录不受影响。此操作无法撤销。
+    delete_password: 当前密码
+    delete_confirmation: 输入 DELETE 进行确认
+    delete_confirmation_hint: 请使用大写输入 DELETE。密码或确认词不匹配时不会删除任何内容。
+    delete_button: 永久删除账户
+    account_deleted: 账户已删除。
+    account_delete_failed: 无法验证密码和确认词，未删除任何内容。
+  footer:
+    site_links: 站点导航
+    eyebrow: 把边界留在视线里
+    heading: 让下一次决定更清楚一点。
+    description: 先学规则，再做练习，最后复盘当时的理由；不把一个有噪声的结果伪装成确定答案。
+    cta: 开始免费练习
+    learn_group: 学习
+    product_group: 产品
+    language_group: 语言
+    virtual_chips_label: 虚拟筹码
+    position_lesson: 位置
+    pot_odds_lesson: 底池赔率
+    decision_quality_lesson: 决策质量
+    virtual_chips: Holdem Lab 只用于虚拟筹码学习，不用于真钱游戏。
+    evidence_first: 证据优先，结果本来就有噪声。
+    privacy: 隐私说明
+  analytics:
+    consent:
+      aria_label: 统计设置
+      note_required: 我们希望统计页面浏览和五个粗粒度的产品事件，用来了解哪些课程真正被读完。你做出选择之前不会加载任何内容。
+      note_optional: 统计已开启。它记录页面浏览和五个粗粒度的产品事件，用来了解哪些课程真正被读完。你可以在这里关闭。
+      never_collected: 你的牌、你写下的理由和你的练习记录都不会被发送。
+      read_more: 查看具体统计内容
+      accept: 允许统计
+      decline: 不了，谢谢

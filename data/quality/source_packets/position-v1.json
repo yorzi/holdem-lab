@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "id": "position-v1",
+  "lesson_slug": "position",
+  "locale": "en",
+  "content_version": "position-content-v1",
+  "publication_status": "review_preview",
+  "technical_review": {
+    "status": "passed",
+    "reviewed_at": "2026-08-20",
+    "evidence": [
+      "golden-initial-deal-button-hero",
+      "golden-preflop-actor-button",
+      "golden-flop-actor-big-blind"
+    ]
+  },
+  "domain_review": {
+    "status": "pending",
+    "reviewer": null,
+    "reviewed_at": null,
+    "notes": "Requires an independent poker-domain reviewer before publication status can become published."
+  },
+  "claims": [
+    {
+      "id": "position-heads-up-order",
+      "text": "In heads-up play, the button posts the small blind, receives the last hole card, acts first before the flop, and acts last on later betting rounds.",
+      "claim_type": "rules",
+      "source_ids": ["poker_tda_rules_2024"],
+      "source_locators": ["2024 Rules, Rule 34B: Button Placement and Movement"],
+      "internal_evidence": ["holdem-rules-v2", "golden-initial-deal-button-hero", "golden-preflop-actor-button", "golden-flop-actor-big-blind"],
+      "limitations": ["The cited rulebook is tournament-specific; the app exposes its own narrower versioned heads-up rules contract."]
+    },
+    {
+      "id": "position-big-blind-first-card",
+      "text": "Because the button receives the last card in a two-player deal, the big blind receives the first and third cards from a fixed deck while the button receives the second and fourth.",
+      "claim_type": "derived_rule",
+      "source_ids": ["poker_tda_rules_2024"],
+      "source_locators": ["2024 Rules, Rule 34B"],
+      "internal_evidence": ["golden-initial-deal-button-hero", "golden-initial-deal-big-blind-hero"],
+      "limitations": ["This describes physical deal order, not card strength or strategic advantage."]
+    },
+    {
+      "id": "position-information-boundary",
+      "text": "Position changes action order and therefore which action is observed before a decision; position alone does not determine the best poker action.",
+      "claim_type": "instructional_boundary",
+      "source_ids": ["poker_tda_rules_2024"],
+      "source_locators": ["2024 Rules, Rule 34B"],
+      "internal_evidence": ["position-lesson-exercise-3"],
+      "limitations": ["No opening range, equity threshold, or solver recommendation is asserted."]
+    }
+  ],
+  "rights": {
+    "content_mode": "original_synthesis_with_citation",
+    "source_reproduction": "No rulebook text is reproduced beyond a short locator-level paraphrase.",
+    "allowed_product_use": "Display original lesson copy with source attribution and limitations."
+  }
+}

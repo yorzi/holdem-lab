@@ -1,0 +1,33 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "typecheck": "tsc -b --pretty false",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "validate:research": "node scripts/validate-research-data.mjs",
+    "validate:quality": "node scripts/validate-quality-data.mjs",
+    "validate:content": "node scripts/validate-content-data.mjs",
+    "validate:catalog": "node scripts/validate-content-catalog.mjs",
+    "validate:canonical": "node scripts/validate-canonical-data.mjs",
+    "validate:frontend-boundaries": "node scripts/validate-frontend-boundaries.mjs"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.0.5",
+    "jsdom": "^29.1.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.1",
+    "vite-plugin-ruby": "^5.2.6",
+    "vitest": "^4.1.11"
+  },
+  "dependencies": {
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/turbo-rails": "^8.0.23",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  }
+}

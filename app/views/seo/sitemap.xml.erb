@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<% @sitemap_entries.each do |entry| %>
+  <url>
+    <loc><%= ERB::Util.html_escape(entry.fetch(:loc)) %></loc>
+    <% if entry[:lastmod].present? %>
+    <lastmod><%= ERB::Util.html_escape(entry.fetch(:lastmod)) %></lastmod>
+    <% end %>
+    <% entry.fetch(:alternates).each do |alternate| %>
+    <xhtml:link rel="alternate" hreflang="<%= alternate.fetch(:hreflang) %>" href="<%= ERB::Util.html_escape(alternate.fetch(:href)) %>" />
+    <% end %>
+  </url>
+<% end %>
+</urlset>

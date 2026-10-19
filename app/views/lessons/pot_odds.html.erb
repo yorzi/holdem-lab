@@ -1,0 +1,89 @@
+<% content_for :title, "Texas Hold'em Pot Odds: How to Price a Call" %>
+<% content_for :description, "The pot odds formula for a call, worked through half-pot, two-thirds and full-pot bets, plus what the number cannot tell you." %>
+<% content_for :og_type, "article" %>
+<% content_for :structured_data do %>
+  <%= structured_data_script(breadcrumb_structured_data([["Learn", absolute_url_for(learn_path)], ["Pot Odds", canonical_url]])) %>
+  <%= structured_data_script(learning_resource_structured_data(name: "Pot Odds Without False Precision", description: "Learn the immediate-call pot-odds formula, verify three common bet sizes, and keep range and future-action limits explicit.", url: canonical_url, time_required: "PT12M", reviewed_at: @content_record.dig("domain_review", "reviewed_at"))) %>
+  <%= structured_data_script(faq_structured_data([
+        ["How do you calculate pot odds?", "Divide the amount you must call by the pot after your call. If the pot is 150 and calling costs 50, the pot becomes 200 and the break-even threshold is 50 divided by 200, or 25%."],
+        ["What equity do you need against a half-pot bet?", "25%. Against a one-third-pot bet you need 20%, against two-thirds pot 28.6%, and against a pot-sized bet 33.3%. Facing a bet of b times the pot, the threshold is b divided by 1 plus 2b."],
+        ["Do pot odds tell you whether to call?", "No. They give you the price only. To turn that price into a decision you still need an estimate of how often you win against the hands your opponent actually holds, and the price ignores later betting, rake, and how often you realise your equity."]
+      ])) %>
+<% end %>
+
+<% evidence_coverage = "Every number here is recomputed from the formula stated above, so you can check the arithmetic yourself." %>
+<article class="mx-auto max-w-5xl px-5 py-12 sm:py-20 lg:px-8" data-controller="lesson-session" data-lesson-slug="pot-odds" data-content-asset-id="<%= @content_record.fetch("id") %>" data-content-curriculum-id="<%= @curriculum_lesson.fetch("id") %>" data-content-concept-ids="<%= @curriculum_lesson.fetch("concept_ids").join(" ") %>" data-content-exercise-ids="<%= @curriculum_lesson.fetch("exercise_ids").join(" ") %>" data-content-version="<%= @content_record.fetch("content_version") %>" data-content-publication-status="<%= @content_record.fetch("publication_status") %>" data-evidence-coverage="<%= evidence_coverage %>">
+  <nav aria-label="Breadcrumb" class="text-sm text-ink/55"><%= link_to "Learn", learn_path, class: "font-semibold hover:text-moss" %><span aria-hidden="true"> / </span><span>Pot Odds</span></nav>
+
+  <header class="mt-8 border-b border-ink/10 pb-10">
+    <div class="flex flex-wrap items-center gap-3"><span class="rounded-full bg-moss/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-moss">Foundation 02</span></div>
+    <h1 class="mt-6 max-w-4xl font-display text-5xl leading-[0.98] tracking-tight sm:text-7xl">Pot odds price a call. They do not estimate your equity.</h1>
+    <p class="mt-7 max-w-3xl text-lg leading-8 text-ink/70">A clean formula can still produce a bad poker conclusion when the range or future-action model is missing. First learn the immediate price; then state what the price cannot answer.</p>
+    <div class="mt-7 flex flex-wrap gap-3 text-xs"><span class="rounded-full border border-ink/10 bg-white/55 px-3 py-2">10–12 minutes</span><span class="rounded-full border border-ink/10 bg-white/55 px-3 py-2">3 arithmetic checks</span><span class="rounded-full border border-ink/10 bg-white/55 px-3 py-2">Free · no sign-up</span></div>
+  </header>
+
+  <section class="mt-10 rounded-3xl border border-moss/25 bg-moss/5 p-6 sm:p-8" aria-labelledby="pot-odds-answer-title">
+    <h2 class="font-display text-3xl" id="pot-odds-answer-title">How do you calculate pot odds?</h2>
+    <p class="mt-4 max-w-3xl text-base leading-7 text-ink/80">Divide the amount you must call by the pot after your call. If the pot is 150 and calling costs 50, the pot becomes 200, so you need to win 50 ÷ 200 = 25% of the time to break even. That is the price of the call — not a reason to make it.</p>
+  </section>
+
+  <section class="grid gap-6 py-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)]" aria-labelledby="pot-odds-formula-title">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">Immediate-call model</p>
+      <h2 class="mt-4 font-display text-4xl" id="pot-odds-formula-title">Compare the call with the pot after calling.</h2>
+      <div class="mt-6 space-y-5 text-base leading-7 text-ink/75">
+        <p>Let <strong class="text-ink">C</strong> be the amount you must call and <strong class="text-ink">P</strong> be the pot currently visible after the opponent’s bet but before your call.</p>
+        <p class="rounded-2xl border border-moss/25 bg-moss/10 p-5 font-mono text-lg text-ink">required equity = C ÷ (P + C)</p>
+        <p>If the pot was 100 and the opponent bet 50, the visible pot is now 150. Calling 50 creates a 200 pot, so the simplified break-even threshold is <strong class="text-ink">50 ÷ 200 = 25%</strong>.</p>
+      </div>
+    </div>
+    <aside class="rounded-3xl bg-ink p-6 text-paper" aria-label="Common immediate-call thresholds">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-moss-light">Bet size before the call</p>
+      <dl class="mt-6 space-y-5 text-sm"><div class="border-b border-paper/15 pb-4"><dt class="text-paper/55">One-third pot</dt><dd class="mt-1 font-semibold">20.0%</dd></div><div class="border-b border-paper/15 pb-4"><dt class="text-paper/55">Half pot</dt><dd class="mt-1 font-semibold">25.0%</dd></div><div class="border-b border-paper/15 pb-4"><dt class="text-paper/55">Two-thirds pot</dt><dd class="mt-1 font-semibold">28.6%</dd></div><div><dt class="text-paper/55">Pot-sized bet</dt><dd class="mt-1 font-semibold">33.3%</dd></div></dl>
+    </aside>
+  </section>
+
+  <section class="rounded-3xl border border-sand/40 bg-sand/10 p-6 sm:p-8" aria-labelledby="pot-odds-boundary-title">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-sand">Model boundary</p>
+    <h2 class="mt-3 font-display text-3xl" id="pot-odds-boundary-title">A threshold is not a call recommendation.</h2>
+    <p class="mt-4 max-w-3xl text-sm leading-7 text-ink/70">You still need a defensible equity estimate against an explicit opponent range. Future betting, rake, reverse implied odds, fold equity, and imperfect equity realization can change the decision. This lesson checks arithmetic only.</p>
+  </section>
+
+  <section class="py-12" aria-labelledby="pot-odds-practice-title">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">Active recall</p>
+    <h2 class="mt-4 font-display text-4xl" id="pot-odds-practice-title">Calculate, then name the missing assumption.</h2>
+    <p class="mt-4 max-w-2xl text-sm leading-6 text-ink/65">Your first checked answer counts toward this session. No answer or reflection is persisted.</p>
+    <div class="mt-6 grid gap-4 rounded-2xl border border-ink/10 bg-paper-deep p-5 sm:grid-cols-[minmax(0,1fr)_12rem]"><label class="text-sm font-semibold text-ink" for="pot-odds-reason">Before feedback, explain your denominator.<textarea class="mt-2 min-h-20 w-full rounded-xl border border-ink/15 bg-paper p-3 text-sm font-normal outline-none focus:border-moss" data-lesson-session-target="reason" id="pot-odds-reason" placeholder="What is included in the pot after your call?"></textarea></label><label class="text-sm font-semibold text-ink" for="pot-odds-confidence">Confidence before feedback<select class="mt-2 w-full rounded-xl border border-ink/15 bg-paper p-3 text-sm font-normal outline-none focus:border-moss" data-lesson-session-target="confidence" id="pot-odds-confidence"><option value="1">1 · Guessing</option><option value="2">2 · Uncertain</option><option value="3" selected>3 · Reasonable</option><option value="4">4 · Confident</option><option value="5">5 · Clear</option></select></label></div>
+
+    <div class="mt-8 space-y-6">
+      <fieldset class="rounded-3xl border border-ink/10 bg-white/55 p-6" data-answer="25" data-concept="Call-price denominator" data-correct-feedback="Correct. The visible 150 pot plus your 50 call makes 200; 50 divided by 200 is 25%." data-review-feedback="Include your own call in the final pot: 50 ÷ (150 + 50) = 25%." data-lesson-session-target="question" id="pot-odds-q1"><legend class="px-2 font-display text-2xl">1. The visible pot is 150 and calling costs 50. What is the threshold?</legend><div class="mt-5 grid gap-3 sm:grid-cols-3"><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="pot-odds-q1" type="radio" value="20"> <span>20%</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="pot-odds-q1" type="radio" value="25"> <span>25%</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="pot-odds-q1" type="radio" value="33"> <span>33.3%</span></label></div><button class="mt-5 min-h-11 rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-paper hover:bg-moss disabled:cursor-not-allowed disabled:opacity-45" data-action="lesson-session#check" type="button">Check answer</button><p class="mt-4 rounded-xl border border-ink/10 bg-paper p-4 text-sm leading-6 focus:outline-none" data-lesson-session-target="feedback" hidden role="status" tabindex="-1"></p><noscript><p class="mt-4 text-sm text-ink/65">Answer: 25%.</p></noscript></fieldset>
+
+      <fieldset class="rounded-3xl border border-ink/10 bg-white/55 p-6" data-answer="28.6" data-concept="Bet-size conversion" data-correct-feedback="Correct. A two-thirds-pot bet creates a threshold of (2/3) ÷ (1 + 4/3) = 2/7, about 28.6%." data-review-feedback="Use b ÷ (1 + 2b). With b = 2/3, the result is 2/7, about 28.6%." data-lesson-session-target="question" id="pot-odds-q2"><legend class="px-2 font-display text-2xl">2. What is the simplified threshold against a two-thirds-pot bet?</legend><div class="mt-5 grid gap-3 sm:grid-cols-3"><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="pot-odds-q2" type="radio" value="25"> <span>25.0%</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="pot-odds-q2" type="radio" value="28.6"> <span>28.6%</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="pot-odds-q2" type="radio" value="40"> <span>40.0%</span></label></div><button class="mt-5 min-h-11 rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-paper hover:bg-moss disabled:cursor-not-allowed disabled:opacity-45" data-action="lesson-session#check" type="button">Check answer</button><p class="mt-4 rounded-xl border border-ink/10 bg-paper p-4 text-sm leading-6 focus:outline-none" data-lesson-session-target="feedback" hidden role="status" tabindex="-1"></p><noscript><p class="mt-4 text-sm text-ink/65">Answer: approximately 28.6%.</p></noscript></fieldset>
+
+      <fieldset class="rounded-3xl border border-ink/10 bg-white/55 p-6" data-answer="range" data-concept="Price versus equity" data-correct-feedback="Correct. Pot odds give the price; a call decision still needs equity against an explicit range and a model for omitted effects." data-review-feedback="The missing quantity is not another pot-odds number. You need a defensible equity estimate against an explicit opponent range." data-lesson-session-target="question" id="pot-odds-q3"><legend class="px-2 font-display text-2xl">3. What is still missing before calling can be recommended?</legend><div class="mt-5 grid gap-3"><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="pot-odds-q3" type="radio" value="range"> <span>A defensible equity estimate against an explicit opponent range</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="pot-odds-q3" type="radio" value="suit"> <span>The color of your card suits</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="pot-odds-q3" type="radio" value="result"> <span>Whether this particular call will win</span></label></div><button class="mt-5 min-h-11 rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-paper hover:bg-moss disabled:cursor-not-allowed disabled:opacity-45" data-action="lesson-session#check" type="button">Check answer</button><p class="mt-4 rounded-xl border border-ink/10 bg-paper p-4 text-sm leading-6 focus:outline-none" data-lesson-session-target="feedback" hidden role="status" tabindex="-1"></p><noscript><p class="mt-4 text-sm text-ink/65">Answer: a defensible equity estimate against an explicit opponent range.</p></noscript></fieldset>
+    </div>
+
+    <section class="mt-8 rounded-3xl border border-moss/30 bg-moss/10 p-6 focus:outline-none sm:p-8" data-lesson-session-target="summary" hidden id="pot-odds-session-summary" tabindex="-1"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">Session summary</p><h2 class="mt-3 font-display text-4xl">Arithmetic checked; assumptions still visible.</h2><p class="mt-5 text-lg">Score: <strong data-lesson-session-target="score"></strong></p><p class="mt-3 text-sm leading-6 text-ink/70" data-lesson-session-target="missed"></p><dl class="mt-6 grid gap-3 text-sm sm:grid-cols-3"><div class="rounded-xl bg-paper/70 p-4"><dt class="font-semibold text-ink">Your reflection</dt><dd class="mt-2 leading-6 text-ink/65" data-lesson-session-target="reasonSummary"></dd></div><div class="rounded-xl bg-paper/70 p-4"><dt class="font-semibold text-ink">Confidence</dt><dd class="mt-2 leading-6 text-ink/65" data-lesson-session-target="confidenceSummary"></dd></div><div class="rounded-xl bg-paper/70 p-4"><dt class="font-semibold text-ink">Evidence coverage</dt><dd class="mt-2 leading-6 text-ink/65" data-lesson-session-target="evidence"></dd></div></dl><div class="mt-6 flex flex-col gap-3 sm:flex-row"><button class="min-h-11 rounded-full border border-ink/20 px-5 py-3 text-sm font-semibold hover:border-moss hover:text-moss" data-action="lesson-session#retry" type="button">Retry this lesson</button><%= link_to "Continue to Decision Quality →", decision_quality_lesson_path, class: "inline-flex min-h-11 items-center justify-center rounded-full bg-moss px-5 py-3 text-sm font-semibold text-paper hover:bg-ink" %></div></section>
+  </section>
+
+  <section class="border-t border-ink/10 py-12" aria-labelledby="pot-odds-faq-title">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">Common questions</p>
+    <h2 class="mt-4 font-display text-4xl" id="pot-odds-faq-title">Questions people ask about pot odds</h2>
+    <div class="mt-8 grid gap-4 md:grid-cols-2">
+      <details class="rounded-2xl border border-ink/10 bg-paper-deep p-5">
+        <summary class="cursor-pointer font-semibold">How do you calculate pot odds?</summary>
+        <p class="mt-3 text-sm leading-6 text-ink/70">Divide the amount you must call by the pot after your call. If the pot is 150 and calling costs 50, the pot becomes 200 and the break-even threshold is 50 divided by 200, or 25%.</p>
+      </details>
+      <details class="rounded-2xl border border-ink/10 bg-paper-deep p-5">
+        <summary class="cursor-pointer font-semibold">What equity do you need against a half-pot bet?</summary>
+        <p class="mt-3 text-sm leading-6 text-ink/70">25%. Against a one-third-pot bet you need 20%, against two-thirds pot 28.6%, and against a pot-sized bet 33.3%. Facing a bet of b times the pot, the threshold is b divided by 1 plus 2b.</p>
+      </details>
+      <details class="rounded-2xl border border-ink/10 bg-paper-deep p-5 md:col-span-2">
+        <summary class="cursor-pointer font-semibold">Do pot odds tell you whether to call?</summary>
+        <p class="mt-3 text-sm leading-6 text-ink/70">No. They give you the price only. To turn that price into a decision you still need an estimate of how often you win against the hands your opponent actually holds, and the price ignores later betting, rake, and how often you realise your equity.</p>
+      </details>
+    </div>
+  </section>
+
+  <footer class="border-t border-ink/10 pt-8 text-sm leading-6 text-ink/60"><div class="grid gap-4 sm:grid-cols-2"><div><p class="font-semibold text-ink">Where this comes from</p><p class="mt-2">The formula and every worked example on this page are derived from first principles, so you can recompute them yourself.</p></div><div class="sm:text-right"><p>Original derivation.</p><p class="mt-2">No external text reproduced.</p></div></div><p class="mt-5 rounded-xl bg-paper-deep p-4">This page covers the immediate price of a call and nothing more. It does not publish an opening range, an equity score, or a recommendation to call.</p></footer>
+</article>

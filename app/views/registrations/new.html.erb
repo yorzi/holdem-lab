@@ -1,0 +1,45 @@
+<% content_for :title, "#{t('auth.sign_up_title')} — Holdem Lab" %>
+<% content_for :robots, "noindex, nofollow" %>
+
+<section class="mx-auto max-w-3xl px-5 py-16 sm:py-24 lg:px-8" data-auth-page="sign-up">
+  <header class="max-w-2xl">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss"><%= t("auth.account") %></p>
+    <h1 class="mt-5 font-display text-5xl tracking-tight sm:text-6xl"><%= t("auth.sign_up_title") %></h1>
+    <p class="mt-6 text-lg leading-8 text-ink/70"><%= t("auth.sign_up_description") %></p>
+  </header>
+
+  <div class="mt-10 rounded-3xl border border-ink/10 bg-white/70 p-6 shadow-sm sm:p-8">
+    <nav aria-label="<%= t("auth.account") %>" class="mb-6 grid grid-cols-2 rounded-2xl border border-ink/10 bg-paper-deep/40 p-1">
+      <%= link_to t("nav.sign_in"), new_session_path, class: "rounded-xl px-4 py-3 text-center text-sm font-semibold text-ink/60 transition-colors hover:bg-paper hover:text-ink" %>
+      <span aria-current="page" class="rounded-xl bg-ink px-4 py-3 text-center text-sm font-semibold text-paper"><%= t("nav.sign_up") %></span>
+    </nav>
+
+    <% if @user.errors.any? %>
+      <div class="mb-6 rounded-2xl border border-sand/40 bg-sand/10 p-4 text-sm leading-6" role="alert">
+        <p class="font-semibold"><%= pluralize(@user.errors.count, "error") %> prevented account creation.</p>
+        <ul class="mt-2 list-disc space-y-1 pl-5">
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form_with model: @user, url: registration_path, class: "space-y-6" do |form| %>
+      <div>
+        <%= form.label :email_address, t("auth.email_address"), class: "block text-sm font-semibold" %>
+        <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", class: "mt-2 block w-full rounded-xl border border-ink/20 bg-paper px-4 py-3", inputmode: "email" %>
+      </div>
+      <div>
+        <%= form.label :password, t("auth.password"), class: "block text-sm font-semibold" %>
+        <%= form.password_field :password, required: true, autocomplete: "new-password", minlength: 12, maxlength: 72, class: "mt-2 block w-full rounded-xl border border-ink/20 bg-paper px-4 py-3" %>
+      </div>
+      <div>
+        <%= form.label :password_confirmation, t("auth.password_confirmation"), class: "block text-sm font-semibold" %>
+        <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password", minlength: 12, maxlength: 72, class: "mt-2 block w-full rounded-xl border border-ink/20 bg-paper px-4 py-3" %>
+      </div>
+      <%= form.submit t("auth.create_account_button"), class: "min-h-11 w-full rounded-full bg-moss px-5 py-3 text-sm font-semibold text-paper transition-colors hover:bg-ink" %>
+    <% end %>
+
+  </div>
+</section>

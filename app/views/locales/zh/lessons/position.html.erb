@@ -1,0 +1,125 @@
+<% content_for :title, "德州扑克位置详解：单挑局的行动顺序 — Holdem Lab" %>
+<% content_for :description, "学习单挑德州扑克的按钮位、盲注、发牌与行动顺序，配三道回忆题，读完就能分清翻牌前和翻牌后谁先行动。" %>
+<% content_for :og_type, "article" %>
+<% content_for :structured_data do %>
+  <%= structured_data_script(breadcrumb_structured_data([["学习", absolute_url_for(learn_path)], ["Position", canonical_url]])) %>
+  <%= structured_data_script(learning_resource_structured_data(name: "单挑德州扑克中的位置", description: "学习单挑局的按钮位、盲注、发牌与行动顺序，并通过三道回忆题巩固。", url: canonical_url, time_required: "PT12M", reviewed_at: @content_record.dig("domain_review", "reviewed_at"))) %>
+  <%= structured_data_script(faq_structured_data([
+        ["单挑时按钮位是小盲还是大盲？", "两人对局中由按钮位下小盲，没有单独的小盲玩家。Poker TDA 规则 34-B 写得很直接：单挑时，小盲就是按钮位。"],
+        ["单挑时谁先拿到牌？", "大盲拿到第一张底牌，按钮位拿到最后一张底牌。"],
+        ["最后行动是不是就该下注？", "不是。最后行动让你能先看到对手怎么做，但它本身不能让任何一个打法变正确。那仍然要看筹码深度、双方范围和整个决策。"]
+      ])) %>
+<% end %>
+
+<% evidence_coverage = "本课的每条规则都依据公开的赛事规则，训练器发牌的顺序也与之一致。" %>
+<article class="mx-auto max-w-5xl px-5 py-12 sm:py-20 lg:px-8" data-controller="lesson-session" data-lesson-slug="position" data-content-asset-id="<%= @content_record.fetch("id") %>" data-content-curriculum-id="<%= @curriculum_lesson.fetch("id") %>" data-content-concept-ids="<%= @curriculum_lesson.fetch("concept_ids").join(" ") %>" data-content-exercise-ids="<%= @curriculum_lesson.fetch("exercise_ids").join(" ") %>" data-content-version="<%= @content_record.fetch("content_version") %>" data-content-publication-status="<%= @content_record.fetch("publication_status") %>" data-evidence-coverage="<%= evidence_coverage %>">
+  <nav aria-label="面包屑" class="text-sm text-ink/55"><%= link_to "学习", learn_path, class: "font-semibold hover:text-moss" %><span aria-hidden="true"> / </span><span>位置</span></nav>
+
+  <header class="mt-8 border-b border-ink/10 pb-10">
+    <div class="flex flex-wrap items-center gap-3"><span class="rounded-full bg-moss/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-moss">基础 01</span></div>
+    <h1 class="mt-6 max-w-4xl font-display text-5xl leading-[0.98] tracking-tight sm:text-7xl">位置首先是行动顺序，其次才是策略。</h1>
+    <p class="mt-7 max-w-3xl text-lg leading-8 text-ink/70">在两人对局里，同一个按钮位在不同下注轮中扮演不同角色。先把发牌和行动顺序弄清楚，不要一看到「有位置」就跳到某个固定打法。</p>
+    <div class="mt-7 flex flex-wrap gap-3 text-xs"><span class="rounded-full border border-ink/10 bg-white/55 px-3 py-2">10–12 分钟</span><span class="rounded-full border border-ink/10 bg-white/55 px-3 py-2">3 道回忆题</span><span class="rounded-full border border-ink/10 bg-white/55 px-3 py-2">免费 · 无需注册</span></div>
+  </header>
+
+  <section class="mt-10 rounded-3xl border border-moss/25 bg-moss/5 p-6 sm:p-8" aria-labelledby="position-answer-title">
+    <h2 class="font-display text-3xl" id="position-answer-title">单挑德州扑克里谁先行动？</h2>
+    <p class="mt-4 max-w-3xl text-base leading-7 text-ink/80">单挑时按钮位同时也是小盲。大盲拿到第一张底牌，按钮位拿到最后一张。翻牌前由按钮位先行动；到了翻牌、转牌和河牌圈，则是大盲先行动、按钮位最后行动。</p>
+  </section>
+
+  <section class="grid gap-6 py-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(18rem,0.8fr)]" aria-labelledby="position-core-title">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">核心规则</p>
+      <h2 class="mt-4 font-display text-4xl" id="position-core-title">位置在各条街之间会怎么变化？</h2>
+      <div class="mt-6 space-y-5 text-base leading-7 text-ink/75">
+        <p>单挑时，<strong class="text-ink">按钮位同时也是小盲</strong>。大盲拿到第一张底牌，按钮位拿到最后一张底牌。</p>
+        <p><strong class="text-ink">翻牌前由按钮位先行动。</strong>在翻牌、转牌和河牌圈，大盲先行动，按钮位最后行动。</p>
+        <p>翻牌后最后行动，意味着你能先看到对手怎么做，再决定自己怎么做。这改变了你掌握的信息，但它本身并不能证明下注、过牌、跟注、加注还是弃牌更好。</p>
+      </div>
+    </div>
+    <aside class="rounded-3xl bg-ink p-6 text-paper" aria-label="单挑位置速查">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-moss-light">单挑速查</p>
+      <dl class="mt-6 space-y-5 text-sm">
+        <div class="border-b border-paper/15 pb-4"><dt class="text-paper/55">第一张底牌</dt><dd class="mt-1 font-semibold">大盲</dd></div>
+        <div class="border-b border-paper/15 pb-4"><dt class="text-paper/55">最后一张底牌</dt><dd class="mt-1 font-semibold">按钮位／小盲</dd></div>
+        <div class="border-b border-paper/15 pb-4"><dt class="text-paper/55">翻牌前先行动</dt><dd class="mt-1 font-semibold">按钮位／小盲</dd></div>
+        <div><dt class="text-paper/55">翻牌后先行动</dt><dd class="mt-1 font-semibold">大盲</dd></div>
+      </dl>
+    </aside>
+  </section>
+
+  <section class="rounded-3xl border border-sand/40 bg-sand/10 p-6 sm:p-8" aria-labelledby="position-boundary-title">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-sand">推理边界</p>
+    <h2 class="mt-3 font-display text-3xl" id="position-boundary-title">位置回答不了什么？</h2>
+    <p class="mt-4 max-w-3xl text-sm leading-7 text-ink/70">位置本身不会给出起手牌范围、胜率估算、下注尺寸或 solver 建议。那些结论需要明确的对局模型、筹码深度、双方范围、行动序列，必要时还要算上抽水。本课有意停在这些结论之前。</p>
+  </section>
+
+  <section class="py-12" aria-labelledby="position-practice-title">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">主动回忆</p>
+    <h2 class="mt-4 font-display text-4xl" id="position-practice-title">先回答，再阅读解释。</h2>
+    <p class="mt-4 max-w-2xl text-sm leading-6 text-ink/65">每题第一次核对的答案会计入本节小结。内容不会保存，也不会上传。</p>
+    <div class="mt-6 grid gap-4 rounded-2xl border border-ink/10 bg-paper-deep p-5 sm:grid-cols-[minmax(0,1fr)_12rem]"><label class="text-sm font-semibold text-ink" for="position-reason">反馈前，写下你准备使用的规则。<textarea class="mt-2 min-h-20 w-full rounded-xl border border-ink/15 bg-paper p-3 text-sm font-normal outline-none focus:border-moss" data-lesson-session-target="reason" id="position-reason" placeholder="例如：preflop 和 postflop 的行动顺序不同。"></textarea></label><label class="text-sm font-semibold text-ink" for="position-confidence">反馈前的信心<select class="mt-2 w-full rounded-xl border border-ink/15 bg-paper p-3 text-sm font-normal outline-none focus:border-moss" data-lesson-session-target="confidence" id="position-confidence"><option value="1">1 · 猜测</option><option value="2">2 · 不确定</option><option value="3" selected>3 · 基本确定</option><option value="4">4 · 有信心</option><option value="5">5 · 清楚</option></select></label></div>
+
+    <div class="mt-8 space-y-6">
+      <fieldset class="rounded-3xl border border-ink/10 bg-white/55 p-6" data-answer="button" data-concept="翻牌前行动顺序" data-correct-feedback="正确。单挑时，按钮位／小盲在翻牌前先行动。" data-review-feedback="再记一遍这个角色关系：按钮位就是小盲，并且在翻牌前先行动。" data-lesson-session-target="question" id="position-q1">
+        <legend class="px-2 font-display text-2xl">1. 翻牌前谁先行动？</legend>
+        <p class="mt-3 text-sm leading-6 text-ink/65">两位玩家都已拿到两张底牌，盲注也已投入。</p>
+        <div class="mt-5 grid gap-3 sm:grid-cols-3"><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="position-q1" type="radio" value="button"> <span>按钮位／小盲</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="position-q1" type="radio" value="bigBlind"> <span>大盲</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="position-q1" type="radio" value="random"> <span>每手牌随机</span></label></div>
+        <button class="mt-5 min-h-11 rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-paper hover:bg-moss disabled:cursor-not-allowed disabled:opacity-45" data-action="lesson-session#check" type="button">检查答案</button>
+        <p class="mt-4 rounded-xl border border-ink/10 bg-paper p-4 text-sm leading-6 focus:outline-none" data-lesson-session-target="feedback" hidden role="status" tabindex="-1"></p>
+        <noscript><p class="mt-4 text-sm leading-6 text-ink/65">答案：翻牌前由按钮位／小盲先行动。</p></noscript>
+      </fieldset>
+
+      <fieldset class="rounded-3xl border border-ink/10 bg-white/55 p-6" data-answer="bigBlind" data-concept="翻牌后行动顺序" data-correct-feedback="正确。翻牌后的每一条街，都是大盲先行动、按钮位最后行动。" data-review-feedback="翻牌后的顺序和翻牌前相反：大盲先行动。" data-lesson-session-target="question" id="position-q2">
+        <legend class="px-2 font-display text-2xl">2. 翻牌圈谁先行动？</legend>
+        <p class="mt-3 text-sm leading-6 text-ink/65">翻牌前的下注轮结束后，两位玩家都还在牌局里。</p>
+        <div class="mt-5 grid gap-3 sm:grid-cols-3"><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="position-q2" type="radio" value="button"> <span>按钮位／小盲</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="position-q2" type="radio" value="bigBlind"> <span>大盲</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="position-q2" type="radio" value="aggressor"> <span>翻牌前最后加注的人</span></label></div>
+        <button class="mt-5 min-h-11 rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-paper hover:bg-moss disabled:cursor-not-allowed disabled:opacity-45" data-action="lesson-session#check" type="button">检查答案</button>
+        <p class="mt-4 rounded-xl border border-ink/10 bg-paper p-4 text-sm leading-6 focus:outline-none" data-lesson-session-target="feedback" hidden role="status" tabindex="-1"></p>
+        <noscript><p class="mt-4 text-sm leading-6 text-ink/65">答案：翻牌、转牌、河牌三条街都由大盲先行动。</p></noscript>
+      </fieldset>
+
+      <fieldset class="rounded-3xl border border-ink/10 bg-white/55 p-6" data-answer="information" data-concept="位置与策略" data-correct-feedback="正确。位置改变的是行动顺序和拿到信息的时机；最好的打法仍然取决于完整的决策模型。" data-review-feedback="位置是一种信息优势，而不是一条完整的打法建议。" data-lesson-session-target="question" id="position-q3">
+        <legend class="px-2 font-display text-2xl">3. 哪个结论在证据范围内？</legend>
+        <p class="mt-3 text-sm leading-6 text-ink/65">选择不超出本课程证据范围的陈述。</p>
+        <div class="mt-5 grid gap-3"><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="position-q3" type="radio" value="alwaysBet"> <span>对手过牌给按钮位时，按钮位总该下注</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="position-q3" type="radio" value="information"> <span>最后行动能让你在决定前看到对手怎么做，但它不决定哪个打法最好</span></label><label class="flex min-h-12 items-center gap-3 rounded-xl border border-ink/10 bg-paper/70 p-3"><input name="position-q3" type="radio" value="strongerCards"> <span>按钮位平均会拿到更强的牌</span></label></div>
+        <button class="mt-5 min-h-11 rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-paper hover:bg-moss disabled:cursor-not-allowed disabled:opacity-45" data-action="lesson-session#check" type="button">检查答案</button>
+        <p class="mt-4 rounded-xl border border-ink/10 bg-paper p-4 text-sm leading-6 focus:outline-none" data-lesson-session-target="feedback" hidden role="status" tabindex="-1"></p>
+        <noscript><p class="mt-4 text-sm leading-6 text-ink/65">答案：最后行动会改变你掌握的信息，但不决定哪个打法最好。</p></noscript>
+      </fieldset>
+    </div>
+
+    <section class="mt-8 rounded-3xl border border-moss/30 bg-moss/10 p-6 focus:outline-none sm:p-8" data-lesson-session-target="summary" hidden id="position-session-summary" tabindex="-1">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">本节小结</p>
+      <h2 class="mt-3 font-display text-4xl">三个概念都已检查。</h2>
+      <p class="mt-5 text-lg">得分：<strong data-lesson-session-target="score"></strong></p>
+      <p class="mt-3 text-sm leading-6 text-ink/70" data-lesson-session-target="missed"></p>
+      <dl class="mt-6 grid gap-3 text-sm sm:grid-cols-3"><div class="rounded-xl bg-paper/70 p-4"><dt class="font-semibold text-ink">你的反思</dt><dd class="mt-2 leading-6 text-ink/65" data-lesson-session-target="reasonSummary"></dd></div><div class="rounded-xl bg-paper/70 p-4"><dt class="font-semibold text-ink">信心</dt><dd class="mt-2 leading-6 text-ink/65" data-lesson-session-target="confidenceSummary"></dd></div><div class="rounded-xl bg-paper/70 p-4"><dt class="font-semibold text-ink">证据覆盖</dt><dd class="mt-2 leading-6 text-ink/65" data-lesson-session-target="evidence"></dd></div></dl>
+      <div class="mt-6 flex flex-col gap-3 sm:flex-row"><button class="min-h-11 rounded-full border border-ink/20 px-5 py-3 text-sm font-semibold hover:border-moss hover:text-moss" data-action="lesson-session#retry" type="button">重新练习本课程</button><%= link_to "到练习里用一下这条规则 →", practice_path, class: "inline-flex min-h-11 items-center justify-center rounded-full bg-moss px-5 py-3 text-sm font-semibold text-paper hover:bg-ink" %></div>
+    </section>
+  </section>
+
+  <section class="border-t border-ink/10 py-12" aria-labelledby="position-faq-title">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-moss">常见问题</p>
+    <h2 class="mt-4 font-display text-4xl" id="position-faq-title">关于位置的常见问题</h2>
+    <div class="mt-8 grid gap-4 md:grid-cols-2">
+      <details class="rounded-2xl border border-ink/10 bg-paper-deep p-5">
+        <summary class="cursor-pointer font-semibold">单挑时按钮位是小盲还是大盲？</summary>
+        <p class="mt-3 text-sm leading-6 text-ink/70">两人对局中由按钮位下小盲，没有单独的小盲玩家。Poker TDA 规则 34-B 写得很直接：单挑时，小盲就是按钮位。</p>
+      </details>
+      <details class="rounded-2xl border border-ink/10 bg-paper-deep p-5">
+        <summary class="cursor-pointer font-semibold">单挑时谁先拿到牌？</summary>
+        <p class="mt-3 text-sm leading-6 text-ink/70">大盲拿到第一张底牌，按钮位拿到最后一张底牌。</p>
+      </details>
+      <details class="rounded-2xl border border-ink/10 bg-paper-deep p-5 md:col-span-2">
+        <summary class="cursor-pointer font-semibold">最后行动是不是就该下注？</summary>
+        <p class="mt-3 text-sm leading-6 text-ink/70">不是。最后行动让你能先看到对手怎么做，但它本身不能让任何一个打法变正确。那仍然要看筹码深度、双方范围和整个决策。</p>
+      </details>
+    </div>
+  </section>
+
+  <footer class="border-t border-ink/10 pt-8 text-sm leading-6 text-ink/60">
+    <div class="flex flex-col justify-between gap-5 sm:flex-row sm:items-start"><div><p class="font-semibold text-ink">内容依据</p><p class="mt-2">本课描述的发牌与行动顺序依据公开的赛事规则。</p></div><div class="sm:text-right"><p><a class="font-semibold text-moss underline" href="https://www.pokertda.com/view-poker-tda-rules/" rel="noreferrer">Poker TDA 2024 Rules, Rule 34B</a></p></div></div>
+    <p class="mt-5 rounded-xl bg-paper-deep p-4">这份规则只涉及流程与行动顺序，不给出单挑策略建议或起手牌范围；本课也停在同一条线上。</p>
+  </footer>
+</article>

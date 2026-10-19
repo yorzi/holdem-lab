@@ -1,0 +1,258 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+  # Deployment is opt-in, even for a manual CI run.
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: Deploy main to your configured server
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  scan_ruby:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Scan for common Rails security vulnerabilities using static analysis
+        run: bin/brakeman --no-pager
+
+      - name: Scan for known security vulnerabilities in gems used
+        run: bin/bundler-audit
+
+  scan_js:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+
+      - name: Install JavaScript dependencies
+        run: npm ci
+
+      - name: Scan for security vulnerabilities in JavaScript dependencies
+        run: npm audit --audit-level=high
+
+  lint:
+    runs-on: ubuntu-latest
+    env:
+      RUBOCOP_CACHE_ROOT: tmp/rubocop
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Prepare RuboCop cache
+        uses: actions/cache@v4
+        env:
+          DEPENDENCIES_HASH: ${{ hashFiles('.ruby-version', '**/.rubocop.yml', '**/.rubocop_todo.yml', 'Gemfile.lock') }}
+        with:
+          path: ${{ env.RUBOCOP_CACHE_ROOT }}
+          key: rubocop-${{ runner.os }}-${{ env.DEPENDENCIES_HASH }}-${{ github.ref_name == github.event.repository.default_branch && github.run_id || 'default' }}
+          restore-keys: |
+            rubocop-${{ runner.os }}-${{ env.DEPENDENCIES_HASH }}-
+
+      - name: Lint code for consistent style
+        run: bin/rubocop -f github
+
+  test:
+    runs-on: ubuntu-latest
+
+    # services:
+    #  redis:
+    #    image: valkey/valkey:8
+    #    ports:
+    #      - 6379:6379
+    #    options: --health-cmd "redis-cli ping" --health-interval 10s --health-timeout 5s --health-retries 5
+    steps:
+      - name: Install packages
+        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y libvips
+
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+
+      - name: Install JavaScript dependencies
+        run: npm ci
+
+      - name: Run tests
+        env:
+          RAILS_ENV: test
+          # RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+          # REDIS_URL: redis://localhost:6379/0
+        run: bin/rails db:test:prepare test
+
+      - name: Validate frontend, research registry and quality packets
+        run: npm run typecheck && npm test && npm run validate:frontend-boundaries && npm run build && npm run validate:research && npm run validate:quality && npm run validate:content && npm run validate:catalog && npm run validate:canonical
+
+      - name: Validate content mirror
+        env:
+          RAILS_ENV: test
+        run: bin/rails content:import && bin/rails content:verify
+
+  system-test:
+    runs-on: ubuntu-latest
+
+    # services:
+    #  redis:
+    #    image: valkey/valkey:8
+    #    ports:
+    #      - 6379:6379
+    #    options: --health-cmd "redis-cli ping" --health-interval 10s --health-timeout 5s --health-retries 5
+    steps:
+      - name: Install packages
+        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y libvips
+
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+
+      - name: Install JavaScript dependencies
+        run: npm ci
+
+      - name: Run System Tests
+        env:
+          RAILS_ENV: test
+          # RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+          # REDIS_URL: redis://localhost:6379/0
+        run: bin/rails db:test:prepare test:system
+
+      - name: Keep screenshots from failed system tests
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: screenshots
+          path: ${{ github.workspace }}/tmp/screenshots
+          if-no-files-found: ignore
+
+  deploy:
+    name: Deploy (Kamal)
+    # Forks and ordinary pushes run checks only. A maintainer must configure
+    # deployment, enable the repository variable, and explicitly request it.
+    needs: [ scan_ruby, scan_js, lint, test, system-test ]
+    if: github.event_name == 'workflow_dispatch' && inputs.deploy == true && vars.ENABLE_DEPLOY == 'true' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production
+    # Never cancel a release already talking to the VPS.
+    concurrency:
+      group: deploy-production
+      cancel-in-progress: false
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      # config/deploy.yml targets amd64; build on the hosted
+      # runner's native amd64 Docker instead of cross-building on Apple Silicon.
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+
+      - name: Load deploy SSH key
+        uses: webfactory/ssh-agent@v0.10.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Trust the server host key
+        env:
+          SSH_KNOWN_HOSTS: ${{ vars.SSH_KNOWN_HOSTS }}
+        run: |
+          set -euo pipefail
+          test -n "$SSH_KNOWN_HOSTS"
+          mkdir -p "$HOME/.ssh"
+          chmod 700 "$HOME/.ssh"
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > "$HOME/.ssh/known_hosts"
+          chmod 600 "$HOME/.ssh/known_hosts"
+
+      # This derives the required values from config/deploy.yml and writes
+      # only those values into ignored .kamal files. No broad secrets context
+      # is exposed to a checked-out script.
+      - name: Materialise Kamal secrets
+        env:
+          KAMAL_REGISTRY_PASSWORD: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
+          SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
+        run: ruby script/materialise_kamal_secrets.rb
+
+      - name: Deploy
+        env:
+          VERSION: ${{ github.sha }}
+        run: |
+          # Kamal deployments are re-runnable. Retry transport failures only;
+          # migrations, healthchecks, and image failures should fail at once.
+          set +e
+          set -uo pipefail
+          attempts=3
+          delay=20
+
+          for ((attempt = 1; attempt <= attempts; attempt++)); do
+            bundle exec kamal deploy 2>&1 | tee /tmp/kamal-deploy.log
+            status=${PIPESTATUS[0]}
+            [[ $status -eq 0 ]] && exit 0
+
+            if ! grep -qiE 'ECONNRESET|Connection reset|Connection closed|Net::SSH|Timeout::Error|Connection refused' /tmp/kamal-deploy.log; then
+              echo "::error::Deploy failed for a non-connection reason; not retrying."
+              exit "$status"
+            fi
+
+            if [[ $attempt -lt $attempts ]]; then
+              echo "::warning::Deploy lost its SSH connection (attempt ${attempt}/${attempts}); retrying in ${delay}s."
+              sleep "$delay"
+              delay=$((delay * 2))
+            fi
+          done
+
+          echo "::error::Deploy failed after ${attempts} connection attempts."
+          exit "$status"

@@ -1,0 +1,5 @@
+
+# Foreman increments PORT by 100 per entry; keep Rails first.
+web: bin/rails server -b 127.0.0.1
+vite: bin/vite dev
+css: bin/rails tailwindcss:watch
