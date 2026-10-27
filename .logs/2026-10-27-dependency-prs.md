@@ -59,6 +59,25 @@ Commands used Ruby 4.0.2 and, after the Node compatibility fix, Node 24.21.0.
 - `gitleaks git . --redact --log-opts='b8e2e71..HEAD'` and
   `git diff | gitleaks stdin --redact`: no leaks found.
 
+## Remote follow-through and refreshed security evidence
+
+The initial push at `e04075c` merged and closed all 18 PRs. Main CI run
+`40434347263` passed browser, JavaScript audit and lint checks, but its fresh
+Ruby advisory database reported seven Net::SSH advisories against 7.3.3.
+The earlier local audit had used an older advisory database, so its green
+result did not establish current dependency safety.
+
+- `bundle update net-ssh --conservative`: upgraded only Net::SSH to 7.3.8.
+- `bin/bundler-audit check --update`: passed against advisory DB revision
+  `3df20d31748fbafd1f6c75ade50e5d1d266257ee`, with no vulnerabilities found.
+- Both `config/ci.rb` and the GitHub workflow now run that explicit refresh.
+- A further complete `bin/ci` passed in 37.40 seconds with the refreshed
+  advisory database and the same Rails/system/Vitest counts recorded above.
+- Net::SSH 7.3.8 and SSHKit loaded together; `bundle exec kamal version`
+  returned 2.12.0. These are local loading checks, not an SSH connection or
+  a deployment test.
+- Follow-up `git diff --check` and `git diff | gitleaks stdin --redact` passed.
+
 ## Evidence limits and cleanup
 
 These are local results; remote main CI must be checked separately after push.

@@ -58,6 +58,9 @@ validation, RuboCop, Brakeman, Bundler Audit, and npm audit. Audits need network
 access. Publication blockers in the read-only readiness report are evidence to
 review, not an instruction to force-publish records.
 
+The gem audit refreshes its advisory database on each run so an existing local
+cache cannot hide findings that a fresh CI runner would report.
+
 `package.json` keeps `private: true` to prevent accidental npm publication; it
 does not control GitHub repository visibility.
 

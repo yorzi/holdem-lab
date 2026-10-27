@@ -5,7 +5,7 @@ CI.run do
 
   step "Style: Ruby", "bin/rubocop --cache-root tmp/rubocop --no-parallel"
 
-  step "Security: Gem audit", "bin/bundler-audit"
+  step "Security: Gem audit", "bin/bundler-audit check --update"
   step "Security: npm audit", "npm audit --audit-level=high"
   step "Security: Brakeman code analysis", "bin/brakeman --quiet --no-pager --exit-on-warn --exit-on-error"
   step "Tests: Rails", "bin/rails test"
