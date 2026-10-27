@@ -65,6 +65,11 @@ CI runs on pull requests and pushes to `main`. It uses no deployment secret for
 normal checks. The optional deploy job requires a manual request and the
 `ENABLE_DEPLOY=true` repository variable; it is off by default.
 
+CI uses Ubuntu 24.04 so the pinned Ruby remains available when GitHub changes
+`ubuntu-latest`. Use the Node version in `.nvmrc`; jsdom 30 requires at least
+Node 24.15 on the Node 24 series. System tests reset the browser dimensions
+before each test so a mobile test cannot change the next test's viewport.
+
 ## Change content carefully
 
 Use `data/content/README.md` and `data/research/README.md` for the contracts.

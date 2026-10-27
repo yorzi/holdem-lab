@@ -7,7 +7,7 @@ app, try its core loop, and recover from common setup problems.
 
 ## Install the prerequisites
 
-Use Ruby **4.0.2** from `.ruby-version`, Node **24.14.0** from `.nvmrc`, Bundler,
+Use Ruby **4.0.2** from `.ruby-version`, Node **24.21.0** from `.nvmrc`, Bundler,
 npm, Git, and a C/C++ build toolchain for native gems. Use your preferred Ruby
 and Node version managers. Check the active versions before setup:
 

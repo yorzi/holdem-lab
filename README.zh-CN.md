@@ -11,7 +11,7 @@
 
 ## 本地运行
 
-准备 Ruby **4.0.2**、Node **24.14.0**、Bundler、npm 和原生编译工具：
+准备 Ruby **4.0.2**、Node **24.21.0**、Bundler、npm 和原生编译工具：
 
 ```bash
 git clone https://github.com/yorzi/holdem-lab.git

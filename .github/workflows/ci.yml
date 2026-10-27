@@ -16,8 +16,9 @@ permissions:
   contents: read
 
 jobs:
+  # Keep the runner image compatible with the pinned Ruby in .ruby-version.
   scan_ruby:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout code
@@ -35,7 +36,7 @@ jobs:
         run: bin/bundler-audit
 
   scan_js:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout code
@@ -59,7 +60,7 @@ jobs:
         run: npm audit --audit-level=high
 
   lint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       RUBOCOP_CACHE_ROOT: tmp/rubocop
     steps:
@@ -85,7 +86,7 @@ jobs:
         run: bin/rubocop -f github
 
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     # services:
     #  redis:
@@ -130,7 +131,7 @@ jobs:
         run: bin/rails content:import && bin/rails content:verify
 
   system-test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     # services:
     #  redis:
@@ -180,7 +181,7 @@ jobs:
     # deployment, enable the repository variable, and explicitly request it.
     needs: [ scan_ruby, scan_js, lint, test, system-test ]
     if: github.event_name == 'workflow_dispatch' && inputs.deploy == true && vars.ENABLE_DEPLOY == 'true' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment: production
     # Never cancel a release already talking to the VPS.
     concurrency:

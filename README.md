@@ -13,7 +13,7 @@ claims. Strategy feedback is approximate, not verified solver output.
 
 ## Run locally
 
-Install **Ruby 4.0.2**, **Node 24.14.0**, Bundler, npm, and native build tools.
+Install **Ruby 4.0.2**, **Node 24.21.0**, Bundler, npm, and native build tools.
 The versions are pinned in `.ruby-version` and `.nvmrc`.
 
 ```bash
